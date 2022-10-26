@@ -1,0 +1,3 @@
+/home/la7amovic/Desktop/3IF/Algo/TD1/cmake-build-debug/CMakeFiles/TD1.dir
+/home/la7amovic/Desktop/3IF/Algo/TD1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/la7amovic/Desktop/3IF/Algo/TD1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
