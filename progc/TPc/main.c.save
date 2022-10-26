@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include "biblio.h"
+#include <stdlib.h>
+#include "complex.h"
+
+typedef struct {float reel; float img;} complex;
+
+
+void display(complex c){
+        if(c.img>0){
+        printf("%f+%f.i",c.reel,c.img); 
+        }else { 
+        printf("%f %f.i",c.reel,c.img);  
+        }
+}
+
+complex c;
+scanf("%f%f",&c.reel,&c.img);
+
+
+display(c);
+
+return 0;
+}

@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int somme(int t[], int size){
+	int i=0;
+	int res;
+	for(i=0;i<size;i++){
+	res+=t[i];
+	}
+	return res;
+}
+
+double produit(int t[], int size){
+	int i=0;
+	double res=1;
+	for(i=0;i<size;i++){
+	res=res*t[i];
+	}
+	return res;
+}
+
+double avg(int t[],int size){
+	double  m=(double)somme(t,size);
+	double avg=m/(double)(size-1);
+	return avg;
+
+}
