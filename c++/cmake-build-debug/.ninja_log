@@ -1,0 +1,11 @@
+# ninja log v5
+0	165	1668864110778163743	CMakeFiles/c__.dir/TestTp1/Ensemble1.cpp.o	97dffe7b842d9432
+0	225	1667549544713861786	CMakeFiles/c__.dir/TP1/main.cpp.o	a743364b1c816e15
+1	234	1667550177718010669	CMakeFiles/c__.dir/TP1/Ensemble.cpp.o	824a750f700e1143
+0	12	1668864159181654407	build.ninja	c4baac1771646e94
+156	195	1668864124742016759	c__	d1c6c5181bb9af6d
+0	156	1668864124702017180	CMakeFiles/c__.dir/TestTp1/main.cpp.o	cd4dc2abd4552a30
+0	167	1668865081700811308	CMakeFiles/c__.dir/TestTp1/main.cpp.o	cd4dc2abd4552a30
+0	161	1668865111596421262	CMakeFiles/c__.dir/TestTp1/main.cpp.o	cd4dc2abd4552a30
+0	171	1668865111608421106	CMakeFiles/c__.dir/TestTp1/Ensemble.cpp.o	cb6b0a597e903614
+171	212	1668865111648420585	c__	641f278dacaeb609
