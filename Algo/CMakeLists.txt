@@ -4,4 +4,4 @@ project(Algo)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Algo
-        TD5lis.c)
+       DS2018b.c)

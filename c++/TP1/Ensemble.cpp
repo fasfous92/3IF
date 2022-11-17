@@ -154,73 +154,87 @@ unsigned  int Ensemble:: Ajuster(int delta){
     }
     return nbelem;
 }
-int Ensemble:: Reunir(const Ensemble & unEnsemble){
-    if(EstInclus(unEnsemble)==INCLUSION_LARGE){
+unsigned int Ensemble:: Intersection(const Ensemble & unEnsemble){
+    int i,j;
+    int retirer;
+    unsigned int count=0;
+       if(EstInclus(unEnsemble)==INCLUSION_LARGE || EstInclus(unEnsemble)==INCLUSION_STRICTE) {
+           Ajuster(-nbelem);
+           return 0;
+       }else{
+           for(j=0;j<nbcurrent;j++){
+                for(i=0;i<unEnsemble.nbcurrent;i++){
+                    if(unEnsemble.elem[i]==elem[j]){
+                        count++;
+                    }
+                }
+            }
+           retirer=nbcurrent-count;
+           for(j=0;j<nbcurrent;j++) {
+               bool b=false;
+               for (i = 0; i < unEnsemble.nbcurrent; i++) {
+
+                   if(elem[j]==unEnsemble.elem[i]){
+                       b=true;
+                   }
+               }
+               if(!b){
+                   Retirer(elem[j]);
+                   j--;
+               }
+           }
+       }
+    return retirer;
+}
+
+int Ensemble:: Reunir(const Ensemble & unEnsemble) {
+    if (EstInclus(unEnsemble) == INCLUSION_LARGE) {
         return 0;
     }
-    int i,j;
-    int count;
-    int add;
-    for(i=0;i<nbcurrent;i++){
-        for(j=0;j<unEnsemble.nbcurrent;j++){
-            if(elem[i]==unEnsemble.elem[j]){
-                count;
+    int i, j;
+    int count=0;
+    int add=0;
+    for(i=0;i<unEnsemble.nbcurrent;i++){
+        for(j=0;j<nbcurrent;j++){
+            if(unEnsemble.elem[i]==elem[j]){
+                count++;
             }
         }
     }
     add=unEnsemble.nbcurrent-count;
-    if(add==0){
-        return 0;
-    }
-    if((nbcurrent+add)>nbelem){
-        Ajuster((nbcurrent+add)-nbelem);
-        int indice=nbcurrent;
-        for(j=0;j<unEnsemble.nbcurrent;j++){
-            if(Retirer(unEnsemble.elem[j])==false){
-                    elem[indice]=unEnsemble.elem[j];
-                    indice++;
+    int ncapacity=nbcurrent+add;
+    if(ncapacity<=nbelem){
+        for(i=0;i<unEnsemble.nbcurrent;i++){
+            if(Ajouter(unEnsemble.elem[i])) {
             }
         }
-        nbcurrent=nbcurrent+indice;
-        return (-add);
-    } else {
-        int indice=nbcurrent;
-        for (i = 0; i < nbcurrent; i++) {
-            for (j = 0; j < unEnsemble.nbcurrent; j++) {
-                if (elem[i] == unEnsemble.elem[j]) {
-                    elem[indice] = unEnsemble.elem[j];
-                    indice++;
-                }
-            }
-        }
-        nbcurrent=nbcurrent+indice;
         return add;
+    } else{
+        Ajuster(ncapacity-nbelem);
+        for(i=0;i<unEnsemble.nbcurrent;i++){
+            if(Ajouter(unEnsemble.elem[i])) {
+
+            }
+        }
+
+        return -add;
     }
-
-
 
 
 }
 unsigned int Ensemble:: Retirer(const Ensemble & unEnsemble){
     int stock=nbelem;
-    int stock2=unEnsemble.nbelem;
     int i;
     unsigned int res=0;
-    int nb[unEnsemble.nbelem];
-
-    for(i=0;i<stock2;i++){
-        nb[i]=unEnsemble.elem[i];
-    }
-
-
 
     for(i=0;i<unEnsemble.nbcurrent;i++){
-            if(Retirer(nb[i])== true){
+            if(Retirer(unEnsemble.elem[i])){
                 res++;
+                i--;
             }
 
     }
-    nbelem=stock;
+    Ajuster(stock-nbelem);
     return res;
 }
 

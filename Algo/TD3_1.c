@@ -15,18 +15,26 @@ int main(){
        i++;
   }
    size=i;
-   int t[n+1][size];
-   int k=0;
-   for(k=0;k<size;k++){
-    t[0][k]=1;
+   int t[n+1][size+1];
+    int p;
+    int j;
+   int k;
+   for(k=1;k<size+1;p++){
+       t[k][0]=0;
    }
-   for(k=1;k<n+1;k++){
-    t[k][0]=0;
+   for(k=0;k<size+1;k++){
+       printf("rr\n");
+       t[0][k]=1;
    }
-   int p;
-   int j;
+
+    for (j = 0; j < size+1; j++) {
+        for(p=0;p<n+1;p++) {
+            printf("%d  ", t[i][j]);
+        }
+        printf("\n");
+    }
    for(p=1;p<n+1;p++){
-       for(j=1;j<size;j++){
+       for(j=1;j<size+1;j++){
            if(p-tab[j]>=0){
             t[p][j]=t[p-tab[j]][j-1] + t[p][j-1];
             }
@@ -35,8 +43,16 @@ int main(){
         }
        }
    }
+    for (j = 0; j < size+1; j++) {
+        for(p=0;p<n+1;p++) {
+            printf("%d  ", t[i][j]);
+            }
+            printf("\n");
+    }
 
-   if(t[n][size-1]==1){
+
+
+   if(t[n][size]==1){
        printf("OUI\r\n");
    } else {
        printf("NON\r\n");
