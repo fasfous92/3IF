@@ -1,0 +1,11 @@
+main : main.o Trajet.o TrajetSimple.o
+	g++ -o main main.o Trajet.o TrajetSimple.o
+
+main.o : main.cpp
+	g++ -c main.cpp
+
+TrajetSimple.o : TrajetSimple.cpp
+	g++ -c TrajetSimple.cpp
+
+Trajet.o : Trajet.cpp
+	g++ -c Trajet.cpp
