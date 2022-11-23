@@ -28,6 +28,45 @@ using namespace std;
 //
 //{
 //} //----- Fin de Méthode
+
+
+
+// GETTERS,SETTERS
+int Linkedlist::getnbmax()const
+{
+    return nbmax;
+}
+int Linkedlist::getnbcurrent() const
+{
+    return nbcurrent;
+}
+Cell* Linkedlist::getCell() const
+{
+    return cellule;
+}
+void setCell(Cell* cell)
+{
+
+}
+
+//--Fin GETTERS,SETTERS
+void Linkedlist::Ajouter(Trajet *t)
+{
+    if(nbmax=nbcurrent){
+        Ajustertaille();
+    }
+    if(nbcurrent==0) {
+        Cell c = Cell(t); //cree une Cellule qui pointe vers pointeur NULL
+        cellule[nbcurrent]=c;
+        nbcurrent++;
+    }else{
+        Cell c= Cell(t);
+        cellule[nbcurrent-1].setNext(c); //the previous Cell will point for our new Cell
+        cellule[nbcurrent]=c;
+        nbcurrent++;
+    }
+}//--Fin Ajouter
+
 void Linkedlist::tri()
 // Algorithme :
 {
@@ -63,11 +102,7 @@ void Linkedlist::Afficher()const
     }
 } //----- Fin Afficher
 
-Cell* Linkedlist::getCell() const
-//Algorithme :
-{
- return cellule;
-}
+
 
 
 

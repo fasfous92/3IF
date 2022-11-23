@@ -28,6 +28,12 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+void TrajetCompose::AjouterTrajet(Trajet* t)
+// Algorithme :
+{
+        compo.Ajouter(t);
+} //----- Fin de AjouterTrajet
+
 void TrajetCompose::Afficher() const
 // Algorithme :
 //
@@ -57,17 +63,14 @@ TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
 } //----- Fin de TrajetCompose (constructeur de copie)
 
 
-TrajetCompose::TrajetCompose( char* depart, char* arrivee)
+TrajetCompose::TrajetCompose()
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetComposee>" << endl;
 #endif
-    Trajet::arrivee=arrivee;
-    Trajet::depart=depart;
-    compo= Linkedlist(2);
-
+    compo=Linkedlist(); // on va juste initiliser la liste puis après selon le nombre d'étapes à rajoutées on va appeler la méthode ajouter.
 } //----- Fin de TrajeCompose
 
 

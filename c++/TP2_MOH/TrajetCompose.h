@@ -33,6 +33,12 @@ public:
     //
     // Contrat :
     //
+    void AjouterTrajet(Trajet* t);
+    // Mode d'emploi:
+    //Ajouter un trajet à notre trajet composé
+    //
+    //Contrat:
+    //
 
 
     virtual void Afficher()const ;
@@ -40,6 +46,7 @@ public:
     //cette méthode va afficher les différentes qui compose le trajet composé
     // Contrat :
     //
+
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -53,7 +60,7 @@ public:
     // Contrat :
     //
 
-    TrajetCompose (char* depart, char* arrivee);
+    TrajetCompose (Trajet* t);
     // Mode d'emploi : cette methode va demander à l'utilisateur:
     // "veuillez rentrer le nombre de trajet qui compose votre trajet"
     // "pour le trajet n à ajouter:
