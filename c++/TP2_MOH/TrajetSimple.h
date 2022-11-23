@@ -11,6 +11,7 @@
 #define TrajetSimple_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -34,9 +35,16 @@ public:
     //
     // Contrat :
     //
-    virtual void Recherche() const;
+    virtual char* getvilled()const=0;
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
+    // récupérer le nom de la ville de départ
+    //
+    // Contrat :
+    //
+    virtual char* TrajetSimple::getvillea()const;
+    // type Méthode ( liste des paramètres );
+    // Mode d'emploi : récupérer le nom de la ville d'arrivée
     //
     // Contrat :
     //

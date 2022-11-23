@@ -22,20 +22,34 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
+///GETTERS, SETTERS
+char* TrajetSimple::getvilled()const
+{
+    return depart;
+}
+char* TrajetSimple::getvillea()const
+{
+    return arrivee;
 
-void TrajetSimple::Afficher()
+}
+//----Fin GETTERS,SETTERS
+
+
+void TrajetSimple::Afficher() const
 // Algorithme :
 //
 {
-    cout << "Trajet Simple = de " << depart << " à " << arrivee << " en " << transport << endl ;
+    cout << "Trajet Simple = de " << Trajet::depart << " à " << Trajet::arrivee << " en " << transport << endl ;
+
 }
 
+
+
+
+
+
 //------------------------------------------------- Surcharge d'opérateurs
-TrajetSimple & TrajetSimple::operator = ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
+
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -60,7 +74,11 @@ TrajetSimple::TrajetSimple ( )
     #ifdef MAP
         cout << "Appel au constructeur de <TrajetSimple>" << endl;
     #endif
-    fscanf(stdin,"%99s %99s %99s",&depart,&arrivee,&transport);
+    depart=new char [30];
+    arrivee=new char [30];
+    transport=new char [30];
+    fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
+
 } //----- Fin de TrajetSimple
 
 
@@ -71,6 +89,9 @@ TrajetSimple::~TrajetSimple ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
+    delete[] arrivee;
+    delete[] depart;
+    delete [] transport;
 } //----- Fin de ~TrajetSimple
 
 

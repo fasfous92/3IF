@@ -34,12 +34,13 @@ public:
     //
     // Contrat :
     //
-    virtual void Recherche() const=0;
+   // virtual void Recherche() const=0;
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
     // Contrat :
     //
+    virtual char* getvilled()const=0;
 
 
 

@@ -11,6 +11,7 @@
 #define Cell_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -28,17 +29,30 @@ class Cell
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    Trajet getData() const;
+    Trajet* getData() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    Cell getNext() const;
+    Cell* getNext() const;
+    // Mode d'emploi :
+    //
+    //
+    // Contrat :
+    //
+
+    void setNext(Cell suivant);
     // Mode d'emploi :
     //
     // Contrat :
     //
+    void setData(Trajet* set);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -51,23 +65,24 @@ public:
     // Contrat :
     //
 
-    Cell ( Trajet unTrajet, Cell nextCell )
+    Cell ( Trajet* unTrajet, Cell nextCell );
     // Mode d'emploi (constructeur de copie) :
-    //
+    // ce constructeur est utile afin de rajouter une cellule en un endroit
+    // precis (il faut que le nextCell soit donné en paramètre). on opter pour le cell
     // Contrat :
     //
 
-    Cell::Cell ( Trajet unTrajet )
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Cell ( );
+    Cell ( Trajet* unTrajet );
     // Mode d'emploi :
     //
     // Contrat :
     //
+
+    /*Cell ( );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //*/
 
     virtual ~Cell ( );
     // Mode d'emploi :
@@ -81,7 +96,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-Trajet data;
+Trajet* data;
 Cell * next;
 };
 

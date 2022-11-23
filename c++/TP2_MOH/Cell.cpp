@@ -23,17 +23,29 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-Trajet Cell::getData() const
+
+//Getters and Setters necessary to deal with our variables from the main
+void Cell::setNext(Cell suivant){
+    next=&suivant;
+}
+void Cell::setData(Trajet* set) {
+    data=set;
+}
+Trajet* Cell::getData() const
 // Algorithme :
 //
 {
+    return data;
 } //----- Fin de Méthode
 
-Cell getNext() const
+Cell* Cell::getNext() const
 // Algorithme :
 //
 {
+    return next;
 } //----- Fin de Méthode
+
+//-----End Getters/setters
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -45,47 +57,33 @@ Cell::Cell ( const Cell & unCell )
     #ifdef MAP
         cout << "Appel au constructeur de copie de <Cell>" << endl;
     #endif
-    next=new Cell[1];
     data=unCell.data;
     next=unCell.next;
 } //----- Fin de Cell (constructeur de copie)
 
-Cell::Cell ( Trajet unTrajet )
+Cell::Cell ( Trajet* unTrajet )
 // Algorithme :
 //
 {
     #ifdef MAP
         cout << "Appel au constructeur de copie de <Cell>" << endl;
     #endif
-    next=new Cell[1];
     data=unTrajet;
-    next=nullptr;
+    next=nullptr; //le next vers Null car on les pas encore liée cela peut être modifier avec un setter
 } //----- Fin de Cell 
 
-Cell::Cell ( Trajet unTrajet, Cell nextCell )
+Cell::Cell ( Trajet* unTrajet, Cell nextCell )
 // Algorithme :
 //
 {
     #ifdef MAP
         cout << "Appel au constructeur de copie de <Cell>" << endl;
     #endif
-    next=new Cell[1];
     data=unTrajet;
-    next=nextCell;
+    next=&nextCell;
 } //----- Fin de Cell 
 
 
-Cell::Cell ( )
-// Algorithme :
-//
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de <Cell>" << endl;
-    #endif
-    data=nullptr;
-    next = new Cell[1];
-    next=nullptr;
-} //----- Fin de Cell
 
 
 Cell::~Cell ( )
