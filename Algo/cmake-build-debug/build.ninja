@@ -49,8 +49,8 @@ cmake_ninja_workdir = /home/ysidhom/Documents/3IF/Algo/cmake-build-debug/
 
 build cmake_object_order_depends_target_Algo: phony || CMakeFiles/Algo.dir
 
-build CMakeFiles/Algo.dir/DS2016B.c.o: C_COMPILER__Algo_Debug /home/ysidhom/Documents/3IF/Algo/DS2016B.c || cmake_object_order_depends_target_Algo
-  DEP_FILE = CMakeFiles/Algo.dir/DS2016B.c.o.d
+build CMakeFiles/Algo.dir/DS2016B2.c.o: C_COMPILER__Algo_Debug /home/ysidhom/Documents/3IF/Algo/DS2016B2.c || cmake_object_order_depends_target_Algo
+  DEP_FILE = CMakeFiles/Algo.dir/DS2016B2.c.o.d
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Algo.dir
   OBJECT_FILE_DIR = CMakeFiles/Algo.dir
@@ -63,7 +63,7 @@ build CMakeFiles/Algo.dir/DS2016B.c.o: C_COMPILER__Algo_Debug /home/ysidhom/Docu
 #############################################
 # Link the executable Algo
 
-build Algo: C_EXECUTABLE_LINKER__Algo_Debug CMakeFiles/Algo.dir/DS2016B.c.o
+build Algo: C_EXECUTABLE_LINKER__Algo_Debug CMakeFiles/Algo.dir/DS2016B2.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Algo.dir
   POST_BUILD = :
