@@ -32,10 +32,6 @@ using namespace std;
 
 
 // GETTERS,SETTERS
-int Linkedlist::getnbmax()const
-{
-    return nbmax;
-}
 int Linkedlist::getnbcurrent() const
 {
     return nbcurrent;
@@ -52,40 +48,45 @@ void setCell(Cell* cell)
 //--Fin GETTERS,SETTERS
 void Linkedlist::Ajouter(Trajet *t)
 {
-    if(nbmax=nbcurrent){
-        Ajustertaille();
+    if(cellule->getData()==nullptr){
+        cellule->setData(t);
+        return;
     }
-    if(nbcurrent==0) {
-        Cell c = Cell(t); //cree une Cellule qui pointe vers pointeur NULL
-        cellule[nbcurrent]=c;
-        nbcurrent++;
-    }else{
-        Cell c= Cell(t);
-        cellule[nbcurrent-1].setNext(c); //the previous Cell will point for our new Cell
-        cellule[nbcurrent]=c;
-        nbcurrent++;
+
+
+    Cell* parcours=cellule;
+    while(parcours->getNext()!=nullptr){
+        parcours=parcours->getNext();
     }
+
+    Cell* aAjouter = new Cell(t);
+    parcours->setNext(aAjouter);
+
 }//--Fin Ajouter
 
 void Linkedlist::tri()
 // Algorithme :
 {
-    int indice;
+    Cell* indice;
+    Cell* parcours=cellule;
+    Cell* parcours2;
     char* min;
-    for(int i=0;i<nbcurrent;i++) {
-        min = cellule[i].getData()->getvilled();
-        indice = i;
-        for (int j = i + 1; j < 6; j++) {
-            char *current = cellule[j].getData()->getvilled();
+    while (parcours->getNext()!= nullptr) {
+        min = parcours->getData()->getvilled();
+        indice = parcours;
+        parcours2=parcours->getNext();
+        while (parcours2->getNext()!= nullptr) {
+            char *current = parcours2->getData()->getvilled();
             if (min > current) {
                 min = current;
-                indice = j;
+                indice = parcours2;
             }
         }
-        if (indice != i) {
-            Cell tmp = cellule[i];
-            cellule[indice] = cellule[i];
-            cellule[i] = tmp;
+        if (indice != parcours) {
+            Trajet* tmp=parcours->getData();
+            parcours->setData(indice->getData());
+            indice->setData(tmp);
+
         }
     }
 
@@ -95,10 +96,10 @@ void Linkedlist::Afficher()const
 // Algorithme :
 //
 {
-    int i=0;
-    while (cellule[i].getNext()!=NULL){
-        cellule[i].getData()->Afficher(); //selon le type du trajet (simple/composé) on aurait une methode afficher qui adaptée (virtual)
-        i++;
+    Cell* parcours=cellule;
+    while (parcours->getNext()!= nullptr){
+        parcours->getData()->Afficher(); //selon le type du trajet (simple/composé) on aurait une methode afficher qui adaptée (virtual)
+        parcours=parcours->getNext();
     }
 } //----- Fin Afficher
 
@@ -121,21 +122,22 @@ Linkedlist::Linkedlist ( const Linkedlist & unLinkedlist )
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Xxx>" << endl;
 #endif
-    nbmax=unLinkedlist.nbmax;
-    cellule=unLinkedlist.cellule;
+    cellule=new Cell;
+    cellule->setData(unLinkedlist.cellule->getData());
+    cellule->setNext(unLinkedlist.cellule->getNext());
 
 } //----- Fin de Linkedlist (constructeur de copie)
 
 
 
-Linkedlist::Linkedlist ( unsigned int init=INIT): nbmax(INIT), nbcurrent(0)
+Linkedlist::Linkedlist ( ):nbcurrent(0)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Xxx>" << endl;
 #endif
-    cellule=new Cell * [nbmax];
+    cellule=new Cell() ;
 
 
 } //----- Fin de ~Linkedlist
@@ -157,8 +159,4 @@ Linkedlist::~Linkedlist ( )
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-void Linkedlist::Ajustertaille(){
-    nbmax=nbmax*2;
-    realloc(cellule,nbmax);
-}
 

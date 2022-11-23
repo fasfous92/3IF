@@ -41,6 +41,8 @@ public:
     // Contrat :
     //
     virtual char* getvilled()const=0;
+    virtual char* getvillea()const=0;
+
 
 
 

@@ -25,8 +25,8 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 //Getters and Setters necessary to deal with our variables from the main
-void Cell::setNext(Cell suivant){
-    next=&suivant;
+void Cell::setNext(Cell* suivant){
+    next=suivant;
 }
 void Cell::setData(Trajet* set) {
     data=set;
@@ -83,6 +83,16 @@ Cell::Cell ( Trajet* unTrajet, Cell nextCell )
     next=&nextCell;
 } //----- Fin de Cell 
 
+Cell::Cell()
+//ALgoritme
+{
+
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Cell>" << endl;
+#endif
+    data= nullptr;
+    next= nullptr;
+}
 
 
 
@@ -94,6 +104,7 @@ Cell::~Cell ( )
         cout << "Appel au destructeur de <Cell>" << endl;
     #endif
     delete[] next;
+    delete[] data;
 } //----- Fin de ~Cell
 
 

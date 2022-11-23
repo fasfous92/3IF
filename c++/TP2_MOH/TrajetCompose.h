@@ -32,8 +32,16 @@ public:
     // Mode d'emploi :
     //
     // Contrat :
-    //
-    void AjouterTrajet(Trajet* t);
+
+    //GETTERS,SETTERS
+    virtual char* getvillea()const;
+    virtual char* getvilled()const;
+
+
+
+
+    //--Fin GETTERS,SETTERS
+    void AjouterTrajet(const Trajet* t);
     // Mode d'emploi:
     //Ajouter un trajet à notre trajet composé
     //

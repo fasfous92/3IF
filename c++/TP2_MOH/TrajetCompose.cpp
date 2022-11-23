@@ -28,10 +28,31 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-void TrajetCompose::AjouterTrajet(Trajet* t)
+
+//GETTERS,SETTERS
+char* TrajetCompose::getvillea()const
+{
+    Cell* c=compo.getCell();
+    return     c[compo.getnbcurrent()].getData()->getvillea();
+
+}
+char* TrajetCompose::getvilled()const
+{
+    Cell* c=compo.getCell();
+    return     c[0].getData()->getvilled();
+
+}
+
+
+
+//--Fin GETTERS,SETTERS
+void TrajetCompose::AjouterTrajet(const Trajet* t)
 // Algorithme :
 {
         compo.Ajouter(t);
+        Cell* c=compo.getCell();
+        depart=c[0].getData()->getvilled();
+        arrivee=c[compo.getnbcurrent()].getData()->getvillea();
 } //----- Fin de AjouterTrajet
 
 void TrajetCompose::Afficher() const

@@ -42,7 +42,7 @@ public:
     // Contrat :
     //
 
-    void setNext(Cell suivant);
+    void setNext(Cell* suivant);
     // Mode d'emploi :
     //
     // Contrat :
@@ -69,6 +69,11 @@ public:
     // Mode d'emploi (constructeur de copie) :
     // ce constructeur est utile afin de rajouter une cellule en un endroit
     // precis (il faut que le nextCell soit donné en paramètre). on opter pour le cell
+    // Contrat :
+    //
+
+    Cell ( );
+    // Mode d'emploi (constructeur de copie) :
     // Contrat :
     //
 
