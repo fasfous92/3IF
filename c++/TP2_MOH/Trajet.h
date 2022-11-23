@@ -31,18 +31,23 @@ public:
     virtual void Afficher() const =0;
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
-    //
+    // Affichage des détails d'un trajet
     // Contrat :
     //
-   // virtual void Recherche() const=0;
+
+    virtual const char * getvilled() const =0;
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
-    //
+    // 
     // Contrat :
     //
-    virtual char* getvilled()const=0;
-    virtual char* getvillea()const=0;
 
+    virtual const char * getvillea() const =0;
+    // type Méthode ( liste des paramètres );
+    // Mode d'emploi :
+    // 
+    // Contrat :
+    //
 
 
 

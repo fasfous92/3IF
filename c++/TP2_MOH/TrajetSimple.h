@@ -1,9 +1,8 @@
 /*************************************************************************
                            TrajetSimple  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----------------
@@ -18,7 +17,7 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <TrajetSimple>
+// Créer et gérer un trajet simple d'une ville A vers une ville B en utilisant un moyen de transport déterminé
 //
 //
 //------------------------------------------------------------------------
@@ -30,50 +29,47 @@ class TrajetSimple : public Trajet
 public:
 //----------------------------------------------------- Méthodes publiques
     virtual void Afficher() const ;
-    // type Méthode ( liste des paramètres );
     // Mode d'emploi :
-    //
+    //  Affiche un texte qui résume le voyage
     // Contrat :
     //
-    virtual char* getvilled()const=0;
-    // type Méthode ( liste des paramètres );
+    
+    const char* getvilled() const ;
     // Mode d'emploi :
-    // récupérer le nom de la ville de départ
-    //
-    // Contrat :
-    //
-    virtual char* TrajetSimple::getvillea()const;
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi : récupérer le nom de la ville d'arrivée
-    //
+    //  
     // Contrat :
     //
 
+    const char* getvillea() const ;
+    // Mode d'emploi :
+    //  
+    // Contrat :
+    //
+
+    const char* getTransport() const ;
+    // Mode d'emploi :
+    //  
+    // Contrat :
+    //
 
 //------------------------------------------------- Surcharge d'opérateurs
-    TrajetSimple & operator = ( const TrajetSimple & unTrajetSimple );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
 
 //-------------------------------------------- Constructeurs - destructeur
     TrajetSimple ( const TrajetSimple & unTrajetSimple );
     // Mode d'emploi (constructeur de copie) :
-    //
+    // Constructeur de copie
     // Contrat :
     //
 
-    TrajetSimple ( );
+    TrajetSimple (const char * vDepart ,const char * vArrivee ,const char * mTransport );
     // Mode d'emploi :
-    //
+    //  Constructeur d'un trajet simple à partir d'une ville de départ, une ville d'arrivée et un moyen de transport
     // Contrat :
     //
 
     virtual ~TrajetSimple ( );
     // Mode d'emploi :
-    //
+    // Destructeur
     // Contrat :
     //
 

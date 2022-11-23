@@ -13,6 +13,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
@@ -22,31 +23,34 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-///GETTERS, SETTERS
-char* TrajetSimple::getvilled()const
-{
-    return depart;
-}
-char* TrajetSimple::getvillea()const
-{
-    return arrivee;
-
-}
-//----Fin GETTERS,SETTERS
-
 
 void TrajetSimple::Afficher() const
 // Algorithme :
 //
 {
-    cout << "Trajet Simple = de " << Trajet::depart << " à " << Trajet::arrivee << " en " << transport << endl ;
-
+    cout << "Trajet Simple de " << depart << " à " << arrivee << " en " << transport << endl ;
 }
 
+const char* TrajetSimple::getvilled() const
+// Algorithme :
+//
+{
+    return depart;
+}
 
+const char* TrajetSimple::getvillea() const
+// Algorithme :
+//
+{
+    return arrivee;
+}
 
-
-
+const char* TrajetSimple::getTransport() const
+// Algorithme :
+//
+{
+    return transport;
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -60,25 +64,29 @@ TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
     #ifdef MAP
         cout << "Appel au constructeur de copie de <TrajetSimple>" << endl;
     #endif
-    depart=unTrajetSimple.depart;
-    arrivee=unTrajetSimple.arrivee;
-    transport=unTrajetSimple.transport;
+    depart=new char[strlen(unTrajetSimple.depart)+1];
+    arrivee=new char[strlen(unTrajetSimple.arrivee)+1];
+    transport=new char[strlen(unTrajetSimple.transport)+1];
+    strcpy(depart,unTrajetSimple.depart);
+    strcpy(arrivee,unTrajetSimple.arrivee);
+    strcpy(transport,unTrajetSimple.transport);
 
 } //----- Fin de TrajetSimple (constructeur de copie)
 
 
-TrajetSimple::TrajetSimple ( )
+TrajetSimple::TrajetSimple (const char * vDepart ,const char * vArrivee ,const  char * mTransport )
 // Algorithme :
 //
 {
     #ifdef MAP
         cout << "Appel au constructeur de <TrajetSimple>" << endl;
     #endif
-    depart=new char [30];
-    arrivee=new char [30];
-    transport=new char [30];
-    fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
-
+    depart=new char[strlen(vDepart)+1];
+    arrivee=new char[strlen(vArrivee)+1];
+    transport=new char[strlen(mTransport)+1];
+    strcpy(depart,vDepart);
+    strcpy(arrivee,vArrivee);
+    strcpy(transport,mTransport); 
 } //----- Fin de TrajetSimple
 
 
@@ -86,12 +94,12 @@ TrajetSimple::~TrajetSimple ( )
 // Algorithme :
 //
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <TrajetSimple>" << endl;
-#endif
+    #ifdef MAP
+        cout << "Appel au destructeur de <TrajetSimple>" << endl;
+    #endif
     delete[] arrivee;
     delete[] depart;
-    delete [] transport;
+    delete[] transport;
 } //----- Fin de ~TrajetSimple
 
 
