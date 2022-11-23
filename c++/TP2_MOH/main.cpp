@@ -1,8 +1,12 @@
+using namespace std;
 #include <cstring>
 #include <iostream>
 
 #include "Trajet.h"
 #include "TrajetSimple.h"
+#include "TrajetCompose.h"
+#include "Cell.h"
+#include "Linkedlist.h"
 
 int main(){
     char lecture[100];
@@ -24,6 +28,13 @@ int main(){
             fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
             TrajetSimple testTrajet(depart,arrivee,transport);
             testTrajet.Afficher();
+        }else if (strcmp(lecture,"3")==0) {
+            TrajetCompose T;
+            TrajetSimple t1= TrajetSimple("A","B","C");
+            TrajetSimple t2= TrajetSimple("D","E","F");
+            T.AjouterTrajet(&t1);
+            //T.AjouterTrajet(&t2);
+            T.Afficher();
         } else if (strcmp(lecture,"0")==0) {
         }
         fscanf(stdin,"%99s",lecture);

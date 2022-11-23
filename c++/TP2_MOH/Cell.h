@@ -42,12 +42,12 @@ public:
     // Contrat :
     //
 
-    void setNext(Cell* suivant);
+    void setNext(const Cell* suivant);
     // Mode d'emploi :
     //
     // Contrat :
     //
-    void setData(Trajet* set);
+    void setData(const Trajet *set);
     // Mode d'emploi :
     //
     // Contrat :
@@ -77,7 +77,7 @@ public:
     // Contrat :
     //
 
-    Cell ( Trajet* unTrajet );
+    Cell ( const Trajet* unTrajet );
     // Mode d'emploi :
     //
     // Contrat :

@@ -40,13 +40,13 @@ Cell* Linkedlist::getCell() const
 {
     return cellule;
 }
-void setCell(Cell* cell)
+void Linkedlist::setCell(Cell* cell)
 {
-
+    cellule=cell;
 }
 
 //--Fin GETTERS,SETTERS
-void Linkedlist::Ajouter(Trajet *t)
+void Linkedlist::Ajouter(const Trajet *t)
 {
     if(cellule->getData()==nullptr){
         cellule->setData(t);
@@ -61,6 +61,7 @@ void Linkedlist::Ajouter(Trajet *t)
 
     Cell* aAjouter = new Cell(t);
     parcours->setNext(aAjouter);
+    nbcurrent++;
 
 }//--Fin Ajouter
 
@@ -72,15 +73,19 @@ void Linkedlist::tri()
     Cell* parcours2;
     char* min;
     while (parcours->getNext()!= nullptr) {
-        min = parcours->getData()->getvilled();
+        char *min=new char [strlen(parcours->getData()->getvilled())+1] ;
+        strcpy(min,parcours->getData()->getvilled());
         indice = parcours;
         parcours2=parcours->getNext();
         while (parcours2->getNext()!= nullptr) {
-            char *current = parcours2->getData()->getvilled();
+            char *current=new char [strlen(parcours2->getData()->getvilled())+1] ;
+            strcpy(current,parcours2->getData()->getvilled());
             if (min > current) {
                 min = current;
                 indice = parcours2;
             }
+            delete[]min;
+            delete[]current;
         }
         if (indice != parcours) {
             Trajet* tmp=parcours->getData();
@@ -150,7 +155,7 @@ Linkedlist::~Linkedlist ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Linkedlist>" << endl;
 #endif
-    delete[] cellule;
+   // delete[] cellule;
 } //----- Fin de ~Linkedlist
 
 

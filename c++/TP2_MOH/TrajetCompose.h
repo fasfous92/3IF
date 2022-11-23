@@ -34,8 +34,8 @@ public:
     // Contrat :
 
     //GETTERS,SETTERS
-    virtual char* getvillea()const;
-    virtual char* getvilled()const;
+    virtual const char* getvillea()const;
+    virtual const char* getvilled()const;
 
 
 
@@ -68,7 +68,7 @@ public:
     // Contrat :
     //
 
-    TrajetCompose (Trajet* t);
+    TrajetCompose ();
     // Mode d'emploi : cette methode va demander à l'utilisateur:
     // "veuillez rentrer le nombre de trajet qui compose votre trajet"
     // "pour le trajet n à ajouter:

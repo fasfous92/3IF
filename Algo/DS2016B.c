@@ -75,11 +75,6 @@ int main() {
             }
         }
     }
-    for (i = 0; i < f + 1; i++) {
-        for (j = 0; j < c + 1; j++) {
-            printf("%d ", dp[i][j]);
-        }
-        printf("\n");
-    }
+    printf("%d\r\n",dp[f][c]);
     return 0;
 }

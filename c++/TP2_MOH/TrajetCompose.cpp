@@ -13,6 +13,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
@@ -30,13 +31,13 @@ using namespace std;
 
 
 //GETTERS,SETTERS
-char* TrajetCompose::getvillea()const
+const char* TrajetCompose::getvillea()const
 {
     Cell* c=compo.getCell();
     return     c[compo.getnbcurrent()].getData()->getvillea();
 
 }
-char* TrajetCompose::getvilled()const
+const char* TrajetCompose::getvilled()const
 {
     Cell* c=compo.getCell();
     return     c[0].getData()->getvilled();
@@ -51,18 +52,20 @@ void TrajetCompose::AjouterTrajet(const Trajet* t)
 {
         compo.Ajouter(t);
         Cell* c=compo.getCell();
-        depart=c[0].getData()->getvilled();
-        arrivee=c[compo.getnbcurrent()].getData()->getvillea();
+        strcpy(depart,c->getData()->getvilled());
+        strcpy(arrivee,t->getvillea());
 } //----- Fin de AjouterTrajet
 
 void TrajetCompose::Afficher() const
 // Algorithme :
 //
 {
-    int i=0;
-    while(compo.getCell()->getNext()!=NULL){
-        compo.getCell()->getData()->Afficher(); //on va afficher le trajet (simple ou composé)
-       i++;
+    Cell* parcours=compo.getCell();
+    int i;
+    while(parcours->getNext()!=NULL){
+        cout<<"Etape 1:"<<endl;
+        parcours->getData()->Afficher(); //on va afficher le trajet (simple ou composé)
+        cout<<"\n"<<endl;
     }
 } //----- Fin Afficher
 
@@ -79,7 +82,7 @@ TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
 #ifdef MAP
     cout << "Appel au constructeur de copie de <TrajetComposee>" << endl;
 #endif
-    compo=unTrajetCompose.compo;
+    compo.setCell(unTrajetCompose.compo.getCell());
 
 } //----- Fin de TrajetCompose (constructeur de copie)
 
@@ -91,7 +94,7 @@ TrajetCompose::TrajetCompose()
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetComposee>" << endl;
 #endif
-    compo=Linkedlist(); // on va juste initiliser la liste puis après selon le nombre d'étapes à rajoutées on va appeler la méthode ajouter.
+
 } //----- Fin de TrajeCompose
 
 

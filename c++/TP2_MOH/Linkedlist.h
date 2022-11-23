@@ -45,7 +45,9 @@ public:
 
 
     //----Fin GETERS,SETTERS
-    void Ajouter(Trajet* t);
+    void Ajouter(const Trajet* t);
+
+
     void tri();
 // Mode d'emploi :
     // cette methode va trier les cellules selon un ordre alphabétique
@@ -76,12 +78,6 @@ public:
     Linkedlist ( );
     // Mode d'emploi :
     //
-    // Contrat :
-    //
-
-    Linkedlist ( const unsigned int init=INIT);
-    // Mode d'emploi :
-    // on va crée une liste de trajet* de taille init
     // Contrat :
     //
 
