@@ -32,10 +32,7 @@ using namespace std;
 
 
 // GETTERS,SETTERS
-int Linkedlist::getnbcurrent() const
-{
-    return nbcurrent;
-}
+
 Cell* Linkedlist::getCell() const
 {
     return cellule;
@@ -61,7 +58,6 @@ void Linkedlist::Ajouter(const Trajet *t)
 
     Cell* aAjouter = new Cell(t);
     parcours->setNext(aAjouter);
-    nbcurrent++;
 
 }//--Fin Ajouter
 
@@ -101,12 +97,17 @@ void Linkedlist::Afficher()const
 // Algorithme :
 //
 {
-    Cell* parcours=cellule;
-    while (parcours->getNext()!= nullptr){
-        parcours->getData()->Afficher(); //selon le type du trajet (simple/composé) on aurait une methode afficher qui adaptée (virtual)
-        parcours=parcours->getNext();
+    if (cellule->getNext() == nullptr) {
+        cellule->getData()->Afficher();// si notre Linekdlist n'a qu'une seule cellule on va juste l'afficher
+    } else { // sinon on doit afficher chaque cellule de notre liste en parcourant les cellules.
+        Cell *parcours = cellule;
+        while (parcours->getNext() != nullptr) {
+            parcours->getData()->Afficher(); //selon le type du trajet (simple/composé) on aurait une methode afficher qui adaptée (virtual)
+            parcours = parcours->getNext();
+        }
+        parcours->getData()->Afficher(); //on va afficher la dernière cellule
     }
-} //----- Fin Afficher
+}//----- Fin Afficher
 
 
 
@@ -120,43 +121,54 @@ void Linkedlist::Afficher()const
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Linkedlist::Linkedlist ( const Linkedlist & unLinkedlist )
+Linkedlist::Linkedlist(const Linkedlist &unLinkedlist)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Xxx>" << endl;
+        cout << "Appel au constructeur de copie de <Xxx>" << endl;
 #endif
-    cellule=new Cell;
-    cellule->setData(unLinkedlist.cellule->getData());
-    cellule->setNext(unLinkedlist.cellule->getNext());
+        cellule = new Cell;
+        cellule->setData(unLinkedlist.cellule->getData());
+        cellule->setNext(unLinkedlist.cellule->getNext());
 
 } //----- Fin de Linkedlist (constructeur de copie)
 
 
-
-Linkedlist::Linkedlist ( ):nbcurrent(0)
+Linkedlist::Linkedlist()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Xxx>" << endl;
+        cout << "Appel au destructeur de <Xxx>" << endl;
 #endif
-    cellule=new Cell() ;
+        cellule = new Cell();
 
 
 } //----- Fin de ~Linkedlist
 
 
-Linkedlist::~Linkedlist ( )
+    Linkedlist::~Linkedlist ( )
 // Algorithme :
 //
-{
+    {
 #ifdef MAP
-    cout << "Appel au destructeur de <Linkedlist>" << endl;
+        cout << "Appel au destructeur de <Linkedlist>" << endl;
 #endif
-   // delete[] cellule;
-} //----- Fin de ~Linkedlist
+
+      if(cellule->getNext()== nullptr){
+          delete cellule;
+      } else {
+          Cell *parcours = cellule;
+          Cell *parcours2 = cellule->getNext();
+          while (parcours2 != nullptr) {
+              delete parcours;
+              parcours=parcours2;
+              parcours2=parcours2->getNext();
+          }
+          delete parcours;
+      }
+    } //----- Fin de ~Linkedlist
 
 
 
@@ -164,4 +176,5 @@ Linkedlist::~Linkedlist ( )
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+
 

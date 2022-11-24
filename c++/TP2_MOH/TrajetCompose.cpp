@@ -33,14 +33,18 @@ using namespace std;
 //GETTERS,SETTERS
 const char* TrajetCompose::getvillea()const
 {
-    Cell* c=compo.getCell();
-    return     c[compo.getnbcurrent()].getData()->getvillea();
+    Cell* parcours=compo.getCell();
+    while (parcours->getNext()!= nullptr){
+        parcours=parcours->getNext();
+    }
+
+    return     parcours->getData()->getvillea();
 
 }
 const char* TrajetCompose::getvilled()const
 {
-    Cell* c=compo.getCell();
-    return     c[0].getData()->getvilled();
+    Cell* parcours=compo.getCell();
+    return     parcours->getData()->getvilled();
 
 }
 
@@ -50,23 +54,15 @@ const char* TrajetCompose::getvilled()const
 void TrajetCompose::AjouterTrajet(const Trajet* t)
 // Algorithme :
 {
-        compo.Ajouter(t);
-        Cell* c=compo.getCell();
-        strcpy(depart,c->getData()->getvilled());
-        strcpy(arrivee,t->getvillea());
+        compo.Ajouter(t); //on utilise la méthode d'ajout de la Linkedlist
+
 } //----- Fin de AjouterTrajet
 
 void TrajetCompose::Afficher() const
 // Algorithme :
 //
 {
-    Cell* parcours=compo.getCell();
-    int i;
-    while(parcours->getNext()!=NULL){
-        cout<<"Etape 1:"<<endl;
-        parcours->getData()->Afficher(); //on va afficher le trajet (simple ou composé)
-        cout<<"\n"<<endl;
-    }
+   compo.Afficher();//on utilise la méthode afficher de la Linkedlist
 } //----- Fin Afficher
 
 
@@ -105,6 +101,7 @@ TrajetCompose::~TrajetCompose ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetComposee>" << endl;
 #endif
+
 } //----- Fin de ~TrajetComposee
 
 

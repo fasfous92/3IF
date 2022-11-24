@@ -2,11 +2,11 @@ using namespace std;
 #include <cstring>
 #include <iostream>
 
-#include "Trajet.h"
+//#include "Trajet.h"
 #include "TrajetSimple.h"
 #include "TrajetCompose.h"
-#include "Cell.h"
-#include "Linkedlist.h"
+//#include "Cell.h"
+//#include "Linkedlist.h"
 
 int main(){
     char lecture[100];
@@ -33,7 +33,7 @@ int main(){
             TrajetSimple t1= TrajetSimple("A","B","C");
             TrajetSimple t2= TrajetSimple("D","E","F");
             T.AjouterTrajet(&t1);
-            //T.AjouterTrajet(&t2);
+            T.AjouterTrajet(&t2);
             T.Afficher();
         } else if (strcmp(lecture,"0")==0) {
         }

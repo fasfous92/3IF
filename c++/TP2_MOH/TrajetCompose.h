@@ -70,14 +70,11 @@ public:
 
     TrajetCompose ();
     // Mode d'emploi : cette methode va demander à l'utilisateur:
-    // "veuillez rentrer le nombre de trajet qui compose votre trajet"
-    // "pour le trajet n à ajouter:
-    //   1 trajet simple
-    //   2 trajet composé"
-    // et après on va implémenter le constructeur selon le type choisi
-    // cette implémentation va être répeter pour chaque trajet censé être rajouté
+    // cette méthode va créer un Trajet composé vide et après
+    // on demandera à l'utilisateur de rajouter les étapes qui compose
+    // ce trajet (avec la methode AjouterTrajet).
     // Contrat :
-    //
+    // Aucun
 
     virtual ~TrajetCompose ( );
     // Mode d'emploi :

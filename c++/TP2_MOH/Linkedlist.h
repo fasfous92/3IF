@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#if ! defined ( Linkedlist_H )
-#define Linkedlist_H
+#if ! defined ( LINKEDLIST_H )
+#define LINKEDLIST_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Cell.h"
@@ -38,7 +38,6 @@ public:
 
     //GETTERS,SETTERS
     Cell* getCell()const;
-    int getnbcurrent() const;
     void setCell(Cell* cell);
     //pas besoin de mettre un setters pour nbcurrent comme il est incrémenté chaque fois qu'on rajoute une Cell
     // même pour nbmax car on a la méthode Ajustertaille.
@@ -75,7 +74,7 @@ public:
     // Contrat :
     //
 
-    Linkedlist ( );
+    Linkedlist ();
     // Mode d'emploi :
     //
     // Contrat :
@@ -95,7 +94,6 @@ void Ajustertaille();
 
 //----------------------------------------------------- Attributs protégés
 Cell *cellule;
-int nbcurrent;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Xxx>
