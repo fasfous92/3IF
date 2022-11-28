@@ -1,73 +1,87 @@
 /*************************************************************************
-                           Trajet  -  description
+                           Catalogue  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------
-#if ! defined ( TRAJET_H )
-#define TRAJET_H
+//---------- Interface de la classe <Catalogue> (fichier Catalogue.h) ----------------
+#if ! defined ( Catalogue_H )
+#define Catalogue_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Linkedlist.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Trajet>
-// Une classe abstraite parent de TrajetSimple et TrajetComposé 
+// Rôle de la classe <Catalogue>
+//
 //
 //------------------------------------------------------------------------
 
-class Trajet 
+class Catalogue
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    virtual void Afficher() const =0;
-    // type Méthode ( liste des paramètres );
+    void AfficherSimples();
     // Mode d'emploi :
-    // Affichage des détails d'un trajet
+    //  Affiche tous les trajets simples dans le catalogue
     // Contrat :
     //
 
-    virtual const char * getvilled() const =0;
-    // type Méthode ( liste des paramètres );
+    void AfficherComposes();
     // Mode d'emploi :
-    // 
+    // Affiche tous les trajets composés dans le catalogue
     // Contrat :
     //
 
-    virtual const char * getvillea() const =0;
-    // type Méthode ( liste des paramètres );
+    void Afficher();
     // Mode d'emploi :
-    // 
+    // Affiche tous les trajets dans le catalogue
     // Contrat :
     //
 
+    void Interface();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
+    void  AjouterSimple();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    void  AjouterCompose();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    
+
+
 //-------------------------------------------- Constructeurs - destructeur
-    //virtual Trajet ( const Trajet & unTrajet )=0;
+    Catalogue ( const Catalogue & unCatalogue );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    //virtual Trajet ( )=0;
+    Catalogue ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    //virtual ~Trajet ( )=0;
+    virtual ~Catalogue ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -77,13 +91,13 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
+    Linkedlist trajetsSimples;
+    Linkedlist trajetsComposes;
 
 //----------------------------------------------------- Attributs protégés
-char* depart;
-char* arrivee;
+
 };
 
-//-------------------------------- Autres définitions dépendantes de <Trajet>
+//-------------------------------- Autres définitions dépendantes de <Catalogue>
 
-#endif // Trajet_H
-
+#endif // Catalogue_H

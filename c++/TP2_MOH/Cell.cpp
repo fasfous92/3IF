@@ -103,6 +103,8 @@ Cell::~Cell ( )
     #ifdef MAP
         cout << "Appel au destructeur de <Cell>" << endl;
     #endif
+    delete data;
+    delete next;
 
 } //----- Fin de ~Cell
 

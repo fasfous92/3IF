@@ -43,8 +43,10 @@ void Linkedlist::setCell(Cell* cell)
 }
 
 //--Fin GETTERS,SETTERS
+
 void Linkedlist::Ajouter(const Trajet *t)
 {
+
     if(cellule->getData()==nullptr){
         cellule->setData(t);
         return;
@@ -64,31 +66,15 @@ void Linkedlist::Ajouter(const Trajet *t)
 void Linkedlist::tri()
 // Algorithme :
 {
-    Cell* indice;
     Cell* parcours=cellule;
-    Cell* parcours2;
-    char* min;
-    while (parcours->getNext()!= nullptr) {
-        char *min=new char [strlen(parcours->getData()->getvilled())+1] ;
-        strcpy(min,parcours->getData()->getvilled());
-        indice = parcours;
-        parcours2=parcours->getNext();
-        while (parcours2->getNext()!= nullptr) {
-            char *current=new char [strlen(parcours2->getData()->getvilled())+1] ;
-            strcpy(current,parcours2->getData()->getvilled());
-            if (min > current) {
-                min = current;
-                indice = parcours2;
-            }
-            delete[]min;
-            delete[]current;
-        }
-        if (indice != parcours) {
+    while (parcours->getNext()!= nullptr){
+        Cell* next=parcours->getNext();
+        if(strcmp(parcours->getData()->getvilled(),next->getData()->getvilled())>0){
             Trajet* tmp=parcours->getData();
-            parcours->setData(indice->getData());
-            indice->setData(tmp);
-
+            parcours->setData(next->getData());
+            next->setData(tmp);
         }
+        parcours=next;
     }
 
 }//----Fin Tri

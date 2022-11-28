@@ -43,10 +43,12 @@ public:
     //--Fin GETTERS,SETTERS
     void AjouterTrajet(const Trajet* t);
     // Mode d'emploi:
-    //Ajouter un trajet à notre trajet composé
+    //Ajouter un trajet à notre trajet composé tout en vérifiant de la faisabilité de cet ajout:
+    // on vérifie s'il s'agit du premier trajet à rajouter, si c'est le cas on peut ajouter
+    // sinon on doit vérifier la correspondence des villes.
     //
     //Contrat:
-    //
+    //pas de contrat
 
 
     virtual void Afficher()const ;

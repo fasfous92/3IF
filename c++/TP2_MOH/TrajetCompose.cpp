@@ -51,10 +51,19 @@ const char* TrajetCompose::getvilled()const
 
 
 //--Fin GETTERS,SETTERS
+
+
 void TrajetCompose::AjouterTrajet(const Trajet* t)
 // Algorithme :
 {
+
+    if (compo.getCell()->getData() == NULL || getvillea() == t->getvilled()) {
         compo.Ajouter(t); //on utilise la méthode d'ajout de la Linkedlist
+    } else {
+        cout << "Erreur: impossible de rajouter";
+        t->Afficher();
+        cout<< "la ville d'arrivée ne correspond pas à la ville de depart\n";
+    }
 
 } //----- Fin de AjouterTrajet
 

@@ -39,8 +39,6 @@ public:
     //GETTERS,SETTERS
     Cell* getCell()const;
     void setCell(Cell* cell);
-    //pas besoin de mettre un setters pour nbcurrent comme il est incrémenté chaque fois qu'on rajoute une Cell
-    // même pour nbmax car on a la méthode Ajustertaille.
 
 
     //----Fin GETERS,SETTERS
@@ -90,7 +88,6 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-void Ajustertaille();
 
 //----------------------------------------------------- Attributs protégés
 Cell *cellule;

@@ -52,6 +52,7 @@ const char* TrajetSimple::getTransport() const
     return transport;
 }
 
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 

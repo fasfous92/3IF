@@ -2,7 +2,7 @@
 
 
 
-int findcomb(int capacity, int* types, int n, int* weight, int type){
+int findcomb(int capacity, int* types, int n, int* weight, int type){ //function to find the most weight combining the sum of the other type
     int i,j;
     int dp[n+1][capacity+1];
     for(i=0;i<capacity+1;i++){
@@ -42,7 +42,7 @@ int findcomb(int capacity, int* types, int n, int* weight, int type){
 
 
 int main(){
-    int c, n; // c being the capacity of the recipient and n the number of students
+    int c, n; // c being the capacity of the bus and n the number of students
     scanf("%d", &c);
     scanf("%d", &n);
     int types[n + 1]; // store the type fo each capacity stored in the next array called cap
