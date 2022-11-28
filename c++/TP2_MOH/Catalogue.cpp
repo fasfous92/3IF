@@ -67,7 +67,9 @@ void Catalogue :: AjouterCompose()
 
             fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
             TrajetSimple *aAjouter = new TrajetSimple(depart,arrivee,transport);
-            monTrajet->AjouterTrajet(aAjouter);
+            if(!monTrajet->AjouterTrajet(aAjouter)){
+                    delete(aAjouter);
+            }
         }else if (strcmp(lecture,"0")==0) {
             trajets.Ajouter(monTrajet);
         }
@@ -94,7 +96,7 @@ void Catalogue :: Interface()
         }else if (strcmp(lecture,"2")==0) {
             AjouterSimple();   
         }else if (strcmp(lecture,"3")==0) {
-            
+            AjouterCompose();
         }else if (strcmp(lecture,"4")==0) {
 
         }else if (strcmp(lecture,"0")==0) {
