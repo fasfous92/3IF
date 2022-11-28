@@ -51,7 +51,6 @@ public:
 
 
 
-
 //------------------------------------------------- Surcharge d'opérateurs
     
 //-------------------------------------------- Constructeurs - destructeur
@@ -67,7 +66,7 @@ public:
     // Contrat :
     //
 
-    //virtual ~Trajet ( )=0;
+    virtual ~Trajet ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -86,4 +85,3 @@ char* arrivee;
 //-------------------------------- Autres définitions dépendantes de <Trajet>
 
 #endif // Trajet_H
-

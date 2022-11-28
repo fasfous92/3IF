@@ -104,12 +104,10 @@ Cell::~Cell ( )
         cout << "Appel au destructeur de <Cell>" << endl;
     #endif
     delete data;
-    delete next;
-
+    if(next!=nullptr) delete next;
 } //----- Fin de ~Cell
 
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

@@ -25,28 +25,14 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void Catalogue :: AfficherSimples()
-// Algorithme :
-{
-    trajetsSimples.Afficher();
-} //----- Fin de Méthode
 
-void Catalogue :: AfficherComposes()
-// Algorithme :
-{
-    trajetsComposes.Afficher();
-} //----- Fin de Méthode
 
-void Catalogue :: Afficher()
+void Catalogue :: Afficher() const
 // Algorithme :
 {
-    if(trajetsSimples.getCell()->getData()!= nullptr) {
-        cout << "Trajets simples : " << endl;
-        trajetsSimples.Afficher();
-    }
-    if(trajetsComposes.getCell()->getData()!= nullptr) {
-        cout << "Trajets composés : " << endl;
-        trajetsComposes.Afficher();
+    if(trajets.getCell()->getData()!=nullptr){
+        cout << "Trajets simples : " << endl ;
+        trajets.Afficher();
     }
 } //----- Fin de Méthode
 
@@ -58,32 +44,32 @@ void Catalogue :: AjouterSimple()
     char transport[20];
 
     fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
-    TrajetSimple *aAjouter= new TrajetSimple(depart,arrivee,transport); //on crée un trajet simple à partir des données
-    trajetsSimples.Ajouter(aAjouter); //on l'ajoute à la linked list
+    TrajetSimple *aAjouter = new TrajetSimple(depart,arrivee,transport);
+    trajets.Ajouter(aAjouter);
+    cout<<"Ajouté"<<endl;
 } //----- Fin de Méthode
 
-void Catalogue :: AjouterCompose()
+void Catalogue :: AjouterCompose() 
 // Algorithme :
 {
     char lecture[100];
-
+    TrajetCompose* monTrajet=new TrajetCompose();
     printf("menu ajout trajet composé:\n");
-    printf("\t1: ajouter un trajet simple existant\n");
-    printf("\t2: ajouter un trajet composé existant\n");
-    printf("\t3: ajouter un nouveau trajet simple \n");
-    printf("\t4: ajouter un nouveau trajet composé \n");
+    printf("\t1: ajouter un nouveau trajet simple \n");
     printf("\t0: fin ajout trajet composé\n");
 
     fscanf(stdin,"%99s",lecture);
     while (strcmp(lecture,"0")!=0) {
         if (strcmp(lecture,"1")==0) {
-            AfficherSimples();
-        }else if (strcmp(lecture,"2")==0) {
-            AfficherComposes();
-        }else if (strcmp(lecture,"3")==0) {
+            char depart[20];
+            char arrivee[20];
+            char transport[20];
 
-
-        } else if (strcmp(lecture,"0")==0) {
+            fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
+            TrajetSimple *aAjouter = new TrajetSimple(depart,arrivee,transport);
+            monTrajet->AjouterTrajet(aAjouter);
+        }else if (strcmp(lecture,"0")==0) {
+            trajets.Ajouter(monTrajet);
         }
         fscanf(stdin,"%99s",lecture);
     }
@@ -106,11 +92,12 @@ void Catalogue :: Interface()
         if (strcmp(lecture,"1")==0) {
             Afficher();
         }else if (strcmp(lecture,"2")==0) {
-            AjouterSimple();
+            AjouterSimple();   
         }else if (strcmp(lecture,"3")==0) {
+            
+        }else if (strcmp(lecture,"4")==0) {
 
-
-        } else if (strcmp(lecture,"0")==0) {
+        }else if (strcmp(lecture,"0")==0) {
         }
         fscanf(stdin,"%99s",lecture);
     }
@@ -124,11 +111,11 @@ Catalogue::Catalogue ( const Catalogue & unCatalogue )
 // Algorithme :
 //
 {
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Catalogue>" << endl;
-#endif
-    trajetsComposes.setCell(unCatalogue.trajetsComposes.getCell());
-    trajetsSimples.setCell(unCatalogue.trajetsSimples.getCell());
+    #ifdef MAP
+        cout << "Appel au constructeur de copie de <Catalogue>" << endl;
+    #endif
+    trajets.setCell(unCatalogue.trajets.getCell());
+    trajets.setCell(unCatalogue.trajets.getCell());
 } //----- Fin de Catalogue (constructeur de copie)
 
 
@@ -149,9 +136,11 @@ Catalogue::~Catalogue ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Catalogue>" << endl;
 #endif
+// delete trajets;
 } //----- Fin de ~Catalogue
 
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+

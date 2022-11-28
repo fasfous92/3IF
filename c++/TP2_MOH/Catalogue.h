@@ -12,6 +12,8 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Linkedlist.h"
+#include "TrajetCompose.h"
+#include "TrajetSimple.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -22,25 +24,14 @@
 //
 //------------------------------------------------------------------------
 
-class Catalogue
+class Catalogue 
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void AfficherSimples();
-    // Mode d'emploi :
-    //  Affiche tous les trajets simples dans le catalogue
-    // Contrat :
-    //
 
-    void AfficherComposes();
-    // Mode d'emploi :
-    // Affiche tous les trajets composés dans le catalogue
-    // Contrat :
-    //
-
-    void Afficher();
+    void Afficher() const;
     // Mode d'emploi :
     // Affiche tous les trajets dans le catalogue
     // Contrat :
@@ -91,8 +82,7 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-    Linkedlist trajetsSimples;
-    Linkedlist trajetsComposes;
+Linkedlist trajets;
 
 //----------------------------------------------------- Attributs protégés
 
@@ -101,3 +91,4 @@ protected:
 //-------------------------------- Autres définitions dépendantes de <Catalogue>
 
 #endif // Catalogue_H
+

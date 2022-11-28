@@ -108,4 +108,3 @@ Cell * next;
 //-------------------------------- Autres définitions dépendantes de <Cell>
 
 #endif // Cell_H
-
