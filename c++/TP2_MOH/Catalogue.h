@@ -31,9 +31,22 @@ class Catalogue
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    void Afficher() const;
+    void recherche(char* depart, char* arrivee)const;
     // Mode d'emploi :
-    // Affiche tous les trajets dans le catalogue
+    // Cette méthode va nous permettre de rechercher les différents
+    // trajets dans notre catalogue en prenant comme paramètre la ville de départ et la ville d'arrivée
+    //
+    // Contrat :
+    //
+
+    void Afficher();
+    // Mode d'emploi :
+    // Affiche tous les trajets trier par ordre alphabétique
+    // des villes de départs dans le catalogue.
+    //L'affichage indique aussi d'il s'agit de trajet composé ou de
+    //trajet simple en utilisant les codess suivant
+    // TC: trajet composé
+    // TS: trajet simple
     // Contrat :
     //
 

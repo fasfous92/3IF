@@ -54,7 +54,10 @@ public:
 
     virtual void Afficher()const ;
     // Mode d'emploi :
-    //cette méthode va afficher les différentes qui compose le trajet composé
+    //cette méthode va afficher la ville de départ de notre première étape ainsi
+    // que la ville d'arrivée de la dernière étape. Etant donné que le trajet composé
+    // peut avoir plusieurs moyens de transport on a décider de ne pas afficher les modes de
+    // transport.
     // Contrat :
     //
 

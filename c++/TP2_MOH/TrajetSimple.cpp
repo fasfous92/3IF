@@ -28,7 +28,7 @@ void TrajetSimple::Afficher() const
 // Algorithme :
 //
 {
-    cout << "Trajet Simple de " << depart << " à " << arrivee << " en " << transport << endl ;
+    cout << "TS de " << depart << " à " << arrivee << " en " << transport << endl ;
 }
 
 const char* TrajetSimple::getvilled() const

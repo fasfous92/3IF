@@ -141,8 +141,8 @@ Linkedlist::Linkedlist()
 #ifdef MAP
         cout << "Appel au destructeur de <Linkedlist>" << endl;
 #endif
-
-      if(cellule->getNext()== nullptr){
+        delete cellule;
+      /*if(cellule->getNext()== nullptr){
           delete cellule;
       } else {
           Cell *parcours = cellule;
@@ -153,7 +153,7 @@ Linkedlist::Linkedlist()
               parcours2=parcours2->getNext();
           }
           delete parcours;
-      }
+      }*/
     } //----- Fin de ~Linkedlist
 
 

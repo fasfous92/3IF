@@ -41,6 +41,7 @@ const char* TrajetCompose::getvillea()const
     return     parcours->getData()->getvillea();
 
 }
+
 const char* TrajetCompose::getvilled()const
 {
     Cell* parcours=compo.getCell();
@@ -58,7 +59,10 @@ int TrajetCompose::AjouterTrajet(const Trajet* t)
 {
 
     if (compo.getCell()->getData() == NULL || strcmp(getvillea(),t->getvilled())==0) {
+        if (compo.getCell()->getData() == NULL)
+            depart=(char*)t->getvilled();
         compo.Ajouter(t); //on utilise la méthode d'ajout de la Linkedlist
+            arrivee=(char*)t->getvillea();
         return 1;
     } else {
         cout << "Erreur: impossible de rajouter";
@@ -73,7 +77,9 @@ void TrajetCompose::Afficher() const
 // Algorithme :
 //
 {
-   compo.Afficher();//on utilise la méthode afficher de la Linkedlist
+
+    cout << "TC de " << depart << " à " << arrivee << endl ;
+
 } //----- Fin Afficher
 
 
