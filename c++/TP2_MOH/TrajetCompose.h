@@ -52,6 +52,7 @@ public:
     //pas de contrat
 
 
+
     virtual void Afficher()const ;
     // Mode d'emploi :
     //cette méthode va afficher la ville de départ de notre première étape ainsi

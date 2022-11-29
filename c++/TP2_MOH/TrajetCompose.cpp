@@ -77,8 +77,11 @@ void TrajetCompose::Afficher() const
 // Algorithme :
 //
 {
+    cout << "TC de " << depart << " à " << arrivee <<":"<< endl ;
+    cout<<"[\n";
+    compo.Afficher();
+    cout<<"]\n";
 
-    cout << "TC de " << depart << " à " << arrivee << endl ;
 
 } //----- Fin Afficher
 
