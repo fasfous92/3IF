@@ -37,6 +37,15 @@ Cell* Linkedlist::getCell() const
 {
     return cellule;
 }
+Cell* Linkedlist::getLastCell() const
+{
+    Cell* parcours=cellule;
+    while (parcours->getNext()!= nullptr) {
+        parcours = parcours->getNext();
+    }
+    return parcours;
+}
+
 void Linkedlist::setCell(Cell* cell)
 {
     cellule=cell;

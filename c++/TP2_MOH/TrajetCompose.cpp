@@ -54,6 +54,8 @@ const char* TrajetCompose::getvilled()const
 //--Fin GETTERS,SETTERS
 
 
+
+
 int TrajetCompose::AjouterTrajet(const Trajet* t)
 // Algorithme :
 {

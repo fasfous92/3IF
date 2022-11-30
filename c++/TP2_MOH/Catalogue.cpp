@@ -14,6 +14,7 @@
 using namespace std;
 #include <iostream>
 #include <cstring>
+#include <stdbool.h>
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
@@ -26,14 +27,56 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-void Catalogue::recherche(char* depart, char* arrivee)const{
+
+
+
+void Catalogue::rechercheCombi(char* depart, char* arrivee) const
+//Algorithme:
+{
+    if(recherche(depart,arrivee)){
+
+    }else {
+        cout << "Trajets combinés possibles:\n";
+        int i = 1;
+        Cell *parcours = trajets.getCell();
+        Cell *parcours2 = trajets.getCell();
+        Trajet *t = parcours->getData();
+        Trajet *tnext = parcours2->getData();
+        while (parcours != nullptr) {
+            t = parcours->getData();
+            if (strcmp(t->getvilled(), depart) == 0) {
+                while (parcours2 != nullptr) {
+                    tnext = parcours2->getData();
+                    if (strcmp(t->getvillea(), tnext->getvilled()) == 0 && strcmp(tnext->getvillea(), arrivee) == 0) {
+                        cout << "Solution" << i << ":\n";
+                        t->Afficher();
+                        tnext->Afficher();
+                        i++;
+                        break;
+                    }
+                    parcours2 = parcours2->getNext();
+                }
+            }
+            parcours = parcours->getNext();
+            parcours2 = trajets.getCell();
+        }
+    }
+
+}//--Fin-rechercheCombi
+
+
+
+
+
+bool Catalogue::recherche(char* depart, char* arrivee)const{
+    bool b=false;
     Cell* parcours=trajets.getCell();
     int find=0; //juste un indicateur de l'affichage
     Trajet* t=parcours->getData();
     while (parcours->getNext()!= nullptr){
         if(strcmp(depart,t->getvilled())==0 && strcmp(arrivee,t->getvillea())==0){
             t->Afficher();
-            find++;
+            b=true;
         }
         parcours=parcours->getNext();
         t=parcours->getData();
@@ -43,9 +86,12 @@ void Catalogue::recherche(char* depart, char* arrivee)const{
         find++;
     }
 
-    if(find==0){
-        cout<<"Trajet pas trouver\n"<<endl;
+    if(!b){
+        cout<<"Trajet pas trouver."<<endl;
+        cout<<"vous n'avez pas trouver votre trajet, essayez notre nouvel outils de combinaisons de trajets\n"
+              "en faisant une recherche combinatoire\n"<<endl;
     }
+    return b;
 
 }
 
@@ -116,6 +162,7 @@ void Catalogue :: Interface()
     printf("\t2: ajouter un trajet simple\n");
     printf("\t3: ajouter un trajet composé\n");
     printf("\t4: recherche de parcours\n");
+    printf("\t5: recherche combinatoire\n");
     printf("\t0: quitter\n");
 
     fscanf(stdin,"%99s",lecture);
@@ -134,6 +181,12 @@ void Catalogue :: Interface()
             char arrivee[20];
             fscanf(stdin,"%99s %99s",depart,arrivee);
             recherche(depart,arrivee);
+        }else if (strcmp(lecture,"5")==0) {
+            printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
+            char depart[20];
+            char arrivee[20];
+            fscanf(stdin,"%99s %99s",depart,arrivee);
+            rechercheCombi(depart,arrivee);
 
         }else if (strcmp(lecture,"0")==0) {
         }
@@ -142,6 +195,7 @@ void Catalogue :: Interface()
         printf("\t2: ajouter un trajet simple\n");
         printf("\t3: ajouter un trajet composé\n");
         printf("\t4: recherche de parcours\n");
+        printf("\t5: recherche combinatoire\n");
         printf("\t0: quitter\n");
 
         fscanf(stdin,"%99s",lecture);

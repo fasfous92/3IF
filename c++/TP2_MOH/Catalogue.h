@@ -30,8 +30,16 @@ class Catalogue
 
 public:
 //----------------------------------------------------- Méthodes publiques
+    void rechercheCombi(char* depart, char* arrivee)const;
+    // Mode d'emploi :
+    // Cette méthode va combiner aux maximun deux trajets afin de subvenir
+    // aux paramètres rentrés notamment, la ville de départ et la ville d'arrivée
+    //
+    // Contrat :
+    //
 
-    void recherche(char* depart, char* arrivee)const;
+
+    bool recherche(char* depart, char* arrivee)const;
     // Mode d'emploi :
     // Cette méthode va nous permettre de rechercher les différents
     // trajets dans notre catalogue en prenant comme paramètre la ville de départ et la ville d'arrivée

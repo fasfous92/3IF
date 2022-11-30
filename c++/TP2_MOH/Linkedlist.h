@@ -39,6 +39,7 @@ public:
     //GETTERS,SETTERS
     Cell* getCell()const;
     void setCell(Cell* cell);
+    Cell* getLastCell() const;
 
 
     //----Fin GETERS,SETTERS
