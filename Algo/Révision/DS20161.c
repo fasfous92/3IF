@@ -13,19 +13,17 @@ void tri(int* tab, int size) {
     }
 }
 
-int main(){
+int main() {
     int n;// number of items to scan
     scanf("%d",&n);
-    int tab[n+1]; //always alocate +1 than numbers as tab[0]=0;
-    tab[0]=0;
+    int tab[n]; //always alocate +1 than numbers as tab[0]=0;
     int i;
-    for(i=1;i<n+1;i++){
+    for(i=0;i<n;i++){
         scanf("%d",&tab[i]);
     }
+    tri(tab,n);
 
-
-
-
+    printf("%d",tab[n-2]-tab[1]);
 
     return 0;
 }

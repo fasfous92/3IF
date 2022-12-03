@@ -30,13 +30,16 @@ using namespace std;
 
 
 
-void Catalogue::rechercheCombi(char* depart, char* arrivee) const
+void Catalogue::rechercheCombi(const char* depart, const char* arrivee, bool display) const
 //Algorithme:
 {
-    if(recherche(depart,arrivee)){
-
-    }else {
+    /*if(!display){
+    if(recherche(depart,arrivee)) {
+        }
+    }*/
+    if(!display)
         cout << "Trajets combinés possibles:\n";
+
         int i = 1;
         Cell *parcours = trajets.getCell();
         Cell *parcours2 = trajets.getCell();
@@ -44,13 +47,24 @@ void Catalogue::rechercheCombi(char* depart, char* arrivee) const
         Trajet *tnext = parcours2->getData();
         while (parcours != nullptr) {
             t = parcours->getData();
+            if(::strcmp(t->getvilled(),depart)==0 && ::strcmp(t->getvillea(),arrivee)==0) { //ce if va simuler la fonctionnalité d'une recherche de simple trajets
+                t->Afficher();
+                return;
+            }
             if (strcmp(t->getvilled(), depart) == 0) {
                 while (parcours2 != nullptr) {
                     tnext = parcours2->getData();
-                    if (strcmp(t->getvillea(), tnext->getvilled()) == 0 && strcmp(tnext->getvillea(), arrivee) == 0) {
-                        cout << "Solution" << i << ":\n";
-                        t->Afficher();
+                    if (strcmp(t->getvillea(), tnext->getvilled()) == 0){
+
+                        if(!display) {
+                            cout << "Solution" << i << ":\n";
+                            t->Afficher();
+                        }
                         tnext->Afficher();
+                        if(strcmp(tnext->getvillea(), arrivee) != 0) {
+                            rechercheCombi(tnext->getvilled(),arrivee,true); //on déja afficher le trajet tnext
+
+                        }
                         i++;
                         break;
                     }
@@ -60,7 +74,7 @@ void Catalogue::rechercheCombi(char* depart, char* arrivee) const
             parcours = parcours->getNext();
             parcours2 = trajets.getCell();
         }
-    }
+
 
 }//--Fin-rechercheCombi
 
@@ -68,7 +82,7 @@ void Catalogue::rechercheCombi(char* depart, char* arrivee) const
 
 
 
-bool Catalogue::recherche(char* depart, char* arrivee)const{
+bool Catalogue::recherche(const char* depart, const char* arrivee)const{
     bool b=false;
     Cell* parcours=trajets.getCell();
     int find=0; //juste un indicateur de l'affichage
@@ -186,7 +200,7 @@ void Catalogue :: Interface()
             char depart[20];
             char arrivee[20];
             fscanf(stdin,"%99s %99s",depart,arrivee);
-            rechercheCombi(depart,arrivee);
+            rechercheCombi(depart,arrivee, false);
 
         }else if (strcmp(lecture,"0")==0) {
         }

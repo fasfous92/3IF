@@ -3,4 +3,4 @@ project(Algo)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Algo DS2016C.c)
+add_executable(Algo Révision/DS20162.c)
