@@ -36,25 +36,25 @@ public:
     
     const char* getvilled() const ;
     // Mode d'emploi :
-    //  
+    //  retourne  la ville de départ du trajet simple
     // Contrat :
     //
 
     const char* getvillea() const ;
     // Mode d'emploi :
-    //  
+    // retourne  la ville d'arrivée du trajet simple
     // Contrat :
     //
 
     const char* getTransport() const ;
     // Mode d'emploi :
-    //  
+    //  retourne  le moyen de transport du trajet simple
     // Contrat :
     //
 
     Trajet* Clone() const;
     // Mode d'emploi :
-    //  
+    // Retourne une copie d'un trajet simple
     // Contrat :
     //
 

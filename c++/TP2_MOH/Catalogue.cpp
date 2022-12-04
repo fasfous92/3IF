@@ -31,7 +31,7 @@ using namespace std;
 
 
 void Catalogue::rechercheCombi(const char* depart, const char* arrivee, bool display , Linkedlist* monTrajet) const
-//Algorithme:
+// Algorithme :  Méthode simple
 {
     
     Cell *parcours = trajets.getCell();
@@ -69,17 +69,11 @@ void Catalogue::rechercheCombi(const char* depart, const char* arrivee, bool dis
 }//--Fin-rechercheCombi
 
 
-
-
-
 bool Catalogue::recherche(const char* depart, const char* arrivee)const
-// Fonction de recherche simple : affiche tous les trajets de la ville 'depart' à la ville 'arrivee'
-// retourne vrai si au moins un trajet touvé faux sinon
-
+// Algorithme :  Méthode simple
 {
     bool b=false;
     Cell* parcours=trajets.getCell();
-    int find=0; //juste un indicateur de l'affichage
     Trajet* t=parcours->getData();
     while (parcours->getNext()!= nullptr){
         if(strcmp(depart,t->getvilled())==0 && strcmp(arrivee,t->getvillea())==0){
@@ -92,12 +86,12 @@ bool Catalogue::recherche(const char* depart, const char* arrivee)const
     
     if(strcmp(depart,t->getvilled())==0 && strcmp(arrivee,t->getvillea())==0){ //on vérifie si la dernière cellule vérifie nos conditions
         t->Afficher();
-        find++;
+        b=true;
     }
 
     if(!b){
         cout<<"Trajet pas trouver."<<endl;
-        cout<<"vous n'avez pas trouver votre trajet, essayez notre nouvel outils de combinaisons de trajets\n"
+        cout<<"vous n'avez pas trouvé votre trajet?\n Essayez notre nouvel outils de combinaisons de trajets\n"
               "en faisant une recherche combinatoire\n"<<endl;
     }
     return b;
@@ -106,7 +100,7 @@ bool Catalogue::recherche(const char* depart, const char* arrivee)const
 
 
 void Catalogue :: Afficher()
-// Algorithme :
+// Algorithme :  Méthode simple
 {
     trajets.tri();
     if(trajets.getCell()->getData()!=nullptr){
@@ -115,7 +109,7 @@ void Catalogue :: Afficher()
 } //----- Fin de Méthode
 
 void Catalogue :: AjouterSimple()
-// Algorithme :
+// Algorithme : Méthode simple
 {
     char depart[20];
     char arrivee[20];
@@ -128,7 +122,7 @@ void Catalogue :: AjouterSimple()
 } //----- Fin de Méthode
 
 void Catalogue :: AjouterCompose() 
-// Algorithme :
+// Algorithme : Méthode simple
 {
     char lecture[100];
     TrajetCompose* monTrajet=new TrajetCompose();
@@ -162,7 +156,7 @@ void Catalogue :: AjouterCompose()
 } //----- Fin de Méthode
 
 void Catalogue :: Interface()
-// Algorithme :
+// Algorithme : Méthode simple
 {
     char lecture[100];
 
@@ -185,22 +179,29 @@ void Catalogue :: Interface()
         }else if (strcmp(lecture,"3")==0) {
             AjouterCompose();
         }else if (strcmp(lecture,"4")==0) {
-            printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
-            char depart[20];
-            char arrivee[20];
-            fscanf(stdin,"%99s %99s",depart,arrivee);
-            recherche(depart,arrivee);
+            if(trajets.getCell()->getData()!=nullptr){
+                printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
+                char depart[20];
+                char arrivee[20];
+                fscanf(stdin,"%99s %99s",depart,arrivee);
+                recherche(depart,arrivee);
+            }else{
+                cout << "Aucun trajet ajouté" << endl ;
+            }
         }else if (strcmp(lecture,"5")==0) {
-            printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
-            char depart[20];
-            char arrivee[20];
-            fscanf(stdin,"%99s %99s",depart,arrivee);
-            Linkedlist* monTrajet=new Linkedlist();
-            rechercheCombi(depart,arrivee, false,monTrajet);
-            if(strcmp(monTrajet->getVillea(),arrivee)==0 && strcmp(monTrajet->getVilled(),depart)==0 )
-                monTrajet->Afficher();
-            //monTrajet=new Linkedlist();
-            delete monTrajet;
+            if(trajets.getCell()->getData()!=nullptr){
+                printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
+                char depart[20];
+                char arrivee[20];
+                fscanf(stdin,"%99s %99s",depart,arrivee);
+                Linkedlist* monTrajet=new Linkedlist();
+                rechercheCombi(depart,arrivee, false,monTrajet);
+                if(strcmp(monTrajet->getVillea(),arrivee)==0 && strcmp(monTrajet->getVilled(),depart)==0 )
+                    monTrajet->Afficher();
+                delete monTrajet;
+            }else{
+                cout << "Aucun trajet ajouté" << endl ;
+            }
 
         }else if (strcmp(lecture,"0")==0) {
         }
@@ -221,7 +222,7 @@ void Catalogue :: Interface()
 
 //-------------------------------------------- Constructeurs - destructeur
 Catalogue::Catalogue ( const Catalogue & unCatalogue )
-// Algorithme :
+// Constructeur de copie d'un Catalogue 
 //
 {
     #ifdef MAP
@@ -232,24 +233,22 @@ Catalogue::Catalogue ( const Catalogue & unCatalogue )
 
 
 Catalogue::Catalogue ( )
-// Algorithme :
+// Constructeur d'un Catalogue
 //
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <Catalogue>" << endl;
-#endif
+    #ifdef MAP
+        cout << "Appel au constructeur de <Catalogue>" << endl;
+    #endif
 } //----- Fin de Catalogue
 
 
 Catalogue::~Catalogue ( )
-// Algorithme :
+// Destructeur d'un Catalogue
 //
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <Catalogue>" << endl;
-#endif
-cout << "destructeur cata";
-// delete trajets;
+    #ifdef MAP
+        cout << "Appel au destructeur de <Catalogue>" << endl;
+    #endif
 } //----- Fin de ~Catalogue
 
 

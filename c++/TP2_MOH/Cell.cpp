@@ -25,21 +25,26 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 //Getters and Setters necessary to deal with our variables from the main
-void Cell::setNext(const Cell* suivant){
+void Cell::setNext(const Cell* suivant)
+// Algorithme : Méthode simple
+{
     next=(Cell*)suivant;
 }
-void Cell::setData(const Trajet *set) {
+void Cell::setData(const Trajet *set) 
+// Algorithme : Méthode simple
+{
     data=(Trajet*)set;
 }
+
 Trajet* Cell::getData() const
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     return data;
 } //----- Fin de Méthode
 
 Cell* Cell::getNext() const
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     return next;
@@ -51,7 +56,7 @@ Cell* Cell::getNext() const
 
 //-------------------------------------------- Constructeurs - destructeur
 Cell::Cell ( const Cell & unCell )
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     #ifdef MAP
@@ -62,7 +67,7 @@ Cell::Cell ( const Cell & unCell )
 } //----- Fin de Cell (constructeur de copie)
 
 Cell::Cell ( const Trajet* unTrajet )
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     #ifdef MAP
@@ -73,7 +78,7 @@ Cell::Cell ( const Trajet* unTrajet )
 } //----- Fin de Cell 
 
 Cell::Cell ( Trajet* unTrajet, Cell * nextCell )
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     #ifdef MAP
@@ -84,26 +89,24 @@ Cell::Cell ( Trajet* unTrajet, Cell * nextCell )
 } //----- Fin de Cell 
 
 Cell::Cell()
-//ALgoritme
+// Algorithme : Méthode simple
 {
-
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Cell>" << endl;
-#endif
+    #ifdef MAP
+        cout << "Appel au constructeur de copie de <Cell>" << endl;
+    #endif
     data= nullptr;
     next= nullptr;
-}
+}//----- Fin de Cell
 
 
 
 Cell::~Cell ( )
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     #ifdef MAP
         cout << "Appel au destructeur de <Cell>" << endl;
     #endif
-    cout << "dest cell";
     delete data;
     if(next!=nullptr) delete next;
 } //----- Fin de ~Cell

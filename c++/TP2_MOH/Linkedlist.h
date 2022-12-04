@@ -38,27 +38,48 @@ public:
 
     //GETTERS,SETTERS
     Cell* getCell()const;
+    // Mode d'emploi :
+    // retourne la première cellule de la liste
+    // Contrat :
+    //
     const char* getVillea() const;
+    // Mode d'emploi :
+    // retourne la ville d'arrivée du dernier trajet de la liste
+    // on l'utilise dans la recherche combinée dans Catalogue
+    // Contrat :
+    //
     const char* getVilled() const;
+    // Mode d'emploi :
+    // retourne la ville de de départ du premier trajet de la liste
+    // on l'utilise dans la recherche combinée dans Catalogue
+    // Contrat :
+    //
     void setCell(Cell* cell);
-
+    // Mode d'emploi :
+    // change la valeur de la première cellule de la liste
+    // Contrat :
+    //
 
     //----Fin GETERS,SETTERS
-    void Ajouter(const Trajet* t);
 
+    void Ajouter(const Trajet* t);
+    // Mode d'emploi :
+    // cette methode va ajouterun trajet à la liste
+    // Contrat :
+    //
 
     void tri();
-// Mode d'emploi :
-    // cette methode va trier les cellules selon un ordre alphabétique
+    // Mode d'emploi :
+    // cette methode va trier les cellules selon un ordre alphabétique croissant
     // des villes de départ afin de simplifier la lecture de l'affichage
-    //pour l'utilisateur.
+    // pour l'utilisateur.
     // Contrat :
     //
 
     void Afficher()const;
-// Mode d'emploi :
-  //cette méthode va afficher les différents trajets qui compose la liste
-  // pour chaque cellule elle va faire appel à la méthode Afficher liée à chaque type de trajet.
+    // Mode d'emploi :
+    // cette méthode va afficher les différents trajets qui composent la liste
+    // pour chaque cellule elle va faire appel à la méthode Afficher liée à chaque type de trajet (simple ou composé).
     // Contrat :
     //
 
@@ -69,20 +90,20 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
     Linkedlist ( const Linkedlist & unLinkedlist );
     // Mode d'emploi (constructeur de copie) :
-    //comme Linkedlist est simplement une vue des trajets on copie juste le pointeur
-    //pas de copie en profondeur
+    // comme Linkedlist est simplement une vue des trajets on copie juste le pointeur
+    // pas de copie en profondeur
     // Contrat :
     //
 
     Linkedlist ();
     // Mode d'emploi :
-    //
+    // Constructeur de Linkedlist
     // Contrat :
     //
 
     virtual ~Linkedlist ( );
     // Mode d'emploi :
-    //
+    // Desructeur de Linkedlist
     // Contrat :
     //
 

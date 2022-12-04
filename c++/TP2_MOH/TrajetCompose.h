@@ -35,25 +35,35 @@ public:
 
     //GETTERS,SETTERS
     virtual const char* getvillea()const;
+    // Mode d'emploi:
+    // Retourne le ville d'arrivée du trajet composé
+    //
+    //Contrat:
+    //
     virtual const char* getvilled()const;
+    // Mode d'emploi:
+    // Retourne le ville de départ du trajet composé
+    //
+    //Contrat:
+    //
     //--Fin GETTERS,SETTERS
 
     
     int AjouterTrajet(const Trajet* t);
     // Mode d'emploi:
-    //Ajouter un trajet à notre trajet composé tout en vérifiant de la faisabilité de cet ajout:
+    // Ajouter un trajet à notre trajet composé tout en vérifiant de la faisabilité de cet ajout:
     // on vérifie s'il s'agit du premier trajet à rajouter, si c'est le cas on peut ajouter
     // sinon on doit vérifier la correspondence des villes.
-    //cette méthode retourne 1 si l'ajout a été réaliser sinon 0
+    // cette méthode retourne 1 si l'ajout a été réaliser sinon 0
     //
     //Contrat:
-    //pas de contrat
+    //
 
 
 
     virtual void Afficher()const ;
     // Mode d'emploi :
-    //cette méthode va afficher la ville de départ de notre première étape ainsi
+    // Cette méthode va afficher la ville de départ de notre première étape ainsi
     // que la ville d'arrivée de la dernière étape. Etant donné que le trajet composé
     // peut avoir plusieurs moyens de transport on a décider de ne pas afficher les modes de
     // transport.
@@ -62,7 +72,7 @@ public:
 
     Trajet* Clone() const;
     // Mode d'emploi :
-    //  
+    // Retourne une copie du trajet composé
     // Contrat :
     //
 
@@ -82,7 +92,7 @@ public:
     TrajetCompose ();
     // Mode d'emploi : cette methode va demander à l'utilisateur:
     // cette méthode va créer un Trajet composé vide et après
-    // on demandera à l'utilisateur de rajouter les étapes qui compose
+    // on demandera à l'utilisateur de rajouter les étapes qui composent
     // ce trajet (avec la methode AjouterTrajet).
     // Contrat :
     // Aucun

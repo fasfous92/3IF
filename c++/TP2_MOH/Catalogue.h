@@ -32,7 +32,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void rechercheCombi(const char* depart, const char* arrivee, bool display,  Linkedlist* monTrajet)const;
     // Mode d'emploi :
-    // Cette méthode va combiner aux maximun deux trajets afin de subvenir
+    // Cette méthode va combiner les trajets afin de subvenir
     // aux paramètres rentrés notamment, la ville de départ et la ville d'arrivée
     //
     // Contrat :
@@ -49,10 +49,10 @@ public:
 
     void Afficher();
     // Mode d'emploi :
-    // Affiche tous les trajets trier par ordre alphabétique
+    // Affiche tous les trajets triés par ordre alphabétique
     // des villes de départs dans le catalogue.
-    //L'affichage indique aussi d'il s'agit de trajet composé ou de
-    //trajet simple en utilisant les codess suivant
+    // L'affichage indique aussi s'il s'agit de trajet composé ou de
+    // trajet simple en utilisant les codess suivant
     // TC: trajet composé
     // TS: trajet simple
     // Contrat :
@@ -62,17 +62,21 @@ public:
     // Mode d'emploi :
     //
     // Contrat :
-    //
+    // C'est l'interface de notre catalogue qui contient le menu des tâches proposées
 
     void  AjouterSimple();
     // Mode d'emploi :
-    //
+    // permet à l'utilisateur de saisir la ville de départ, la ville d'arrivée ainsi que le moyen de transport
+    // pour un trajet simple puis crée le trajet simple et le rajoute dans la liste des trajets du catalogue
     // Contrat :
     //
 
     void  AjouterCompose();
     // Mode d'emploi :
-    //
+    // crée un trajet composé et le rajoute dans la liste des trajets du catalogue
+    // puis affiche le menu spécifique à l'ajout d'un trajet composé qui donne le choix à l'utilisateur
+    // soit de rajouter un trajet simple au trajet composé (une étape du trajet composé)
+    // soit de mettre fin à la saisie du trajet composé
     // Contrat :
     //
 

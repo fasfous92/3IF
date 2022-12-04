@@ -25,34 +25,36 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 void TrajetSimple::Afficher() const
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     cout << "TS de " << depart << " à " << arrivee << " en " << transport << endl ;
 }
 
 const char* TrajetSimple::getvilled() const
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     return depart;
 }
 
 const char* TrajetSimple::getvillea() const
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     return arrivee;
 }
 
 const char* TrajetSimple::getTransport() const
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     return transport;
 }
 
 Trajet* TrajetSimple::Clone() const
+// Algorithme : Méthode simple
+//
 {
     return new TrajetSimple(*this);
 }
@@ -64,7 +66,7 @@ Trajet* TrajetSimple::Clone() const
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     #ifdef MAP
@@ -81,7 +83,7 @@ TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
 
 
 TrajetSimple::TrajetSimple (const char * vDepart ,const char * vArrivee ,const  char * mTransport )
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     #ifdef MAP
@@ -97,13 +99,12 @@ TrajetSimple::TrajetSimple (const char * vDepart ,const char * vArrivee ,const  
 
 
 TrajetSimple::~TrajetSimple ( )
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     #ifdef MAP
         cout << "Appel au destructeur de <TrajetSimple>" << endl;
     #endif
-    cout << "dst simple";
     delete[] arrivee;
     delete[] depart;
     delete[] transport;

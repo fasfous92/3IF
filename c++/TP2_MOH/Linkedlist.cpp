@@ -34,28 +34,31 @@ using namespace std;
 // GETTERS,SETTERS
 
 Cell* Linkedlist::getCell() const
+// Algorithme : Méthode simple
 {
     return cellule;
 }
 
 const char* Linkedlist::getVillea() const
+// Algorithme : Méthode simple
 {
-    if(cellule->getData()==nullptr) return "";
+    if(cellule->getData()==nullptr) return ""; // si liste vide
+
     Cell* parcours=cellule;
     while (parcours->getNext()!= nullptr){
         parcours=parcours->getNext();
     }
-
     return     parcours->getData()->getvillea();
 }
 
 const char* Linkedlist::getVilled() const
+// Algorithme : Méthode simple
 {
-
     return cellule->getData()->getvilled();
 }
 
 void Linkedlist::setCell(Cell* cell)
+// Algorithme : Méthode simple
 {
     cellule=cell;
 }
@@ -63,14 +66,15 @@ void Linkedlist::setCell(Cell* cell)
 //--Fin GETTERS,SETTERS
 
 void Linkedlist::Ajouter(const Trajet *t)
+// Algorithme : Méthode simple
 {
-
+    // cas où la liste est vide
     if(cellule->getData()==nullptr){
         cellule->setData(t);
         return;
     }
 
-
+    // cas où la liste n'est pas vide : rajouter le nouveau trajet à la fin
     Cell* parcours=cellule;
     while(parcours->getNext()!=nullptr){
         parcours=parcours->getNext();
@@ -82,23 +86,28 @@ void Linkedlist::Ajouter(const Trajet *t)
 }//--Fin Ajouter
 
 void Linkedlist::tri()
-// Algorithme :
+// Algorithme : Tri par selection
 {
     Cell* parcours=cellule;
-    while (parcours->getNext()!= nullptr){
-        Cell* next=parcours->getNext();
-        if(strcmp(parcours->getData()->getvilled(),next->getData()->getvilled())>0){
-            Trajet* tmp=parcours->getData();
-            parcours->setData(next->getData());
-            next->setData(tmp);
+    Cell* parcours2=cellule;
+    while(parcours2!=nullptr){
+        while (parcours!= nullptr){
+            if(strcmp(parcours->getData()->getvilled(),parcours2->getData()->getvilled())<0){
+                Trajet* tmp=parcours->getData();
+                parcours->setData(parcours2->getData());
+                parcours2->setData(tmp);
+            }
+            parcours=parcours->getNext();
         }
-        parcours=next;
+        parcours2=parcours2->getNext();
+        parcours=parcours2;
+
     }
 
 }//----Fin Tri
 
 void Linkedlist::Afficher()const
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     if(cellule->getData()==nullptr){
@@ -118,68 +127,46 @@ void Linkedlist::Afficher()const
 }//----- Fin Afficher
 
 
-
-
-
-
-
-
-
 //------------------------------------------------- Surcharge d'opérateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
 Linkedlist::Linkedlist(const Linkedlist &unLinkedlist)
-// Algorithme :
+// Algorithme :  Méthode simple
 //
 {
-#ifdef MAP
-        cout << "Appel au constructeur de copie de <Xxx>" << endl;
-#endif
-        cellule = new Cell;
-        cellule->setData(unLinkedlist.cellule->getData());
-        cellule->setNext(unLinkedlist.cellule->getNext());
+    #ifdef MAP
+            cout << "Appel au constructeur de copie de <Xxx>" << endl;
+    #endif
+    cellule = new Cell;
+    cellule->setData(unLinkedlist.cellule->getData());
+    cellule->setNext(unLinkedlist.cellule->getNext());
 
 } //----- Fin de Linkedlist (constructeur de copie)
 
 
 Linkedlist::Linkedlist()
-// Algorithme :
+// Algorithme :  Méthode simple
 //
 {
-#ifdef MAP
-        cout << "Appel au destructeur de <Xxx>" << endl;
-#endif
-        cellule = new Cell();
+    #ifdef MAP
+            cout << "Appel au destructeur de <Xxx>" << endl;
+    #endif
+    cellule = new Cell();
 
 
 } //----- Fin de ~Linkedlist
 
 
-    Linkedlist::~Linkedlist ( )
-// Algorithme :
+Linkedlist::~Linkedlist ( )
+// Algorithme :  Méthode simple
 //
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <Linkedlist>" << endl;
-#endif
-    cout << "dest liste";
+    #ifdef MAP
+        cout << "Appel au destructeur de <Linkedlist>" << endl;
+    #endif
     delete cellule;
-      /*if(cellule->getNext()== nullptr){
-          delete cellule;
-      } else {
-          Cell *parcours = cellule;
-          Cell *parcours2 = cellule->getNext();
-          while (parcours2 != nullptr) {
-              delete parcours;
-              parcours=parcours2;
-              parcours2=parcours2->getNext();
-          }
-          delete parcours;
-      }*/
 } //----- Fin de ~Linkedlist
-
-
 
 
 //------------------------------------------------------------------ PRIVE

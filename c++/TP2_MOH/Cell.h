@@ -31,25 +31,24 @@ public:
 //----------------------------------------------------- Méthodes publiques
     Trajet* getData() const;
     // Mode d'emploi :
-    //
+    // retourne un pointeur vers le trajet contenu dans la cellule
     // Contrat :
     //
 
     Cell* getNext() const;
     // Mode d'emploi :
-    //
-    //
+    // retourne un pointeur vers la cellule suivante
     // Contrat :
     //
 
     void setNext(const Cell* suivant);
     // Mode d'emploi :
-    //
+    // change le next d'une cellule
     // Contrat :
     //
     void setData(const Trajet *set);
     // Mode d'emploi :
-    //
+    // cahnge la valeur de data
     // Contrat :
     //
 
@@ -74,6 +73,7 @@ public:
 
     Cell ( );
     // Mode d'emploi (constructeur de copie) :
+    //
     // Contrat :
     //
 

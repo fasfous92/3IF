@@ -36,19 +36,19 @@ public:
 
     virtual const char * getvilled() const =0;
     // Mode d'emploi :
-    // 
+    // retourne la ville de départ d'un trajet
     // Contrat :
     //
 
     virtual const char * getvillea() const =0;
     // Mode d'emploi :
-    // 
+    // retourne la ville d'arrivée d'un trajet
     // Contrat :
     //
 
     virtual Trajet* Clone() const =0 ;
     // Mode d'emploi :
-    // 
+    // retourne une copie du trajet
     // Contrat :
     //
 
@@ -59,7 +59,7 @@ public:
     
     virtual ~Trajet ( );
     // Mode d'emploi :
-    //
+    // Destructeur d'un trajet
     // Contrat :
     //
 

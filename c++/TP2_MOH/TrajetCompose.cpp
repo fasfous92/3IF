@@ -23,15 +23,10 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TrajetCompose::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 
 //GETTERS,SETTERS
 const char* TrajetCompose::getvillea()const
+// Algorithme : Méthode simple
 {
     Cell* parcours=compo.getCell();
     while (parcours->getNext()!= nullptr){
@@ -43,25 +38,22 @@ const char* TrajetCompose::getvillea()const
 }
 
 const char* TrajetCompose::getvilled()const
+// Algorithme : Méthode simple
 {
     Cell* parcours=compo.getCell();
     return     parcours->getData()->getvilled();
 
 }
 
-
-
 //--Fin GETTERS,SETTERS
 
 
-
-
 int TrajetCompose::AjouterTrajet(const Trajet* t)
-// Algorithme :
+// Algorithme : Méthode simple
 {
 
-    if (compo.getCell()->getData() == NULL || strcmp(getvillea(),t->getvilled())==0) {
-        if (compo.getCell()->getData() == NULL)
+    if (compo.getCell()->getData() == nullptr || strcmp(getvillea(),t->getvilled())==0) {
+        if (compo.getCell()->getData() == nullptr)
             depart=(char*)t->getvilled();
         compo.Ajouter(t); //on utilise la méthode d'ajout de la Linkedlist
         arrivee=(char*)t->getvillea();
@@ -76,7 +68,7 @@ int TrajetCompose::AjouterTrajet(const Trajet* t)
 } //----- Fin de AjouterTrajet
 
 void TrajetCompose::Afficher() const
-// Algorithme :
+// Algorithme : Méthode simple
 //
 {
     cout << "TC de " << depart << " à " << arrivee <<":"<< endl ;
@@ -88,6 +80,8 @@ void TrajetCompose::Afficher() const
 } //----- Fin Afficher
 
 Trajet* TrajetCompose::Clone() const
+// Algorithme : Méthode simple
+//
 {
     return new TrajetCompose(*this);
 }
@@ -100,9 +94,9 @@ TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
 // Algorithme :
 //
 {
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <TrajetComposee>" << endl;
-#endif
+    #ifdef MAP
+        cout << "Appel au constructeur de copie de <TrajetComposee>" << endl;
+    #endif
     compo.setCell(unTrajetCompose.compo.getCell());
 
 } //----- Fin de TrajetCompose (constructeur de copie)
@@ -112,9 +106,9 @@ TrajetCompose::TrajetCompose()
 // Algorithme :
 //
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <TrajetComposee>" << endl;
-#endif
+    #ifdef MAP
+        cout << "Appel au constructeur de <TrajetComposee>" << endl;
+    #endif
 
 } //----- Fin de TrajeCompose
 
@@ -123,10 +117,9 @@ TrajetCompose::~TrajetCompose ( )
 // Algorithme :
 //
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <TrajetComposee>" << endl;
-#endif
-cout << "dest comp";
+    #ifdef MAP
+        cout << "Appel au destructeur de <TrajetComposee>" << endl;
+    #endif
 
 } //----- Fin de ~TrajetComposee
 
