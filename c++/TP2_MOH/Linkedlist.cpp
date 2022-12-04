@@ -38,6 +38,22 @@ Cell* Linkedlist::getCell() const
     return cellule;
 }
 
+const char* Linkedlist::getVillea() const
+{
+    if(cellule->getData()==nullptr) return "";
+    Cell* parcours=cellule;
+    while (parcours->getNext()!= nullptr){
+        parcours=parcours->getNext();
+    }
+
+    return     parcours->getData()->getvillea();
+}
+
+const char* Linkedlist::getVilled() const
+{
+
+    return cellule->getData()->getvilled();
+}
 
 void Linkedlist::setCell(Cell* cell)
 {
@@ -85,6 +101,10 @@ void Linkedlist::Afficher()const
 // Algorithme :
 //
 {
+    if(cellule->getData()==nullptr){
+        return;
+    }
+
     if (cellule->getNext() == nullptr) {
         cellule->getData()->Afficher();// si notre Linekdlist n'a qu'une seule cellule on va juste l'afficher
     } else { // sinon on doit afficher chaque cellule de notre liste en parcourant les cellules.
@@ -139,11 +159,12 @@ Linkedlist::Linkedlist()
     Linkedlist::~Linkedlist ( )
 // Algorithme :
 //
-    {
+{
 #ifdef MAP
-        cout << "Appel au destructeur de <Linkedlist>" << endl;
+    cout << "Appel au destructeur de <Linkedlist>" << endl;
 #endif
-        delete cellule;
+    cout << "dest liste";
+    delete cellule;
       /*if(cellule->getNext()== nullptr){
           delete cellule;
       } else {
@@ -156,7 +177,7 @@ Linkedlist::Linkedlist()
           }
           delete parcours;
       }*/
-    } //----- Fin de ~Linkedlist
+} //----- Fin de ~Linkedlist
 
 
 
@@ -164,5 +185,4 @@ Linkedlist::Linkedlist()
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-
 

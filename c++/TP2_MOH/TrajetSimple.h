@@ -52,6 +52,11 @@ public:
     // Contrat :
     //
 
+    Trajet* Clone() const;
+    // Mode d'emploi :
+    //  
+    // Contrat :
+    //
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -89,4 +94,3 @@ char* transport;
 //-------------------------------- Autres définitions dépendantes de <TrajetSimple>
 
 #endif // TrajetSimple_H
-

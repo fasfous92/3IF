@@ -52,6 +52,11 @@ const char* TrajetSimple::getTransport() const
     return transport;
 }
 
+Trajet* TrajetSimple::Clone() const
+{
+    return new TrajetSimple(*this);
+}
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -98,6 +103,7 @@ TrajetSimple::~TrajetSimple ( )
     #ifdef MAP
         cout << "Appel au destructeur de <TrajetSimple>" << endl;
     #endif
+    cout << "dst simple";
     delete[] arrivee;
     delete[] depart;
     delete[] transport;
@@ -107,4 +113,3 @@ TrajetSimple::~TrajetSimple ( )
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

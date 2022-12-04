@@ -36,11 +36,9 @@ public:
     //GETTERS,SETTERS
     virtual const char* getvillea()const;
     virtual const char* getvilled()const;
-
-
-
-
     //--Fin GETTERS,SETTERS
+
+    
     int AjouterTrajet(const Trajet* t);
     // Mode d'emploi:
     //Ajouter un trajet à notre trajet composé tout en vérifiant de la faisabilité de cet ajout:
@@ -59,6 +57,12 @@ public:
     // que la ville d'arrivée de la dernière étape. Etant donné que le trajet composé
     // peut avoir plusieurs moyens de transport on a décider de ne pas afficher les modes de
     // transport.
+    // Contrat :
+    //
+
+    Trajet* Clone() const;
+    // Mode d'emploi :
+    //  
     // Contrat :
     //
 

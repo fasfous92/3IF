@@ -72,7 +72,7 @@ Cell::Cell ( const Trajet* unTrajet )
     next=nullptr; //le next vers Null car on les pas encore liée cela peut être modifier avec un setter
 } //----- Fin de Cell 
 
-Cell::Cell ( Trajet* unTrajet, Cell nextCell )
+Cell::Cell ( Trajet* unTrajet, Cell * nextCell )
 // Algorithme :
 //
 {
@@ -80,7 +80,7 @@ Cell::Cell ( Trajet* unTrajet, Cell nextCell )
         cout << "Appel au constructeur de copie de <Cell>" << endl;
     #endif
     data=unTrajet;
-    next=&nextCell;
+    next=nextCell;
 } //----- Fin de Cell 
 
 Cell::Cell()
@@ -103,6 +103,7 @@ Cell::~Cell ( )
     #ifdef MAP
         cout << "Appel au destructeur de <Cell>" << endl;
     #endif
+    cout << "dest cell";
     delete data;
     if(next!=nullptr) delete next;
 } //----- Fin de ~Cell

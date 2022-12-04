@@ -30,7 +30,7 @@ class Catalogue
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void rechercheCombi(const char* depart, const char* arrivee, bool display)const;
+    void rechercheCombi(const char* depart, const char* arrivee, bool display,  Linkedlist* monTrajet)const;
     // Mode d'emploi :
     // Cette méthode va combiner aux maximun deux trajets afin de subvenir
     // aux paramètres rentrés notamment, la ville de départ et la ville d'arrivée
@@ -112,4 +112,3 @@ Linkedlist trajets;
 //-------------------------------- Autres définitions dépendantes de <Catalogue>
 
 #endif // Catalogue_H
-

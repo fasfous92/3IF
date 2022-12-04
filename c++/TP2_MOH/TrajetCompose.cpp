@@ -64,7 +64,7 @@ int TrajetCompose::AjouterTrajet(const Trajet* t)
         if (compo.getCell()->getData() == NULL)
             depart=(char*)t->getvilled();
         compo.Ajouter(t); //on utilise la méthode d'ajout de la Linkedlist
-            arrivee=(char*)t->getvillea();
+        arrivee=(char*)t->getvillea();
         return 1;
     } else {
         cout << "Erreur: impossible de rajouter";
@@ -87,7 +87,10 @@ void TrajetCompose::Afficher() const
 
 } //----- Fin Afficher
 
-
+Trajet* TrajetCompose::Clone() const
+{
+    return new TrajetCompose(*this);
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -123,6 +126,7 @@ TrajetCompose::~TrajetCompose ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetComposee>" << endl;
 #endif
+cout << "dest comp";
 
 } //----- Fin de ~TrajetComposee
 

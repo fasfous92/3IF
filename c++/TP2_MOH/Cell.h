@@ -65,7 +65,7 @@ public:
     // Contrat :
     //
 
-    Cell ( Trajet* unTrajet, Cell nextCell );
+    Cell ( Trajet* unTrajet, Cell * nextCell );
     // Mode d'emploi (constructeur de copie) :
     // ce constructeur est utile afin de rajouter une cellule en un endroit
     // precis (il faut que le nextCell soit donné en paramètre). on opter pour le cell
@@ -82,12 +82,6 @@ public:
     //
     // Contrat :
     //
-
-    /*Cell ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //*/
 
     virtual ~Cell ( );
     // Mode d'emploi :

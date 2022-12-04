@@ -38,6 +38,8 @@ public:
 
     //GETTERS,SETTERS
     Cell* getCell()const;
+    const char* getVillea() const;
+    const char* getVilled() const;
     void setCell(Cell* cell);
 
 

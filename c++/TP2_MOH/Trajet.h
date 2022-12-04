@@ -29,43 +29,34 @@ class Trajet
 public:
 //----------------------------------------------------- Méthodes publiques
     virtual void Afficher() const =0;
-    // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     // Affichage des détails d'un trajet
     // Contrat :
     //
 
     virtual const char * getvilled() const =0;
-    // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     // 
     // Contrat :
     //
 
     virtual const char * getvillea() const =0;
-    // type Méthode ( liste des paramètres );
+    // Mode d'emploi :
+    // 
+    // Contrat :
+    //
+
+    virtual Trajet* Clone() const =0 ;
     // Mode d'emploi :
     // 
     // Contrat :
     //
 
 
-
 //------------------------------------------------- Surcharge d'opérateurs
     
 //-------------------------------------------- Constructeurs - destructeur
-    //virtual Trajet ( const Trajet & unTrajet )=0;
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    //virtual Trajet ( )=0;
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
+    
     virtual ~Trajet ( );
     // Mode d'emploi :
     //

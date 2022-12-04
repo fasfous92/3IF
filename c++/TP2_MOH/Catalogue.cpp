@@ -14,7 +14,7 @@
 using namespace std;
 #include <iostream>
 #include <cstring>
-
+#include <stdbool.h>
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
@@ -30,50 +30,40 @@ using namespace std;
 
 
 
-void Catalogue::rechercheCombi(const char* depart, const char* arrivee, bool display) const
+void Catalogue::rechercheCombi(const char* depart, const char* arrivee, bool display , Linkedlist* monTrajet) const
 //Algorithme:
 {
-    /*if(!display){
-    if(recherche(depart,arrivee)) {
+    
+    Cell *parcours = trajets.getCell();
+    Cell *parcours2 = trajets.getCell();
+    Trajet *t = parcours->getData();
+    Trajet *tnext = parcours2->getData();
+    while (parcours != nullptr) {
+        t = parcours->getData();
+        if(::strcmp(t->getvilled(),depart)==0 && ::strcmp(t->getvillea(),arrivee)==0) { //ce if va simuler la fonctionnalité d'une recherche de simple trajets
+            monTrajet->Ajouter(t->Clone());
+            return;
         }
-    }*/
-    if(!display)
-        cout << "Trajets combinés possibles:\n";
+        if (strcmp(t->getvilled(), depart) == 0) {
+            while (parcours2 != nullptr) {
+                tnext = parcours2->getData();
+                if (strcmp(t->getvillea(), tnext->getvilled()) == 0){
 
-        int i = 1;
-        Cell *parcours = trajets.getCell();
-        Cell *parcours2 = trajets.getCell();
-        Trajet *t = parcours->getData();
-        Trajet *tnext = parcours2->getData();
-        while (parcours != nullptr) {
-            t = parcours->getData();
-            if(::strcmp(t->getvilled(),depart)==0 && ::strcmp(t->getvillea(),arrivee)==0) { //ce if va simuler la fonctionnalité d'une recherche de simple trajets
-                t->Afficher();
-                return;
-            }
-            if (strcmp(t->getvilled(), depart) == 0) {
-                while (parcours2 != nullptr) {
-                    tnext = parcours2->getData();
-                    if (strcmp(t->getvillea(), tnext->getvilled()) == 0){
-
-                        if(!display) {
-                            cout << "Solution" << i << ":\n";
-                            t->Afficher();
-                        }
-                        tnext->Afficher();
-                        if(strcmp(tnext->getvillea(), arrivee) != 0) {
-                            rechercheCombi(tnext->getvilled(),arrivee,true); //on déja afficher le trajet tnext
-
-                        }
-                        i++;
-                        break;
+                    if(!display) {
+                        monTrajet->Ajouter(t->Clone());
                     }
-                    parcours2 = parcours2->getNext();
+                    monTrajet->Ajouter(tnext->Clone());
+                    if(strcmp(tnext->getvillea(), arrivee) != 0) {
+                        rechercheCombi(tnext->getvilled(),arrivee,true,monTrajet); //on déja afficher le trajet tnext
+                    }
+                    break;
                 }
+                parcours2 = parcours2->getNext();
             }
-            parcours = parcours->getNext();
-            parcours2 = trajets.getCell();
         }
+        parcours = parcours->getNext();
+        parcours2 = trajets.getCell();
+    }
 
 
 }//--Fin-rechercheCombi
@@ -82,7 +72,11 @@ void Catalogue::rechercheCombi(const char* depart, const char* arrivee, bool dis
 
 
 
-bool Catalogue::recherche(const char* depart, const char* arrivee)const{
+bool Catalogue::recherche(const char* depart, const char* arrivee)const
+// Fonction de recherche simple : affiche tous les trajets de la ville 'depart' à la ville 'arrivee'
+// retourne vrai si au moins un trajet touvé faux sinon
+
+{
     bool b=false;
     Cell* parcours=trajets.getCell();
     int find=0; //juste un indicateur de l'affichage
@@ -95,6 +89,7 @@ bool Catalogue::recherche(const char* depart, const char* arrivee)const{
         parcours=parcours->getNext();
         t=parcours->getData();
     }
+    
     if(strcmp(depart,t->getvilled())==0 && strcmp(arrivee,t->getvillea())==0){ //on vérifie si la dernière cellule vérifie nos conditions
         t->Afficher();
         find++;
@@ -126,7 +121,7 @@ void Catalogue :: AjouterSimple()
     char arrivee[20];
     char transport[20];
 
-    cin>>depart>>arrivee>>transport;
+    fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
     TrajetSimple *aAjouter = new TrajetSimple(depart,arrivee,transport);
     trajets.Ajouter(aAjouter);
     cout<<"Ajouté"<<endl;
@@ -138,11 +133,11 @@ void Catalogue :: AjouterCompose()
     char lecture[100];
     TrajetCompose* monTrajet=new TrajetCompose();
     trajets.Ajouter(monTrajet);
-    cout<<("menu ajout trajet composé:\n");
-    cout<<("\t1: ajouter un nouveau trajet simple \n");
-    cout<<("\t0: fin ajout trajet composé\n");
+    printf("menu ajout trajet composé:\n");
+    printf("\t1: ajouter un nouveau trajet simple \n");
+    printf("\t0: fin ajout trajet composé\n");
 
-    cin>>lecture;
+    fscanf(stdin,"%99s",lecture);
     while (strcmp(lecture,"0")!=0) {
 
         if (strcmp(lecture,"1")==0) {
@@ -150,7 +145,7 @@ void Catalogue :: AjouterCompose()
             char arrivee[20];
             char transport[20];
 
-            cin>>depart>>arrivee>>transport;
+            fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
             TrajetSimple *aAjouter = new TrajetSimple(depart,arrivee,transport);
             if(monTrajet->AjouterTrajet(aAjouter)==0){
                 delete aAjouter;
@@ -158,12 +153,11 @@ void Catalogue :: AjouterCompose()
         }else if (strcmp(lecture,"0")==0) {
 
         }
+        printf("menu ajout trajet composé:\n");
+        printf("\t1: ajouter un nouveau trajet simple \n");
+        printf("\t0: fin ajout trajet composé\n");
 
-        cout<<("menu ajout trajet composé:\n");
-        cout<<("\t1: ajouter un nouveau trajet simple \n");
-        cout<<("\t0: fin ajout trajet composé\n");
-
-        cin>>(lecture);
+        fscanf(stdin,"%99s",lecture);
     }
 } //----- Fin de Méthode
 
@@ -172,15 +166,15 @@ void Catalogue :: Interface()
 {
     char lecture[100];
 
-    cout<<("menu:\n");
-    cout<<("\t1: affichage\n");
-    cout<<("\t2: ajouter un trajet simple\n");
-    cout<<("\t3: ajouter un trajet composé\n");
-    cout<<("\t4: recherche de parcours\n");
-    cout<<("\t5: recherche combinatoire\n");
-    cout<<("\t0: quitter\n");
+    printf("menu:\n");
+    printf("\t1: affichage\n");
+    printf("\t2: ajouter un trajet simple\n");
+    printf("\t3: ajouter un trajet composé\n");
+    printf("\t4: recherche de parcours\n");
+    printf("\t5: recherche combinatoire\n");
+    printf("\t0: quitter\n");
 
-    cin>>(lecture);
+    fscanf(stdin,"%99s",lecture);
     while (strcmp(lecture,"0")!=0) {
 
 
@@ -191,29 +185,34 @@ void Catalogue :: Interface()
         }else if (strcmp(lecture,"3")==0) {
             AjouterCompose();
         }else if (strcmp(lecture,"4")==0) {
-            cout<<("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
+            printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
             char depart[20];
             char arrivee[20];
-            cin>>depart>>arrivee;
+            fscanf(stdin,"%99s %99s",depart,arrivee);
             recherche(depart,arrivee);
         }else if (strcmp(lecture,"5")==0) {
-            cout<<("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
+            printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
             char depart[20];
             char arrivee[20];
-            cin>>depart>>arrivee;
-            rechercheCombi(depart,arrivee, false);
+            fscanf(stdin,"%99s %99s",depart,arrivee);
+            Linkedlist* monTrajet=new Linkedlist();
+            rechercheCombi(depart,arrivee, false,monTrajet);
+            if(strcmp(monTrajet->getVillea(),arrivee)==0 && strcmp(monTrajet->getVilled(),depart)==0 )
+                monTrajet->Afficher();
+            //monTrajet=new Linkedlist();
+            delete monTrajet;
 
         }else if (strcmp(lecture,"0")==0) {
         }
-        cout<<("menu:\n");
-        cout<<("\t1: affichage\n");
-        cout<<("\t2: ajouter un trajet simple\n");
-        cout<<("\t3: ajouter un trajet composé\n");
-        cout<<("\t4: recherche de parcours\n");
-        cout<<("\t5: recherche combinatoire\n");
-        cout<<("\t0: quitter\n");
+        printf("menu:\n");
+        printf("\t1: affichage\n");
+        printf("\t2: ajouter un trajet simple\n");
+        printf("\t3: ajouter un trajet composé\n");
+        printf("\t4: recherche de parcours\n");
+        printf("\t5: recherche combinatoire\n");
+        printf("\t0: quitter\n");
 
-        cin>>(lecture);
+        fscanf(stdin,"%99s",lecture);
     }
 } //----- Fin de Méthode
 
@@ -228,7 +227,6 @@ Catalogue::Catalogue ( const Catalogue & unCatalogue )
     #ifdef MAP
         cout << "Appel au constructeur de copie de <Catalogue>" << endl;
     #endif
-    trajets.setCell(unCatalogue.trajets.getCell());
     trajets.setCell(unCatalogue.trajets.getCell());
 } //----- Fin de Catalogue (constructeur de copie)
 
@@ -250,6 +248,7 @@ Catalogue::~Catalogue ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Catalogue>" << endl;
 #endif
+cout << "destructeur cata";
 // delete trajets;
 } //----- Fin de ~Catalogue
 
@@ -257,4 +256,3 @@ Catalogue::~Catalogue ( )
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-
