@@ -116,9 +116,13 @@ void Catalogue :: AjouterSimple()
     char transport[20];
 
     fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
-    TrajetSimple *aAjouter = new TrajetSimple(depart,arrivee,transport);
-    trajets.Ajouter(aAjouter);
-    cout<<"Ajouté"<<endl;
+    if(::strcmp(depart,arrivee)==0)
+        cout<<"erreur d'ajout vérifier les noms des villes!!!"<<endl;
+    else {
+        TrajetSimple *aAjouter = new TrajetSimple(depart, arrivee, transport);
+        trajets.Ajouter(aAjouter);
+        cout << "Ajouté" << endl;
+    }
 } //----- Fin de Méthode
 
 void Catalogue :: AjouterCompose() 
