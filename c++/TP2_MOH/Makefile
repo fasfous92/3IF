@@ -1,23 +1,42 @@
-main : main.o  TrajetSimple.o Cell.o Linkedlist.o TrajetCompose.o Catalogue.o Trajet.o
-	g++ -g  -o main main.o  TrajetSimple.o Cell.o Linkedlist.o TrajetCompose.o Catalogue.o Trajet.o
+#Makefile generique
+#Outils
+CXX=g++
+LD=g++
+RM=rm
+ECHO=echo
 
-main.o : main.cpp
-	g++ -c main.cpp
+#Options
+CXXFLAGS= -g -W -Wall -pedantic -Wextra -ansi -O2 -std=c++11
+LDFLAGS=
+RMFLAGS=-rf
 
-Catalogue.o: Catalogue.cpp
-	g++ -c Catalogue.cpp
+#Fichiers
+HEAD=$(wildcard *.h)
+SRC=$(wildcard *.cpp)
+OBJ=$(SRC:.cpp=.o)
+LIBS=
 
-TrajetSimple.o : TrajetSimple.cpp
-	g++ -c TrajetSimple.cpp
+#Cibles speciales
+EXE=trajet
+RUN=execute
+CLEAN=clean
+.PHONY: $(CLEAN) $(RUN)
 
-Cell.o: Cell.cpp
-	g++ -c Cell.cpp
+#Cibles
+$(EXE): $(OBJ)
+	@$(ECHO) Edition des liens
+	@$(LD) $(LDFLAGS) $^ -o $@ $(LIBS)
 
-Linkedlist.o: Linkedlist.cpp
-	g++ -c Linkedlist.cpp
+$(RUN): $(EXE)
+	@$(ECHO) Execution de $^
+	@./$(EXE)
 
-TrajetCompose.o: TrajetCompose.cpp
-	g++ -c TrajetCompose.cpp
+$(CLEAN):
+	@$(RM) $(RMFLAGS) $(EXE) $(OBJ)
 
-Trajet.o: Trajet.cpp
-	g++ -c Trajet.cpp
+#Dependances complementaires
+
+#Regles d'inference
+%.o: %.cpp
+	@$(ECHO) Compilation de $<
+	@$(CXX) $(CXXFLAGS) -c $< -o $@

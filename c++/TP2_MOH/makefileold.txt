@@ -1,0 +1,23 @@
+main : main.o  TrajetSimple.o Cell.o Linkedlist.o TrajetCompose.o Catalogue.o Trajet.o
+	g++ -g  -o main main.o  TrajetSimple.o Cell.o Linkedlist.o TrajetCompose.o Catalogue.o Trajet.o
+
+main.o : main.cpp
+	g++ -ansi -pedantic -Wall -std=c++11. -c main.cpp
+
+Catalogue.o: Catalogue.cpp
+	g++ -ansi -pedantic -Wall -std=c++11. -c Catalogue.cpp
+
+TrajetSimple.o : TrajetSimple.cpp
+	g++ -ansi -pedantic -Wall -std=c++11. -c TrajetSimple.cpp
+
+Cell.o: Cell.cpp
+	g++ -ansi -pedantic -Wall -std=c++11. -c Cell.cpp
+
+Linkedlist.o: Linkedlist.cpp
+	g++ -ansi -pedantic -Wall -std=c++11. -c Linkedlist.cpp
+
+TrajetCompose.o: TrajetCompose.cpp
+	g++ -ansi -pedantic -Wall -std=c++11. -c TrajetCompose.cpp
+
+Trajet.o: Trajet.cpp
+	g++ -ansi -pedantic -Wall -std=c++11. -c Trajet.cpp

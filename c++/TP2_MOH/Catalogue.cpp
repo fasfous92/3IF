@@ -14,7 +14,7 @@
 using namespace std;
 #include <iostream>
 #include <cstring>
-#include <stdbool.h>
+
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
@@ -126,7 +126,7 @@ void Catalogue :: AjouterSimple()
     char arrivee[20];
     char transport[20];
 
-    fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
+    cin>>depart>>arrivee>>transport;
     TrajetSimple *aAjouter = new TrajetSimple(depart,arrivee,transport);
     trajets.Ajouter(aAjouter);
     cout<<"Ajouté"<<endl;
@@ -138,11 +138,11 @@ void Catalogue :: AjouterCompose()
     char lecture[100];
     TrajetCompose* monTrajet=new TrajetCompose();
     trajets.Ajouter(monTrajet);
-    printf("menu ajout trajet composé:\n");
-    printf("\t1: ajouter un nouveau trajet simple \n");
-    printf("\t0: fin ajout trajet composé\n");
+    cout<<("menu ajout trajet composé:\n");
+    cout<<("\t1: ajouter un nouveau trajet simple \n");
+    cout<<("\t0: fin ajout trajet composé\n");
 
-    fscanf(stdin,"%99s",lecture);
+    cin>>lecture;
     while (strcmp(lecture,"0")!=0) {
 
         if (strcmp(lecture,"1")==0) {
@@ -150,7 +150,7 @@ void Catalogue :: AjouterCompose()
             char arrivee[20];
             char transport[20];
 
-            fscanf(stdin,"%99s %99s %99s",depart,arrivee,transport);
+            cin>>depart>>arrivee>>transport;
             TrajetSimple *aAjouter = new TrajetSimple(depart,arrivee,transport);
             if(monTrajet->AjouterTrajet(aAjouter)==0){
                 delete aAjouter;
@@ -158,11 +158,12 @@ void Catalogue :: AjouterCompose()
         }else if (strcmp(lecture,"0")==0) {
 
         }
-        printf("menu ajout trajet composé:\n");
-        printf("\t1: ajouter un nouveau trajet simple \n");
-        printf("\t0: fin ajout trajet composé\n");
 
-        fscanf(stdin,"%99s",lecture);
+        cout<<("menu ajout trajet composé:\n");
+        cout<<("\t1: ajouter un nouveau trajet simple \n");
+        cout<<("\t0: fin ajout trajet composé\n");
+
+        cin>>(lecture);
     }
 } //----- Fin de Méthode
 
@@ -171,15 +172,15 @@ void Catalogue :: Interface()
 {
     char lecture[100];
 
-    printf("menu:\n");
-    printf("\t1: affichage\n");
-    printf("\t2: ajouter un trajet simple\n");
-    printf("\t3: ajouter un trajet composé\n");
-    printf("\t4: recherche de parcours\n");
-    printf("\t5: recherche combinatoire\n");
-    printf("\t0: quitter\n");
+    cout<<("menu:\n");
+    cout<<("\t1: affichage\n");
+    cout<<("\t2: ajouter un trajet simple\n");
+    cout<<("\t3: ajouter un trajet composé\n");
+    cout<<("\t4: recherche de parcours\n");
+    cout<<("\t5: recherche combinatoire\n");
+    cout<<("\t0: quitter\n");
 
-    fscanf(stdin,"%99s",lecture);
+    cin>>(lecture);
     while (strcmp(lecture,"0")!=0) {
 
 
@@ -190,29 +191,29 @@ void Catalogue :: Interface()
         }else if (strcmp(lecture,"3")==0) {
             AjouterCompose();
         }else if (strcmp(lecture,"4")==0) {
-            printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
+            cout<<("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
             char depart[20];
             char arrivee[20];
-            fscanf(stdin,"%99s %99s",depart,arrivee);
+            cin>>depart>>arrivee;
             recherche(depart,arrivee);
         }else if (strcmp(lecture,"5")==0) {
-            printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
+            cout<<("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
             char depart[20];
             char arrivee[20];
-            fscanf(stdin,"%99s %99s",depart,arrivee);
+            cin>>depart>>arrivee;
             rechercheCombi(depart,arrivee, false);
 
         }else if (strcmp(lecture,"0")==0) {
         }
-        printf("menu:\n");
-        printf("\t1: affichage\n");
-        printf("\t2: ajouter un trajet simple\n");
-        printf("\t3: ajouter un trajet composé\n");
-        printf("\t4: recherche de parcours\n");
-        printf("\t5: recherche combinatoire\n");
-        printf("\t0: quitter\n");
+        cout<<("menu:\n");
+        cout<<("\t1: affichage\n");
+        cout<<("\t2: ajouter un trajet simple\n");
+        cout<<("\t3: ajouter un trajet composé\n");
+        cout<<("\t4: recherche de parcours\n");
+        cout<<("\t5: recherche combinatoire\n");
+        cout<<("\t0: quitter\n");
 
-        fscanf(stdin,"%99s",lecture);
+        cin>>(lecture);
     }
 } //----- Fin de Méthode
 
