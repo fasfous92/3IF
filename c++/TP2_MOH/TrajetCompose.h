@@ -1,9 +1,9 @@
 /*************************************************************************
                            TrajetCompose  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
+    e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
@@ -28,24 +28,21 @@ class TrajetCompose: public Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-
-    //GETTERS,SETTERS
+      //GETTERS,SETTERS
     virtual const char* getvillea()const;
     // Mode d'emploi:
     // Retourne le ville d'arrivée du trajet composé
     //
     //Contrat:
-    //
+    //PAS DE CONTRAT
+
     virtual const char* getvilled()const;
     // Mode d'emploi:
     // Retourne le ville de départ du trajet composé
     //
     //Contrat:
-    //
+    //PAS DE CONTRAT
+
     //--Fin GETTERS,SETTERS
 
     
@@ -57,7 +54,8 @@ public:
     // cette méthode retourne 1 si l'ajout a été réaliser sinon 0
     //
     //Contrat:
-    //
+    //PAS DE CONTRAT
+
 
 
 
@@ -68,13 +66,8 @@ public:
     // peut avoir plusieurs moyens de transport on a décider de ne pas afficher les modes de
     // transport.
     // Contrat :
-    //
+    //PAS DE CONTRAT
 
-    Trajet* Clone() const;
-    // Mode d'emploi :
-    // Retourne une copie du trajet composé
-    // Contrat :
-    //
 
 
 
@@ -83,11 +76,7 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose (const TrajetCompose & unTrajetComposee );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
+
 
     TrajetCompose ();
     // Mode d'emploi : cette methode va demander à l'utilisateur:
@@ -95,13 +84,15 @@ public:
     // on demandera à l'utilisateur de rajouter les étapes qui composent
     // ce trajet (avec la methode AjouterTrajet).
     // Contrat :
-    // Aucun
+    //PAS DE CONTRAT
+
 
     virtual ~TrajetCompose ( );
     // Mode d'emploi :
     //
     // Contrat :
-    //
+    //PAS DE CONTRAT
+
 
 //------------------------------------------------------------------ PRIVE
 

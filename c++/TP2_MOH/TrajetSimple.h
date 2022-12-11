@@ -3,6 +3,7 @@
                              -------------------
     début                : $21-11-2022$
     copyright            : (C) $2022$ par $Binôme3307$
+    e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----------------
@@ -52,21 +53,12 @@ public:
     // Contrat :
     //
 
-    Trajet* Clone() const;
-    // Mode d'emploi :
-    // Retourne une copie d'un trajet simple
-    // Contrat :
-    //
+
 
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetSimple ( const TrajetSimple & unTrajetSimple );
-    // Mode d'emploi (constructeur de copie) :
-    // Constructeur de copie
-    // Contrat :
-    //
 
     TrajetSimple (const char * vDepart ,const char * vArrivee ,const char * mTransport );
     // Mode d'emploi :

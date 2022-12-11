@@ -6,7 +6,7 @@ RM=rm
 ECHO=echo
 
 #Options
-CXXFLAGS= -g -W -Wall -pedantic -Wextra -ansi -O2 -std=c++11
+CXXFLAGS= -g -W -Wall -pedantic -Wextra -ansi -O2 -std=c++11 -DMAP
 LDFLAGS=
 RMFLAGS=-rf
 

@@ -1,9 +1,9 @@
 /*************************************************************************
                            TrajetSimple  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
+    e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
@@ -52,12 +52,6 @@ const char* TrajetSimple::getTransport() const
     return transport;
 }
 
-Trajet* TrajetSimple::Clone() const
-// Algorithme : Méthode simple
-//
-{
-    return new TrajetSimple(*this);
-}
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -65,22 +59,6 @@ Trajet* TrajetSimple::Clone() const
 
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
-// Algorithme : Méthode simple
-//
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de copie de <TrajetSimple>" << endl;
-    #endif
-    depart=new char[strlen(unTrajetSimple.depart)+1];
-    arrivee=new char[strlen(unTrajetSimple.arrivee)+1];
-    transport=new char[strlen(unTrajetSimple.transport)+1];
-    strcpy(depart,unTrajetSimple.depart);
-    strcpy(arrivee,unTrajetSimple.arrivee);
-    strcpy(transport,unTrajetSimple.transport);
-
-} //----- Fin de TrajetSimple (constructeur de copie)
-
 
 TrajetSimple::TrajetSimple (const char * vDepart ,const char * vArrivee ,const  char * mTransport )
 // Algorithme : Méthode simple

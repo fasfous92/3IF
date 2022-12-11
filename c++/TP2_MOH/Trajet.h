@@ -1,9 +1,9 @@
 /*************************************************************************
                            Trajet  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
+    e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------
@@ -32,36 +32,34 @@ public:
     // Mode d'emploi :
     // Affichage des détails d'un trajet
     // Contrat :
-    //
+    //PAS DE CONTRAT
+
 
     virtual const char * getvilled() const =0;
     // Mode d'emploi :
     // retourne la ville de départ d'un trajet
     // Contrat :
-    //
+    //PAS DE CONTRAT
+
 
     virtual const char * getvillea() const =0;
     // Mode d'emploi :
     // retourne la ville d'arrivée d'un trajet
     // Contrat :
-    //
+    //PAS DE CONTRAT
 
-    virtual Trajet* Clone() const =0 ;
-    // Mode d'emploi :
-    // retourne une copie du trajet
-    // Contrat :
-    //
 
 
 //------------------------------------------------- Surcharge d'opérateurs
     
 //-------------------------------------------- Constructeurs - destructeur
-    
+
     virtual ~Trajet ( );
     // Mode d'emploi :
     // Destructeur d'un trajet
     // Contrat :
-    //
+    //PAS DE CONTRAT
+
 
 //------------------------------------------------------------------ PRIVE
 

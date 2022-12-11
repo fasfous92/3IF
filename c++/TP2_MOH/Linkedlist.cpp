@@ -3,7 +3,7 @@
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Linkedlist> (fichier Linkedlist.cpp) ------------
@@ -33,18 +33,18 @@ using namespace std;
 
 // GETTERS,SETTERS
 
-Cell* Linkedlist::getCell() const
+Cell* Linkedlist::getracine() const
 // Algorithme : Méthode simple
 {
-    return cellule;
+    return racine;
 }
 
 const char* Linkedlist::getVillea() const
 // Algorithme : Méthode simple
 {
-    if(cellule->getData()==nullptr) return ""; // si liste vide
+    if(racine->getData() == nullptr) return ""; // si liste vide
 
-    Cell* parcours=cellule;
+    Cell* parcours=racine;
     while (parcours->getNext()!= nullptr){
         parcours=parcours->getNext();
     }
@@ -54,13 +54,13 @@ const char* Linkedlist::getVillea() const
 const char* Linkedlist::getVilled() const
 // Algorithme : Méthode simple
 {
-    return cellule->getData()->getvilled();
+    return racine->getData()->getvilled();
 }
 
-void Linkedlist::setCell(Cell* cell)
+void Linkedlist::setracine(Cell* cell)
 // Algorithme : Méthode simple
 {
-    cellule=cell;
+    racine=cell;
 }
 
 //--Fin GETTERS,SETTERS
@@ -69,13 +69,13 @@ void Linkedlist::Ajouter(const Trajet *t)
 // Algorithme : Méthode simple
 {
     // cas où la liste est vide
-    if(cellule->getData()==nullptr){
-        cellule->setData(t);
+    if(racine->getData() == nullptr){
+        racine->setData(t);
         return;
     }
 
     // cas où la liste n'est pas vide : rajouter le nouveau trajet à la fin
-    Cell* parcours=cellule;
+    Cell* parcours=racine;
     while(parcours->getNext()!=nullptr){
         parcours=parcours->getNext();
     }
@@ -88,8 +88,8 @@ void Linkedlist::Ajouter(const Trajet *t)
 void Linkedlist::tri()
 // Algorithme : Tri par selection
 {
-    Cell* parcours=cellule;
-    Cell* parcours2=cellule;
+    Cell* parcours=racine;
+    Cell* parcours2=racine;
     while(parcours2!=nullptr){
         while (parcours!= nullptr){
             if(strcmp(parcours->getData()->getvilled(),parcours2->getData()->getvilled())<0){
@@ -110,19 +110,19 @@ void Linkedlist::Afficher()const
 // Algorithme : Méthode simple
 //
 {
-    if(cellule->getData()==nullptr){
+    if(racine->getData() == nullptr){
         return;
     }
 
-    if (cellule->getNext() == nullptr) {
-        cellule->getData()->Afficher();// si notre Linekdlist n'a qu'une seule cellule on va juste l'afficher
-    } else { // sinon on doit afficher chaque cellule de notre liste en parcourant les cellules.
-        Cell *parcours = cellule;
+    if (racine->getNext() == nullptr) {
+        racine->getData()->Afficher();// si notre Linekdlist n'a qu'une seule racine on va juste l'afficher
+    } else { // sinon on doit afficher chaque racine de notre liste en parcourant les cellules.
+        Cell *parcours = racine;
         while (parcours->getNext() != nullptr) {
             parcours->getData()->Afficher(); //selon le type du trajet (simple/composé) on aurait une methode afficher qui adaptée (virtual)
             parcours = parcours->getNext();
         }
-        parcours->getData()->Afficher(); //on va afficher la dernière cellule
+        parcours->getData()->Afficher(); //on va afficher la dernière racine
     }
 }//----- Fin Afficher
 
@@ -131,18 +131,6 @@ void Linkedlist::Afficher()const
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Linkedlist::Linkedlist(const Linkedlist &unLinkedlist)
-// Algorithme :  Méthode simple
-//
-{
-    #ifdef MAP
-            cout << "Appel au constructeur de copie de <Xxx>" << endl;
-    #endif
-    cellule = new Cell;
-    cellule->setData(unLinkedlist.cellule->getData());
-    cellule->setNext(unLinkedlist.cellule->getNext());
-
-} //----- Fin de Linkedlist (constructeur de copie)
 
 
 Linkedlist::Linkedlist()
@@ -150,9 +138,9 @@ Linkedlist::Linkedlist()
 //
 {
     #ifdef MAP
-            cout << "Appel au destructeur de <Xxx>" << endl;
+            cout << "Appel au destructeur de <Linkedlist>" << endl;
     #endif
-    cellule = new Cell();
+    racine = new Cell();
 
 
 } //----- Fin de ~Linkedlist
@@ -163,9 +151,9 @@ Linkedlist::~Linkedlist ( )
 //
 {
     #ifdef MAP
-        cout << "Appel au destructeur de <Linkedlist>" << endl;
+    cout << "Appel au destructeur de <Linkedlist>" << endl;
     #endif
-    delete cellule;
+    delete racine;
 } //----- Fin de ~Linkedlist
 
 

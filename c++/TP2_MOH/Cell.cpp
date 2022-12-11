@@ -3,7 +3,7 @@
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Cell> (fichier Cell.cpp) ------------
@@ -55,44 +55,24 @@ Cell* Cell::getNext() const
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-Cell::Cell ( const Cell & unCell )
-// Algorithme : Méthode simple
-//
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de copie de <Cell>" << endl;
-    #endif
-    data=unCell.data;
-    next=unCell.next;
-} //----- Fin de Cell (constructeur de copie)
 
 Cell::Cell ( const Trajet* unTrajet )
 // Algorithme : Méthode simple
 //
 {
     #ifdef MAP
-        cout << "Appel au constructeur de copie de <Cell>" << endl;
+        cout << "Appel au constructeur de de <Cell> avec Trajet en paramètre" << endl;
     #endif
     data=(Trajet*)unTrajet;
     next=nullptr; //le next vers Null car on les pas encore liée cela peut être modifier avec un setter
-} //----- Fin de Cell 
+} //----- Fin de Cell
 
-Cell::Cell ( Trajet* unTrajet, Cell * nextCell )
-// Algorithme : Méthode simple
-//
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de copie de <Cell>" << endl;
-    #endif
-    data=unTrajet;
-    next=nextCell;
-} //----- Fin de Cell 
 
 Cell::Cell()
 // Algorithme : Méthode simple
 {
     #ifdef MAP
-        cout << "Appel au constructeur de copie de <Cell>" << endl;
+        cout << "Appel au constructeur de <Cell>" << endl;
     #endif
     data= nullptr;
     next= nullptr;

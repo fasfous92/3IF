@@ -1,12 +1,12 @@
 /*************************************************************************
                            TrajetCompose  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
+    e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Xxx> (fichier TrajetCompose.cpp) ------------
+//---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -28,7 +28,7 @@ using namespace std;
 const char* TrajetCompose::getvillea()const
 // Algorithme : Méthode simple
 {
-    Cell* parcours=compo.getCell();
+    Cell* parcours= compo.getracine();
     while (parcours->getNext()!= nullptr){
         parcours=parcours->getNext();
     }
@@ -40,7 +40,7 @@ const char* TrajetCompose::getvillea()const
 const char* TrajetCompose::getvilled()const
 // Algorithme : Méthode simple
 {
-    Cell* parcours=compo.getCell();
+    Cell* parcours= compo.getracine();
     return     parcours->getData()->getvilled();
 
 }
@@ -52,8 +52,8 @@ int TrajetCompose::AjouterTrajet(const Trajet* t)
 // Algorithme : Méthode simple
 {
 
-    if (compo.getCell()->getData() == nullptr || strcmp(getvillea(),t->getvilled())==0) {
-        if (compo.getCell()->getData() == nullptr)
+    if (compo.getracine()->getData() == nullptr || strcmp(getvillea(), t->getvilled()) == 0) {
+        if (compo.getracine()->getData() == nullptr)
             depart=(char*)t->getvilled();
         compo.Ajouter(t); //on utilise la méthode d'ajout de la Linkedlist
         arrivee=(char*)t->getvillea();
@@ -79,28 +79,12 @@ void TrajetCompose::Afficher() const
 
 } //----- Fin Afficher
 
-Trajet* TrajetCompose::Clone() const
-// Algorithme : Méthode simple
-//
-{
-    return new TrajetCompose(*this);
-}
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
-// Algorithme :
-//
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de copie de <TrajetComposee>" << endl;
-    #endif
-    compo.setCell(unTrajetCompose.compo.getCell());
-
-} //----- Fin de TrajetCompose (constructeur de copie)
-
 
 TrajetCompose::TrajetCompose()
 // Algorithme :

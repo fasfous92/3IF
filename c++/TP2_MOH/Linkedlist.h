@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Xxx  -  description
+                           Linkedlist  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
+    e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
+//---------- Interface de la classe <Linkedlist> (fichier Linkedlist.h) ----------------
 #if ! defined ( LINKEDLIST_H )
 #define LINKEDLIST_H
 
@@ -19,8 +19,9 @@ const int INIT=2;
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
-//
+// Rôle de la classe <Linkedlist>
+//Linkedlist est une liste chainee qui pointe vers la première racine
+// celle-ci peut contenir des trajets
 //
 //------------------------------------------------------------------------
 
@@ -30,42 +31,42 @@ class Linkedlist
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     //GETTERS,SETTERS
-    Cell* getCell()const;
+    Cell* getracine()const;
     // Mode d'emploi :
-    // retourne la première cellule de la liste
+    // retourne la première racine de la liste
     // Contrat :
+    //PAS DE CONTRAT
     //
     const char* getVillea() const;
     // Mode d'emploi :
     // retourne la ville d'arrivée du dernier trajet de la liste
     // on l'utilise dans la recherche combinée dans Catalogue
     // Contrat :
+    //PAS DE CONTRAT
     //
     const char* getVilled() const;
     // Mode d'emploi :
     // retourne la ville de de départ du premier trajet de la liste
     // on l'utilise dans la recherche combinée dans Catalogue
     // Contrat :
+    //PAS DE CONTRAT
     //
-    void setCell(Cell* cell);
+    void setracine(Cell* cell);
     // Mode d'emploi :
-    // change la valeur de la première cellule de la liste
+    // change la valeur de la première racine de la liste
     // Contrat :
+    //PAS DE CONTRAT
     //
 
     //----Fin GETERS,SETTERS
 
     void Ajouter(const Trajet* t);
     // Mode d'emploi :
-    // cette methode va ajouterun trajet à la liste
+    // cette methode va ajouter un trajet à la liste
     // Contrat :
+    //PAS DE CONTRAT
     //
 
     void tri();
@@ -74,13 +75,15 @@ public:
     // des villes de départ afin de simplifier la lecture de l'affichage
     // pour l'utilisateur.
     // Contrat :
+    //PAS DE CONTRAT
     //
 
     void Afficher()const;
     // Mode d'emploi :
     // cette méthode va afficher les différents trajets qui composent la liste
-    // pour chaque cellule elle va faire appel à la méthode Afficher liée à chaque type de trajet (simple ou composé).
+    // pour chaque racine elle va faire appel à la méthode Afficher liée à chaque type de trajet (simple ou composé).
     // Contrat :
+    //PAS DE CONTRAT
     //
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -88,12 +91,7 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Linkedlist ( const Linkedlist & unLinkedlist );
-    // Mode d'emploi (constructeur de copie) :
-    // comme Linkedlist est simplement une vue des trajets on copie juste le pointeur
-    // pas de copie en profondeur
-    // Contrat :
-    //
+
 
     Linkedlist ();
     // Mode d'emploi :
@@ -113,7 +111,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-Cell *cellule;
+Cell *racine;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Xxx>
