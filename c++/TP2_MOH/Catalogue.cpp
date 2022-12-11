@@ -88,7 +88,6 @@ bool Catalogue::rechercheCombi(const char* depart, const char* arrivee, bool dis
 bool Catalogue::recherche(const char* depart, const char* arrivee)const{
     bool b=false;
     Cell* parcours= trajets.getracine();
-    int find=0; //juste un indicateur de l'affichage
     Trajet* t=parcours->getData();
     while (parcours->getNext()!= nullptr){
         if(strcmp(depart,t->getvilled())==0 && strcmp(arrivee,t->getvillea())==0){
@@ -100,7 +99,7 @@ bool Catalogue::recherche(const char* depart, const char* arrivee)const{
     }
     if(strcmp(depart,t->getvilled())==0 && strcmp(arrivee,t->getvillea())==0){ //on vérifie si la dernière racine vérifie nos conditions
         t->Afficher();
-        find++;
+        b=true;
     }
 
     if(!b){
@@ -209,7 +208,7 @@ void Catalogue :: Interface()
                     cout<<"----------\n";
                 }
                 cout << "Combinaisons de trajets pas disponible dans notre réseaux, cependant vous pouvez\n";
-                cout << "voir les propositions ci-dessus afin de vous rapprocher de votre distination\n ";
+                cout << "voir les propositions ci-dessus afin de vous rapprocher de votre destination\n ";
             }
 
         }else if (strcmp(lecture,"0")==0) {
