@@ -59,6 +59,11 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
+    TrajetSimple (const string * vDepart ,const string * vArrivee ,const string * mTransport );
+    // Mode d'emploi :
+    //  surcharge du Constructeur d'un trajet simple utile afin de pouvoir importer les trajets d'un fichier
+    // Contrat :
+    //
 
     TrajetSimple (const char * vDepart ,const char * vArrivee ,const char * mTransport );
     // Mode d'emploi :

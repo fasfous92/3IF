@@ -47,6 +47,13 @@ public:
     // Contrat :
     //
 
+    void Importer();
+    // Mode d'emploi :
+    // Importer tous les trajets existant dans le fihcier CSV
+    //et les placés dans le Catalogue
+    // Contrat: le fichier "Catalogue.csv" doit exister dans le répertoire de travail
+    //
+
     void Afficher();
     // Mode d'emploi :
     // Affiche tous les trajets trier par ordre alphabétique

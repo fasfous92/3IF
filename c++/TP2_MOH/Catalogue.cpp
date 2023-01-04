@@ -15,6 +15,9 @@ using namespace std;
 #include <iostream>
 #include <cstring>
 #include <stdbool.h>
+#include <fstream>
+#include <vector>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
@@ -111,6 +114,71 @@ bool Catalogue::recherche(const char* depart, const char* arrivee)const{
 
 }
 
+void Catalogue:: Importer()
+// Algorithme:
+{
+    //créer un pointeur fichier
+    ifstream file;
+    //on accède au fichier.csv
+    file.open("text.txt");
+
+    if(file) {
+        vector<string> row;
+        string line,word;
+        TrajetCompose *t; // on le crée dans le cas où on en aura besoin
+        while (!file.eof()){
+            row.clear(); //effacer les données qui sont dans row
+
+            getline(file,line); //récuperer une ligne de file dans la string line
+            stringstream  s(line); //on va separer la ligne en plusieurs mots
+            while (getline(s,word,';')) //permet de mettre un mot de s dans word
+            {
+                row.push_back(word); //va stocker la valeur de word dans le vector de string row
+            }
+            if(strcmp(row[0].c_str(),"Type")==0){
+                //afin que la fonction stoi ne déclenche pas d'erreur pour la premièrer ligne
+            }else {
+
+                int n = stoi(row[0]);
+                switch (n) {
+                    case 1: { ; //la ligne représente un trajet simple
+                        TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
+                        trajets.Ajouter(aAjouter);
+                        cout << "Ajouté" << endl;
+                        break;
+                    }
+                    case 2: { ; //la ligne représente un trajet composé
+                        t = new TrajetCompose(); //on crée un trajet composé et on attends qu'il soit charger par les instructions suivantes
+                        trajets.Ajouter(t); // on le rajoute à notre Catalogue
+                        break;
+                    }
+                    case 3: { ;//trajet simple qui compose le trajet composé déjà initié
+                        TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
+                        t->AjouterTrajet(aAjouter);
+                        cout << "Ajouté dans composé" << endl;
+                        break;
+                    }
+                    default : {
+                        break;
+                    }
+                }
+            }
+        }
+
+    }
+
+    else {
+        cerr<<"Erreur d'ouverture de <Catalogue.csv>"<<endl;
+    }
+
+
+
+
+
+
+
+} //fin--Importer
+
 
 void Catalogue :: Afficher()
 // Algorithme :
@@ -179,6 +247,7 @@ void Catalogue :: Interface()
     printf("\t3: ajouter un trajet composé\n");
     printf("\t4: recherche de parcours\n");
     printf("\t5: recherche combinatoire\n");
+    printf("\t6: Importer le Catalogue \n");
     printf("\t0: quitter\n");
 
     fscanf(stdin,"%99s",lecture);
@@ -189,6 +258,8 @@ void Catalogue :: Interface()
             Afficher();
         }else if (strcmp(lecture,"2")==0) {
             AjouterSimple();
+        }else if (strcmp(lecture,"6")==0) {
+            Importer();
         }else if (strcmp(lecture,"3")==0) {
             AjouterCompose();
         }else if (strcmp(lecture,"4")==0) {
@@ -219,6 +290,7 @@ void Catalogue :: Interface()
         printf("\t3: ajouter un trajet composé\n");
         printf("\t4: recherche de parcours\n");
         printf("\t5: recherche combinatoire\n");
+        printf("\t6: Importer le Catalogue \n");
         printf("\t0: quitter\n");
 
         fscanf(stdin,"%99s",lecture);

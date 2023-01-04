@@ -75,6 +75,21 @@ TrajetSimple::TrajetSimple (const char * vDepart ,const char * vArrivee ,const  
     strcpy(transport,mTransport); 
 } //----- Fin de TrajetSimple
 
+TrajetSimple::TrajetSimple (const string * vDepart ,const string * vArrivee ,const  string * mTransport )
+// Algorithme : Méthode simple
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <TrajetSimple>" << endl;
+#endif
+    depart=new char[vDepart->length()+1];
+    arrivee=new char[vArrivee->length()+1];
+    transport=new char[mTransport->length()+1];
+    strcpy(depart,vDepart->c_str());
+    strcpy(arrivee,vArrivee->c_str());
+    strcpy(transport,mTransport->c_str());
+} //----- Fin de TrajetSimple
+
 
 TrajetSimple::~TrajetSimple ( )
 // Algorithme : Méthode simple
