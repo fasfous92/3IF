@@ -46,11 +46,35 @@ public:
     //
     // Contrat :
     //
+    void Importer_parIntervalle(const string namefile);
+    // Mode d'emploi :
+    // Importer tous les trajets existant dans le fichier en prenant en
+    //compte l'intervalle indiqué par l'utilisateur
+    // Contrat: le fichier doit exister dans le répertoire de travail ou le chemin d'accèes bien
+    //structuré
+    //
 
     void Importer();
     // Mode d'emploi :
+    // cette méthode est juste une interface qui permet à l'utilisateur de choisir le type d'importation
+    // Contrat: le fichier doit exister dans le répertoire de travail ou le chemin d'accèes bien
+    //structuré
+    //
+
+    void Importer_parChoix(string namefile);
+    // Mode d'emploi :
+    // Importer tous les trajets existant dans le fihcier en prenant en
+    //compte les choix de l'utilisateur (la ville de départ et/ou arrivée )
+    //de choisir le type de chargement qu'il désire (trjaets composés et/ou simples)
+    // Contrat: le fichier doit exister dans le répertoire de travail ou le chemin d'accèes bien
+    //structuré
+    //
+
+    void Importer_parCritere(string namefile);
+    // Mode d'emploi :
     // Importer tous les trajets existant dans le fihcier CSV
-    //et les placés dans le Catalogue
+    //et les placés dans le Catalogue, cette méthode permet à l'utilisateur
+    //de choisir le type de chargement qu'il désire (trjaets composés et/ou simples)
     // Contrat: le fichier "Catalogue.csv" doit exister dans le répertoire de travail
     //
 

@@ -1,0 +1,2 @@
+Type;villedepart;villearrivee;moyentransport
+1;Lyon;Bordeaux;Train
