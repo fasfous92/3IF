@@ -1,19 +1,22 @@
 /*************************************************************************
                            TrajetSimple  -  description
                              -------------------
-    dÃ©but                : $21-11-2022$
-    copyright            : (C) $2022$ par $BinÃ´me3307$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
-//---------- RÃ©alisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
+//---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include systÃ¨me
+//-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
 #include <cstring>
+#include <string>
+
+#pragma warning(disable : 4996)
 
 //------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
@@ -22,82 +25,94 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- MÃ©thodes publiques
+//----------------------------------------------------- Méthodes publiques
 
 void TrajetSimple::Afficher() const
-// Algorithme : MÃ©thode simple
+// Algorithme : Méthode simple
 //
 {
-    cout << "TS de " << depart << " Ã  " << arrivee << " en " << transport << endl ;
+    cout << "TS de " << depart << " à " << arrivee << " en " << transport << endl;
 }
 
 const char* TrajetSimple::getvilled() const
-// Algorithme : MÃ©thode simple
+// Algorithme : Méthode simple
 //
 {
     return depart;
 }
 
 const char* TrajetSimple::getvillea() const
-// Algorithme : MÃ©thode simple
+// Algorithme : Méthode simple
 //
 {
     return arrivee;
 }
 
 const char* TrajetSimple::getTransport() const
-// Algorithme : MÃ©thode simple
+// Algorithme : Méthode simple
 //
 {
     return transport;
 }
 
+string  TrajetSimple::Decrire(bool forTC) const {
+    string description;
+    if(!forTC) description.append("1;");
+    else description.append("3;");
+    description.append(depart);
+    description.append(";");
+    description.append(arrivee);
+    description.append(";");
+    description.append(transport);
+    description.append("\n");
+    return description;
+}
 
 
-//------------------------------------------------- Surcharge d'opÃ©rateurs
+//------------------------------------------------- Surcharge d'opérateurs
 
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
-TrajetSimple::TrajetSimple (const char * vDepart ,const char * vArrivee ,const  char * mTransport )
-// Algorithme : MÃ©thode simple
-//
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de <TrajetSimple>" << endl;
-    #endif
-    depart=new char[strlen(vDepart)+1];
-    arrivee=new char[strlen(vArrivee)+1];
-    transport=new char[strlen(mTransport)+1];
-    strcpy(depart,vDepart);
-    strcpy(arrivee,vArrivee);
-    strcpy(transport,mTransport); 
-} //----- Fin de TrajetSimple
-
-TrajetSimple::TrajetSimple (const string * vDepart ,const string * vArrivee ,const  string * mTransport )
-// Algorithme : MÃ©thode simple
+TrajetSimple::TrajetSimple(const char* vDepart, const char* vArrivee, const  char* mTransport)
+// Algorithme : Méthode simple
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
-    depart=new char[vDepart->length()+1];
-    arrivee=new char[vArrivee->length()+1];
-    transport=new char[mTransport->length()+1];
-    strcpy(depart,vDepart->c_str());
-    strcpy(arrivee,vArrivee->c_str());
-    strcpy(transport,mTransport->c_str());
+    depart = new char[strlen(vDepart) + 1];
+    arrivee = new char[strlen(vArrivee) + 1];
+    transport = new char[strlen(mTransport) + 1];
+    strcpy(depart, vDepart);
+    strcpy(arrivee, vArrivee);
+    strcpy(transport, mTransport);
+} //----- Fin de TrajetSimple
+
+TrajetSimple::TrajetSimple(const string* vDepart, const string* vArrivee, const  string* mTransport)
+// Algorithme : Méthode simple
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <TrajetSimple>" << endl;
+#endif
+    depart = new char[vDepart->length() + 1];
+    arrivee = new char[vArrivee->length() + 1];
+    transport = new char[mTransport->length() + 1];
+    strcpy(depart, vDepart->c_str());
+    strcpy(arrivee, vArrivee->c_str());
+    strcpy(transport, mTransport->c_str());
 } //----- Fin de TrajetSimple
 
 
-TrajetSimple::~TrajetSimple ( )
-// Algorithme : MÃ©thode simple
+TrajetSimple::~TrajetSimple()
+// Algorithme : Méthode simple
 //
 {
-    #ifdef MAP
-        cout << "Appel au destructeur de <TrajetSimple>" << endl;
-    #endif
+#ifdef MAP
+    cout << "Appel au destructeur de <TrajetSimple>" << endl;
+#endif
     delete[] arrivee;
     delete[] depart;
     delete[] transport;
@@ -106,4 +121,4 @@ TrajetSimple::~TrajetSimple ( )
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
+//----------------------------------------------------- Méthodes protégées

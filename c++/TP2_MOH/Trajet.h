@@ -1,76 +1,76 @@
 /*************************************************************************
                            Trajet  -  description
                              -------------------
-    dÃ©but                : $21-11-2022$
-    copyright            : (C) $2022$ par $BinÃ´me3307$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------
-#if ! defined ( TRAJET_H )
+
+
+#if !defined(TRAJET_H)
 #define TRAJET_H
 
-//--------------------------------------------------- Interfaces utilisÃ©es
+//--------------------------------------------------- Interfaces utilisées
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// RÃ´le de la classe <Trajet>
-// Une classe abstraite parent de TrajetSimple et TrajetComposÃ© 
+// Rôle de la classe <Trajet>
+// Une classe abstraite parent de TrajetSimple et TrajetComposé
 //
 //------------------------------------------------------------------------
 
-class Trajet 
+class Trajet
 {
-//----------------------------------------------------------------- PUBLIC
+    //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- MÃ©thodes publiques
-    virtual void Afficher() const =0;
+    //----------------------------------------------------- Méthodes publiques
+    virtual void Afficher() const = 0;
     // Mode d'emploi :
-    // Affichage des dÃ©tails d'un trajet
+    // Affichage des détails d'un trajet
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
-
-    virtual const char * getvilled() const =0;
+    virtual const char* getvilled() const = 0;
     // Mode d'emploi :
-    // retourne la ville de dÃ©part d'un trajet
+    // retourne la ville de départ d'un trajet
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
-
-    virtual const char * getvillea() const =0;
+    virtual const char* getvillea() const = 0;
     // Mode d'emploi :
-    // retourne la ville d'arrivÃ©e d'un trajet
+    // retourne la ville d'arrivée d'un trajet
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
+    virtual std::string Decrire(bool forTC) const = 0;
 
+    //------------------------------------------------- Surcharge d'opérateurs
 
-//------------------------------------------------- Surcharge d'opÃ©rateurs
-    
-//-------------------------------------------- Constructeurs - destructeur
+    //-------------------------------------------- Constructeurs - destructeur
 
-    virtual ~Trajet ( );
+    virtual ~Trajet();
     // Mode d'emploi :
     // Destructeur d'un trajet
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
-
-//------------------------------------------------------------------ PRIVE
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
+    //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protÃ©gÃ©s
-char* depart;
-char* arrivee;
+    //----------------------------------------------------- Attributs protégés
+    char* depart;
+    char* arrivee;
 };
 
-//-------------------------------- Autres dÃ©finitions dÃ©pendantes de <Trajet>
+//-------------------------------- Autres définitions dépendantes de <Trajet>
 
 #endif // Trajet_H

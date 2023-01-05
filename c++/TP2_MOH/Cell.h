@@ -1,8 +1,8 @@
 /*************************************************************************
                            Cell  -  description
                              -------------------
-    dÃ©but                : $21-11-2022$
-    copyright            : (C) $2022$ par $BinÃ´me3307$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
@@ -10,7 +10,7 @@
 #if ! defined ( Cell_H )
 #define Cell_H
 
-//--------------------------------------------------- Interfaces utilisÃ©es
+//--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
@@ -18,18 +18,18 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// RÃ´le de la classe <Cell>
-//une Cell est un bloc composÃ© d'un pointeur data qui pointe vers un trjaet
-// et un pointeur cell qui pointe vers la racine suivante (afin de simuler une liste chainÃ©e)
+// Rôle de la classe <Cell>
+//une Cell est un bloc composé d'un pointeur data qui pointe vers un trjaet
+// et un pointeur cell qui pointe vers la racine suivante (afin de simuler une liste chainée)
 //
 //------------------------------------------------------------------------
 
 class Cell
 {
-//----------------------------------------------------------------- PUBLIC
+    //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- MÃ©thodes publiques
+    //----------------------------------------------------- Méthodes publiques
     Trajet* getData() const;
     // Mode d'emploi :
     // retourne un pointeur vers le trajet contenu dans la racine
@@ -49,7 +49,7 @@ public:
     // change le next d'une racine
     // Contrat :
     //
-    void setData(const Trajet *set);
+    void setData(const Trajet* set);
     // Mode d'emploi :
     // cahnge la valeur de data
     // Contrat :
@@ -58,27 +58,27 @@ public:
 
 
 
-//------------------------------------------------- Surcharge d'opÃ©rateurs
-    
+//------------------------------------------------- Surcharge d'opérateurs
+
 
 //-------------------------------------------- Constructeurs - destructeur
 
 
-    Cell ( );
+    Cell();
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //PAS DE CONTRAT
 
 
-    Cell ( const Trajet* unTrajet );
+    Cell(const Trajet* unTrajet);
     // Mode d'emploi :
     //
     // Contrat :
     //PAS DE CONTRAT
 
 
-    virtual ~Cell ( );
+    virtual ~Cell();
     // Mode d'emploi :
     //
     // Contrat :
@@ -88,13 +88,13 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
+    //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protÃ©gÃ©s
-Trajet* data;
-Cell * next;
+    //----------------------------------------------------- Attributs protégés
+    Trajet* data;
+    Cell* next;
 };
 
-//-------------------------------- Autres dÃ©finitions dÃ©pendantes de <Cell>
+//-------------------------------- Autres définitions dépendantes de <Cell>
 
 #endif // Cell_H

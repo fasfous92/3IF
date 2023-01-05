@@ -1,21 +1,20 @@
 /*************************************************************************
                            Trajet  -  description
                              -------------------
-    dÃ©but                : $21-11-2022$
-    copyright            : (C) $2022$ par $BinÃ´me3307$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 ************************************************************************/
 
-//---------- RÃ©alisation de la classe <Trajet> (fichier Trajet.cpp) ------------
+//---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
+#include <string>
 //------------------------------------------------------ Include personnel
 #include "Trajet.h"
 
-
-
 //-------------------------------------------- Constructeurs - destructeur
 
-Trajet::~Trajet ( ){
-
+Trajet::~Trajet()
+{
 }

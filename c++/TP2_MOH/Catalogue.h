@@ -1,7 +1,7 @@
 /*************************************************************************
                            Catalogue  -  description
                              -------------------
-    dÃ©but                : $DATE$
+    début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
@@ -10,7 +10,7 @@
 #if ! defined ( Catalogue_H )
 #define Catalogue_H
 
-//--------------------------------------------------- Interfaces utilisÃ©es
+//--------------------------------------------------- Interfaces utilisées
 #include "Linkedlist.h"
 #include "TrajetCompose.h"
 #include "TrajetSimple.h"
@@ -19,21 +19,21 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// RÃ´le de la classe <Catalogue>
+// Rôle de la classe <Catalogue>
 //
 //
 //------------------------------------------------------------------------
 
 class Catalogue
 {
-//----------------------------------------------------------------- PUBLIC
+    //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- MÃ©thodes publiques
+    //----------------------------------------------------- Méthodes publiques
     bool rechercheCombi(const char* depart, const char* arrivee, bool display)const;
     // Mode d'emploi :
-    // Cette mÃ©thode va combiner aux maximun deux trajets afin de subvenir
-    // aux paramÃ¨tres rentrÃ©s notamment, la ville de dÃ©part et la ville d'arrivÃ©e
+    // Cette méthode va combiner aux maximun deux trajets afin de subvenir
+    // aux paramètres rentrés notamment, la ville de départ et la ville d'arrivée
     //
     // Contrat :
     //
@@ -41,50 +41,51 @@ public:
 
     bool recherche(const char* depart, const char* arrivee)const;
     // Mode d'emploi :
-    // Cette mÃ©thode va nous permettre de rechercher les diffÃ©rents
-    // trajets dans notre catalogue en prenant comme paramÃ¨tre la ville de dÃ©part et la ville d'arrivÃ©e
+    // Cette méthode va nous permettre de rechercher les différents
+    // trajets dans notre catalogue en prenant comme paramètre la ville de départ et la ville d'arrivée
     //
     // Contrat :
     //
-    void Importer_parIntervalle(const string namefile);
+
+    void Importer_parIntervalle(const std::string namefile);
     // Mode d'emploi :
     // Importer tous les trajets existant dans le fichier en prenant en
-    //compte l'intervalle indiquÃ© par l'utilisateur
-    // Contrat: le fichier doit exister dans le rÃ©pertoire de travail ou le chemin d'accÃ¨es bien
-    //structurÃ©
+    //compte l'intervalle indiqué par l'utilisateur
+    // Contrat: le fichier doit exister dans le répertoire de travail ou le chemin d'accèes bien
+    //structuré
     //
 
     void Importer();
     // Mode d'emploi :
-    // cette mÃ©thode est juste une interface qui permet Ã  l'utilisateur de choisir le type d'importation
-    // Contrat: le fichier doit exister dans le rÃ©pertoire de travail ou le chemin d'accÃ¨es bien
-    //structurÃ©
+    // cette méthode est juste une interface qui permet à l'utilisateur de choisir le type d'importation
+    // Contrat: le fichier doit exister dans le répertoire de travail ou le chemin d'accèes bien
+    //structuré
     //
 
-    void Importer_parChoix(string namefile);
+    void Importer_parChoix(const std::string namefile);
     // Mode d'emploi :
     // Importer tous les trajets existant dans le fihcier en prenant en
-    //compte les choix de l'utilisateur (la ville de dÃ©part et/ou arrivÃ©e )
-    //de choisir le type de chargement qu'il dÃ©sire (trjaets composÃ©s et/ou simples)
-    // Contrat: le fichier doit exister dans le rÃ©pertoire de travail ou le chemin d'accÃ¨es bien
-    //structurÃ©
+    //compte les choix de l'utilisateur (la ville de départ et/ou arrivée )
+    //de choisir le type de chargement qu'il désire (trjaets composés et/ou simples)
+    // Contrat: le fichier doit exister dans le répertoire de travail ou le chemin d'accèes bien
+    //structuré
     //
 
-    void Importer_parCritere(string namefile);
+    void Importer_parCritere(const std::string namefile);
     // Mode d'emploi :
     // Importer tous les trajets existant dans le fihcier CSV
-    //et les placÃ©s dans le Catalogue, cette mÃ©thode permet Ã  l'utilisateur
-    //de choisir le type de chargement qu'il dÃ©sire (trjaets composÃ©s et/ou simples)
-    // Contrat: le fichier "Catalogue.csv" doit exister dans le rÃ©pertoire de travail
+    //et les placés dans le Catalogue, cette méthode permet à l'utilisateur
+    //de choisir le type de chargement qu'il désire (trjaets composés et/ou simples)
+    // Contrat: le fichier "Catalogue.csv" doit exister dans le répertoire de travail
     //
 
     void Afficher();
     // Mode d'emploi :
-    // Affiche tous les trajets trier par ordre alphabÃ©tique
-    // des villes de dÃ©parts dans le catalogue.
-    //L'affichage indique aussi d'il s'agit de trajet composÃ© ou de
+    // Affiche tous les trajets trier par ordre alphabétique
+    // des villes de départs dans le catalogue.
+    //L'affichage indique aussi d'il s'agit de trajet composé ou de
     //trajet simple en utilisant les codess suivant
-    // TC: trajet composÃ©
+    // TC: trajet composé
     // TS: trajet simple
     // Contrat :
     //
@@ -108,19 +109,19 @@ public:
     //
 
 
-//------------------------------------------------- Surcharge d'opÃ©rateurs
+//------------------------------------------------- Surcharge d'opérateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Catalogue ( );
+    Catalogue();
     // Mode d'emploi :
-    // CrÃ©ation de la classe Catalogue
+    // Création de la classe Catalogue
     //
     // Contrat :
     //PAS DE CONTRAT
 
-    virtual ~Catalogue ( );
+    virtual ~Catalogue();
     // Mode d'emploi :
     //
     // Contrat :
@@ -130,13 +131,13 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
+    //----------------------------------------------------- Méthodes protégées
     Linkedlist trajets;
 
-//----------------------------------------------------- Attributs protÃ©gÃ©s
+    //----------------------------------------------------- Attributs protégés
 
 };
 
-//-------------------------------- Autres dÃ©finitions dÃ©pendantes de <Catalogue>
+//-------------------------------- Autres définitions dépendantes de <Catalogue>
 
 #endif // Catalogue_H

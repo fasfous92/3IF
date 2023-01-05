@@ -1,8 +1,8 @@
 /*************************************************************************
                            TrajetSimple  -  description
                              -------------------
-    dÃ©but                : $21-11-2022$
-    copyright            : (C) $2022$ par $BinÃ´me3307$
+    début                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binôme3307$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
@@ -10,7 +10,7 @@
 #if ! defined ( TrajetSimple_H )
 #define TrajetSimple_H
 
-//--------------------------------------------------- Interfaces utilisÃ©es
+//--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
@@ -18,60 +18,62 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// CrÃ©er et gÃ©rer un trajet simple d'une ville A vers une ville B en utilisant un moyen de transport dÃ©terminÃ©
+// Créer et gérer un trajet simple d'une ville A vers une ville B en utilisant un moyen de transport déterminé
 //
 //
 //------------------------------------------------------------------------
 
 class TrajetSimple : public Trajet
 {
-//----------------------------------------------------------------- PUBLIC
+    //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- MÃ©thodes publiques
-    virtual void Afficher() const ;
+    //----------------------------------------------------- Méthodes publiques
+    virtual void Afficher() const;
     // Mode d'emploi :
-    //  Affiche un texte qui rÃ©sume le voyage
-    // Contrat :
-    //
-    
-    const char* getvilled() const ;
-    // Mode d'emploi :
-    //  retourne  la ville de dÃ©part du trajet simple
+    //  Affiche un texte qui résume le voyage
     // Contrat :
     //
 
-    const char* getvillea() const ;
+    const char* getvilled() const;
     // Mode d'emploi :
-    // retourne  la ville d'arrivÃ©e du trajet simple
+    //  retourne  la ville de départ du trajet simple
     // Contrat :
     //
 
-    const char* getTransport() const ;
+    const char* getvillea() const;
+    // Mode d'emploi :
+    // retourne  la ville d'arrivée du trajet simple
+    // Contrat :
+    //
+
+    const char* getTransport() const;
     // Mode d'emploi :
     //  retourne  le moyen de transport du trajet simple
     // Contrat :
     //
 
+    virtual std::string Decrire(bool forTC=false) const;
 
 
 
-//------------------------------------------------- Surcharge d'opÃ©rateurs
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetSimple (const string * vDepart ,const string * vArrivee ,const string * mTransport );
+
+    TrajetSimple(const std::string* vDepart, const std::string* vArrivee, const std::string* mTransport);
     // Mode d'emploi :
     //  surcharge du Constructeur d'un trajet simple utile afin de pouvoir importer les trajets d'un fichier
     // Contrat :
     //
 
-    TrajetSimple (const char * vDepart ,const char * vArrivee ,const char * mTransport );
+    TrajetSimple(const char* vDepart, const char* vArrivee, const char* mTransport);
     // Mode d'emploi :
-    //  Constructeur d'un trajet simple Ã  partir d'une ville de dÃ©part, une ville d'arrivÃ©e et un moyen de transport
+    //  Constructeur d'un trajet simple à partir d'une ville de départ, une ville d'arrivée et un moyen de transport
     // Contrat :
     //
 
-    virtual ~TrajetSimple ( );
+    virtual ~TrajetSimple();
     // Mode d'emploi :
     // Destructeur
     // Contrat :
@@ -82,12 +84,12 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
+    //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protÃ©gÃ©s
-char* transport;
+    //----------------------------------------------------- Attributs protégés
+    char* transport;
 };
 
-//-------------------------------- Autres dÃ©finitions dÃ©pendantes de <TrajetSimple>
+//-------------------------------- Autres définitions dépendantes de <TrajetSimple>
 
 #endif // TrajetSimple_H
