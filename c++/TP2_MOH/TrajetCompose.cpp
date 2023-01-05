@@ -81,7 +81,10 @@ void TrajetCompose::Afficher() const
 
 } //----- Fin Afficher
 
-string TrajetCompose::Decrire(bool forTC) const {
+string TrajetCompose::Decrire(bool forTC) const 
+// Algorithme : Méthode simple
+//
+{
     string description;
     description.append("2;");
     description.append(depart);
@@ -97,14 +100,14 @@ string TrajetCompose::Decrire(bool forTC) const {
     }
     description.append(parcours->getData()->Decrire(true));
     return description;
-}
+}//----- Fin Decrire
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
 TrajetCompose::TrajetCompose()
-// Algorithme :
+// Algorithme : Constructeur
 //
 {
 #ifdef MAP
@@ -114,7 +117,7 @@ TrajetCompose::TrajetCompose()
 } //----- Fin de TrajeCompose
 
 TrajetCompose::~TrajetCompose()
-// Algorithme :
+// Algorithme : Destructeur
 //
 {
 #ifdef MAP

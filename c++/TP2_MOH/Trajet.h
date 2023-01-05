@@ -50,6 +50,10 @@ public:
     // PAS DE CONTRAT
 
     virtual std::string Decrire(bool forTC) const = 0;
+    // Mode d'emploi :
+    // retourne la description d'un trajet
+    // Contrat :
+    // PAS DE CONTRAT
 
     //------------------------------------------------- Surcharge d'opérateurs
 

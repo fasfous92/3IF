@@ -137,17 +137,17 @@ std::string Linkedlist::Decrire()const
     }
 
     if (racine->getNext() == nullptr) {
-        res.append(racine->getData()->Decrire(false));// si notre Linekdlist n'a qu'une seule racine on va juste l'afficher
+        res.append(racine->getData()->Decrire(false));// si notre Linekdlist n'a qu'une seule racine
     }
-    else { // sinon on doit afficher chaque racine de notre liste en parcourant les cellules.
+    else {
         Cell* parcours = racine;
         while (parcours->getNext() != nullptr) {
-            res.append(parcours->getData()->Decrire(false)); //selon le type du trajet (simple/composé) on aurait une methode afficher qui adaptée (virtual)
+            res.append(parcours->getData()->Decrire(false)); //selon le type du trajet (simple/composé) on aurait une methode decrire qui adaptée (virtual)
             parcours = parcours->getNext();
         }
-        res.append(parcours->getData()->Decrire(false)); //on va afficher la dernière racine
+        res.append(parcours->getData()->Decrire(false)); //on va ajouter la description de la dernière racine
     }
-}//----- Fin Afficher
+}//----- Fin Decrire
 
 //------------------------------------------------- Surcharge d'opérateurs
 

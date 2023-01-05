@@ -71,6 +71,11 @@ public:
     //PAS DE CONTRAT
 
     virtual std::string Decrire(bool forTC=true) const;
+    // Mode d'emploi :
+    // 1ere ligne décrit le trajet composé en général : ville de départ et ville d'arrivée (pas de moyen de transport
+    //  parcourt la liste des trajets qui composent le trajet composé et rajoute au string la description de chaque trajet
+    // Contrat :
+    // PAS DE CONTRAT
 
 
 //------------------------------------------------- Surcharge d'opérateurs

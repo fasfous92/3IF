@@ -54,7 +54,10 @@ public:
     //
 
     virtual std::string Decrire(bool forTC=false) const;
-
+    // Mode d'emploi :
+    //  retourne  la description d'un trajet simple pour l'insertion dans un fichier 
+    // Contrat :
+    //
 
 
 //------------------------------------------------- Surcharge d'opérateurs

@@ -163,7 +163,7 @@ void Catalogue::Importer_parIntervalle(const string namefile)
             row.clear(); //effacer les données qui sont dans row
 
             getline(file, line); //récuperer une ligne de file dans la string line
-            stringstream  s(line); //on va séparer la ligne en plusieurs mots
+            stringstream   s(line); //on va séparer la ligne en plusieurs mots
             while (getline(s, word, ';')) //permet de mettre un mot de s dans word
             {
                 row.push_back(word); //va stocker la valeur de word dans le vector de string row

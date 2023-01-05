@@ -55,10 +55,13 @@ const char* TrajetSimple::getTransport() const
     return transport;
 }
 
-string  TrajetSimple::Decrire(bool forTC) const {
+string  TrajetSimple::Decrire(bool forTC) const 
+// Algorithme : Méthode simple
+//
+{
     string description;
-    if(!forTC) description.append("1;");
-    else description.append("3;");
+    if(!forTC) description.append("1;"); // on met 1 si c'est un trajet simple indépendant
+    else description.append("3;"); // on met 3 si c'est un trajet simple qui est une étape d'un trajet composé
     description.append(depart);
     description.append(";");
     description.append(arrivee);
