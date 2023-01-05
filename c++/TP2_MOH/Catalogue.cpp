@@ -255,6 +255,9 @@ void Catalogue :: Interface()
 
 
         if (strcmp(lecture,"1")==0) {
+            if (trajets.getracine()->getData() == nullptr) {
+                cout << "Catalogue vide" << endl;
+            }else
             Afficher();
         }else if (strcmp(lecture,"2")==0) {
             AjouterSimple();
@@ -263,24 +266,32 @@ void Catalogue :: Interface()
         }else if (strcmp(lecture,"3")==0) {
             AjouterCompose();
         }else if (strcmp(lecture,"4")==0) {
-            printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
-            char depart[20];
-            char arrivee[20];
-            fscanf(stdin,"%99s %99s",depart,arrivee);
-            recherche(depart,arrivee);
-        }else if (strcmp(lecture,"5")==0) {
-            printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
-            char depart[20];
-            char arrivee[20];
-            fscanf(stdin,"%99s %99s",depart,arrivee);
-            if(!rechercheCombi(depart,arrivee, false)) {
-                cout<<"On essaie de trouver une solution\n";
-                for(int i=0;i<10;i++) {
-                    cout<<"----------\n";
-                }
-                cout << "Combinaisons de trajets pas disponible dans notre réseaux, cependant vous pouvez\n";
-                cout << "voir les propositions ci-dessus afin de vous rapprocher de votre destination\n ";
+            if (trajets.getracine()->getData() == nullptr) {
+                cout << "Catalogue vide" << endl;
+            }else{
+              printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
+              char depart[20];
+              char arrivee[20];
+              fscanf(stdin,"%99s %99s",depart,arrivee);
+              recherche(depart,arrivee);
             }
+        }else if (strcmp(lecture,"5")==0) {
+          if (trajets.getracine()->getData() == nullptr) {
+                cout << "Catalogue vide" << endl;
+            }else{
+              printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
+              char depart[20];
+              char arrivee[20];
+              fscanf(stdin,"%99s %99s",depart,arrivee);
+              if(!rechercheCombi(depart,arrivee, false)) {
+                  cout<<"On essaie de trouver une solution\n";
+                  for(int i=0;i<10;i++) {
+                      cout<<"----------\n";
+                  }
+                  cout << "Combinaisons de trajets pas disponible dans notre réseaux, cependant vous pouvez\n";
+                  cout << "voir les propositions ci-dessus afin de vous rapprocher de votre destination\n ";
+              }
+          }
 
         }else if (strcmp(lecture,"0")==0) {
         }
