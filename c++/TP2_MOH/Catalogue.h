@@ -47,7 +47,7 @@ public:
     // Contrat :
     //
 
-    void Importer_parIntervalle(const std::string namefile);
+    void Importer_parIntervalle(std::ifstream &file);
     // Mode d'emploi :
     // Importer tous les trajets existant dans le fichier en prenant en
     //compte l'intervalle indiqué par l'utilisateur
@@ -62,7 +62,7 @@ public:
     //structuré
     //
 
-    void Importer_parChoix(const std::string namefile);
+    void Importer_parChoix(std::ifstream &file);
     // Mode d'emploi :
     // Importer tous les trajets existant dans le fihcier en prenant en
     //compte les choix de l'utilisateur (la ville de départ et/ou arrivée )
@@ -71,7 +71,7 @@ public:
     //structuré
     //
 
-    void Importer_parCritere(const std::string namefile);
+    void Importer_parCritere(std::ifstream &file);
     // Mode d'emploi :
     // Importer tous les trajets existant dans le fihcier CSV
     //et les placés dans le Catalogue, cette méthode permet à l'utilisateur
@@ -107,6 +107,14 @@ public:
     //
     // Contrat :
     //
+
+    void Exporter();
+
+    void Exporter_parChoix(std::ofstream &fout);
+
+    void Exporter_parCritere(std::ofstream& fout);
+
+    void Exporter_parIntervalle(std::ofstream& fout);
 
 
 //------------------------------------------------- Surcharge d'opérateurs
