@@ -1,16 +1,16 @@
 /*************************************************************************
                            Cell  -  description
                              -------------------
-    début                : $DATE$
+    dï¿½but                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Cell> (fichier Cell.cpp) ------------
+//---------- Rï¿½alisation de la classe <Cell> (fichier Cell.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 #include <iostream>
 
@@ -22,76 +22,73 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Mï¿½thodes publiques
 
-//Getters and Setters necessary to deal with our variables from the main
-void Cell::setNext(const Cell* suivant)
-// Algorithme : Méthode simple
+// Getters and Setters necessary to deal with our variables from the main
+void Cell::setNext(const Cell *suivant)
+// Algorithme : Mï¿½thode simple
 {
-    next = (Cell*)suivant;
+    next = (Cell *)suivant;
 }
-void Cell::setData(const Trajet* set)
-// Algorithme : Méthode simple
+void Cell::setData(const Trajet *set)
+// Algorithme : Mï¿½thode simple
 {
-    data = (Trajet*)set;
+    data = (Trajet *)set;
 }
 
-Trajet* Cell::getData() const
-// Algorithme : Méthode simple
+Trajet *Cell::getData() const
+// Algorithme : Mï¿½thode simple
 //
 {
     return data;
-} //----- Fin de Méthode
+} //----- Fin de Mï¿½thode
 
-Cell* Cell::getNext() const
-// Algorithme : Méthode simple
+Cell *Cell::getNext() const
+// Algorithme : Mï¿½thode simple
 //
 {
     return next;
-} //----- Fin de Méthode
+} //----- Fin de Mï¿½thode
 
 //-----End Getters/setters
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Cell::Cell(const Trajet* unTrajet)
-// Algorithme : Méthode simple
+Cell::Cell(const Trajet *unTrajet)
+// Algorithme : Mï¿½thode simple
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de de <Cell> avec Trajet en paramètre" << endl;
+    cout << "Appel au constructeur de de <Cell> avec Trajet en paramï¿½tre" << endl;
 #endif
-    data = (Trajet*)unTrajet;
-    next = nullptr; //le next vers Null car on les pas encore liée cela peut être modifier avec un setter
+    data = (Trajet *)unTrajet;
+    next = nullptr; // le next vers Null car on les pas encore liï¿½e cela peut ï¿½tre modifier avec un setter
 } //----- Fin de Cell
 
-
 Cell::Cell()
-// Algorithme : Méthode simple
+// Algorithme : Mï¿½thode simple
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Cell>" << endl;
 #endif
     data = nullptr;
     next = nullptr;
-}//----- Fin de Cell
-
-
+} //----- Fin de Cell
 
 Cell::~Cell()
-// Algorithme : Méthode simple
+// Algorithme : Mï¿½thode simple
 //
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Cell>" << endl;
 #endif
     delete data;
-    if (next != nullptr) delete next;
+    if (next != nullptr)
+        delete next;
 } //----- Fin de ~Cell
-
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es

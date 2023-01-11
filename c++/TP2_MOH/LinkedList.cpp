@@ -1,16 +1,16 @@
 /*************************************************************************
                            Xxx  -  description
                              -------------------
-    début                : $DATE$
+    dï¿½but                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Linkedlist> (fichier Linkedlist.cpp) ------------
+//---------- Rï¿½alisation de la classe <Linkedlist> (fichier Linkedlist.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 #include <iostream>
 #include <cstring>
@@ -22,78 +22,83 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
-// type Linkedlist::Méthode ( liste des paramètres )
+//----------------------------------------------------- Mï¿½thodes publiques
+// type Linkedlist::Mï¿½thode ( liste des paramï¿½tres )
 // Algorithme :
 //
 //{
-//} //----- Fin de Méthode
-
-
+//} //----- Fin de Mï¿½thode
 
 // GETTERS,SETTERS
 
-Cell* Linkedlist::getracine() const
-// Algorithme : Méthode simple
+Cell *Linkedlist::getracine() const
+// Algorithme : Mï¿½thode simple
 {
     return racine;
 }
 
-const char* Linkedlist::getVillea() const
-// Algorithme : Méthode simple
+const char *Linkedlist::getVillea() const
+// Algorithme : Mï¿½thode simple
 {
-    if (racine->getData() == nullptr) return ""; // si liste vide
+    if (racine->getData() == nullptr)
+        return ""; // si liste vide
 
-    Cell* parcours = racine;
-    while (parcours->getNext() != nullptr) {
+    Cell *parcours = racine;
+    while (parcours->getNext() != nullptr)
+    {
         parcours = parcours->getNext();
     }
-    return     parcours->getData()->getvillea();
+    return parcours->getData()->getvillea();
 }
 
-const char* Linkedlist::getVilled() const
-// Algorithme : Méthode simple
+const char *Linkedlist::getVilled() const
+// Algorithme : Mï¿½thode simple
 {
     return racine->getData()->getvilled();
 }
 
-void Linkedlist::setracine(Cell* cell)
-// Algorithme : Méthode simple
+void Linkedlist::setracine(Cell *cell)
+// Algorithme : Mï¿½thode simple
 {
     racine = cell;
 }
 
 //--Fin GETTERS,SETTERS
 
-void Linkedlist::Ajouter(const Trajet* t)
-// Algorithme : Méthode simple
+void Linkedlist::Ajouter(const Trajet *t)
+// Algorithme : Mï¿½thode simple
 {
-    // cas où la liste est vide
-    if (racine->getData() == nullptr) {
+    // cas oï¿½ la liste est vide
+    if (racine->getData() == nullptr)
+    {
         racine->setData(t);
         return;
     }
 
-    // cas où la liste n'est pas vide : rajouter le nouveau trajet à la fin
-    Cell* parcours = racine;
-    while (parcours->getNext() != nullptr) {
+    // cas oï¿½ la liste n'est pas vide : rajouter le nouveau trajet ï¿½ la fin
+    Cell *parcours = racine;
+    while (parcours->getNext() != nullptr)
+    {
         parcours = parcours->getNext();
     }
 
-    Cell* aAjouter = new Cell(t);
+    Cell *aAjouter = new Cell(t);
     parcours->setNext(aAjouter);
 
-}//--Fin Ajouter
+} //--Fin Ajouter
 
 void Linkedlist::tri()
 // Algorithme : Tri par selection
 {
-    Cell* parcours = racine;
-    Cell* parcours2 = racine;
-    while (parcours2 != nullptr) {
-        while (parcours != nullptr) {
-            if (strcmp(parcours->getData()->getvilled(), parcours2->getData()->getvilled()) < 0) {
-                Trajet* tmp = parcours->getData();
+    Cell *parcours = racine;
+    Cell *parcours2 = racine;
+    while (parcours2 != nullptr)
+    {
+        while (parcours != nullptr)
+        {
+            if (strcmp(parcours->getData()->getvilled(), parcours2->getData()->getvilled()) < 0)
+            {
+                Trajet *tmp = parcours->getData();
                 parcours->setData(parcours2->getData());
                 parcours2->setData(tmp);
             }
@@ -101,62 +106,67 @@ void Linkedlist::tri()
         }
         parcours2 = parcours2->getNext();
         parcours = parcours2;
-
     }
 
-}//----Fin Tri
+} //----Fin Tri
 
-void Linkedlist::Afficher()const
-// Algorithme : Méthode simple
+void Linkedlist::Afficher() const
+// Algorithme : Mï¿½thode simple
 //
 {
-    if (racine->getData() == nullptr) {
+    if (racine->getData() == nullptr)
+    {
         return;
     }
 
-    if (racine->getNext() == nullptr) {
-        racine->getData()->Afficher();// si notre Linekdlist n'a qu'une seule racine on va juste l'afficher
+    if (racine->getNext() == nullptr)
+    {
+        racine->getData()->Afficher(); // si notre Linekdlist n'a qu'une seule racine on va juste l'afficher
     }
-    else { // sinon on doit afficher chaque racine de notre liste en parcourant les cellules.
-        Cell* parcours = racine;
-        while (parcours->getNext() != nullptr) {
-            parcours->getData()->Afficher(); //selon le type du trajet (simple/composé) on aurait une methode afficher qui adaptée (virtual)
+    else
+    { // sinon on doit afficher chaque racine de notre liste en parcourant les cellules.
+        Cell *parcours = racine;
+        while (parcours->getNext() != nullptr)
+        {
+            parcours->getData()->Afficher(); // selon le type du trajet (simple/composï¿½) on aurait une methode afficher qui adaptï¿½e (virtual)
             parcours = parcours->getNext();
         }
-        parcours->getData()->Afficher(); //on va afficher la dernière racine
+        parcours->getData()->Afficher(); // on va afficher la derniï¿½re racine
     }
-}//----- Fin Afficher
+} //----- Fin Afficher
 
-std::string Linkedlist::Decrire()const
-// Algorithme : Méthode simple
+std::string Linkedlist::Decrire() const
+// Algorithme : Mï¿½thode simple
 //
 {
     string res;
-    if (racine->getData() == nullptr) {
+    if (racine->getData() == nullptr)
+    {
         return res;
     }
 
-    if (racine->getNext() == nullptr) {
-        res.append(racine->getData()->Decrire(false));// si notre Linekdlist n'a qu'une seule racine
+    if (racine->getNext() == nullptr)
+    {
+        res.append(racine->getData()->Decrire(false)); // si notre Linekdlist n'a qu'une seule racine
     }
-    else {
-        Cell* parcours = racine;
-        while (parcours->getNext() != nullptr) {
-            res.append(parcours->getData()->Decrire(false)); //selon le type du trajet (simple/composé) on aurait une methode decrire qui adaptée (virtual)
+    else
+    {
+        Cell *parcours = racine;
+        while (parcours->getNext() != nullptr)
+        {
+            res.append(parcours->getData()->Decrire(false)); // selon le type du trajet (simple/composï¿½) on aurait une methode decrire qui adaptï¿½e (virtual)
             parcours = parcours->getNext();
         }
-        res.append(parcours->getData()->Decrire(false)); //on va ajouter la description de la dernière racine
+        res.append(parcours->getData()->Decrire(false)); // on va ajouter la description de la derniï¿½re racine
     }
-}//----- Fin Decrire
+} //----- Fin Decrire
 
-//------------------------------------------------- Surcharge d'opérateurs
-
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-
 Linkedlist::Linkedlist()
-// Algorithme :  Méthode simple
+// Algorithme :  Mï¿½thode simple
 //
 {
 #ifdef MAP
@@ -164,12 +174,10 @@ Linkedlist::Linkedlist()
 #endif
     racine = new Cell();
 
-
 } //----- Fin de ~Linkedlist
 
-
 Linkedlist::~Linkedlist()
-// Algorithme :  Méthode simple
+// Algorithme :  Mï¿½thode simple
 //
 {
 #ifdef MAP
@@ -178,7 +186,6 @@ Linkedlist::~Linkedlist()
     delete racine;
 } //----- Fin de ~Linkedlist
 
-
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es

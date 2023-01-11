@@ -34,11 +34,8 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-
-
-
-bool Catalogue::rechercheCombi(const char* depart, const char* arrivee, bool display) const
-//Algorithme:
+bool Catalogue::rechercheCombi(const char *depart, const char *arrivee, bool display) const
+// Algorithme:
 {
 
     bool excuse = false;
@@ -46,33 +43,41 @@ bool Catalogue::rechercheCombi(const char* depart, const char* arrivee, bool dis
         cout << "Trajets combinés possibles:\n";
 
     int i = 1;
-    Cell* parcours = trajets.getracine();
-    Cell* parcours2 = trajets.getracine();
-    Trajet* t = parcours->getData();
-    Trajet* tnext = parcours2->getData();
-    while (parcours != nullptr) {
+    Cell *parcours = trajets.getracine();
+    Cell *parcours2 = trajets.getracine();
+    Trajet *t = parcours->getData();
+    Trajet *tnext = parcours2->getData();
+    while (parcours != nullptr)
+    {
         t = parcours->getData();
-        if (::strcmp(t->getvilled(), depart) == 0 && ::strcmp(t->getvillea(), arrivee) == 0) { //ce if va simuler la fonctionnalité d'une recherche de simple trajets
+        if (::strcmp(t->getvilled(), depart) == 0 && ::strcmp(t->getvillea(), arrivee) == 0)
+        { // ce if va simuler la fonctionnalité d'une recherche de simple trajets
             t->Afficher();
             return true;
         }
-        if (strcmp(t->getvillea(), arrivee) == 0) {
+        if (strcmp(t->getvillea(), arrivee) == 0)
+        {
             return excuse;
         }
-        if (strcmp(t->getvilled(), depart) == 0) {
-            while (parcours2 != nullptr) {
+        if (strcmp(t->getvilled(), depart) == 0)
+        {
+            while (parcours2 != nullptr)
+            {
                 tnext = parcours2->getData();
-                if (strcmp(t->getvillea(), tnext->getvilled()) == 0) {
-                    if (!display) {
+                if (strcmp(t->getvillea(), tnext->getvilled()) == 0)
+                {
+                    if (!display)
+                    {
                         cout << "Solution" << i << ":\n";
                         t->Afficher();
                     }
                     tnext->Afficher();
-                    if (strcmp(tnext->getvillea(), arrivee) != 0) {
-                        rechercheCombi(tnext->getvilled(), arrivee, true); //on déja afficher le trajet tnext
-
+                    if (strcmp(tnext->getvillea(), arrivee) != 0)
+                    {
+                        rechercheCombi(tnext->getvilled(), arrivee, true); // on déja afficher le trajet tnext
                     }
-                    else {
+                    else
+                    {
                         excuse = true;
                     }
                     i++;
@@ -86,37 +91,37 @@ bool Catalogue::rechercheCombi(const char* depart, const char* arrivee, bool dis
     }
     return excuse;
 
+} //--Fin-rechercheCombi
 
-}//--Fin-rechercheCombi
-
-
-
-
-
-bool Catalogue::recherche(const char* depart, const char* arrivee)const {
+bool Catalogue::recherche(const char *depart, const char *arrivee) const
+{
     bool b = false;
-    Cell* parcours = trajets.getracine();
-    Trajet* t = parcours->getData();
-    while (parcours->getNext() != nullptr) {
-        if (strcmp(depart, t->getvilled()) == 0 && strcmp(arrivee, t->getvillea()) == 0) {
+    Cell *parcours = trajets.getracine();
+    Trajet *t = parcours->getData();
+    while (parcours->getNext() != nullptr)
+    {
+        if (strcmp(depart, t->getvilled()) == 0 && strcmp(arrivee, t->getvillea()) == 0)
+        {
             t->Afficher();
             b = true;
         }
         parcours = parcours->getNext();
         t = parcours->getData();
     }
-    if (strcmp(depart, t->getvilled()) == 0 && strcmp(arrivee, t->getvillea()) == 0) { //on vérifie si la dernière racine vérifie nos conditions
+    if (strcmp(depart, t->getvilled()) == 0 && strcmp(arrivee, t->getvillea()) == 0)
+    { // on vérifie si la dernière racine vérifie nos conditions
         t->Afficher();
         b = true;
     }
 
-    if (!b) {
+    if (!b)
+    {
         cout << "Trajet pas trouver." << endl;
         cout << "vous n'avez pas trouver votre trajet, essayez notre nouvel outils de combinaisons de trajets\n"
-            "en faisant une recherche combinatoire\n" << endl;
+                "en faisant une recherche combinatoire\n"
+             << endl;
     }
     return b;
-
 }
 
 void Catalogue::Importer()
@@ -125,6 +130,18 @@ void Catalogue::Importer()
     string namefile;
     printf("\tVeuillez rentrer le nom du fichier\n");
     cin >> namefile;
+
+    ifstream file;
+    // on accède au fichier.csv
+    file.open(namefile);
+
+    if (!file)
+    {
+        cout << "Erreur d'ouverture de <" << namefile << ">" << endl;
+        file.close();
+        return;
+    }
+
     string typeimport;
     printf("\tVeuillez choisir le type d'importation\n");
     printf("\t1:Import_parChoix (nom des villes)\n");
@@ -132,27 +149,20 @@ void Catalogue::Importer()
     printf("\t3:Import_parIntervalle (choix d'intervalle)\n");
     cin >> typeimport;
 
-    ifstream file;
-    //on accède au fichier.csv
-    file.open(namefile);
-
-    if (!file) {
-        cerr << "Erreur d'ouverture de <" << namefile << ">" << endl;
-        file.close();
-        return;
-    }
-
-    if (strcmp(typeimport.c_str(), "1") == 0) {
+    if (strcmp(typeimport.c_str(), "1") == 0)
+    {
         Importer_parChoix(file);
     }
-    else if (strcmp(typeimport.c_str(), "2") == 0) {
+    else if (strcmp(typeimport.c_str(), "2") == 0)
+    {
         Importer_parCritere(file);
     }
-    else if (strcmp(typeimport.c_str(), "3") == 0) {
+    else if (strcmp(typeimport.c_str(), "3") == 0)
+    {
         Importer_parIntervalle(file);
     }
 
-}//--Fin- Importer
+} //--Fin- Importer
 
 void Catalogue::Importer_parIntervalle(ifstream &file)
 // Algorithme:
@@ -160,7 +170,7 @@ void Catalogue::Importer_parIntervalle(ifstream &file)
     int min;
     int max;
     int rownumber = 0;
-    
+
     printf("\tVeuillez préciser l'intervalle à choisir\n");
     printf("\tpour un intervalle [a,b] rentrer→ a b\n");
     cin >> min;
@@ -168,52 +178,63 @@ void Catalogue::Importer_parIntervalle(ifstream &file)
 
     vector<string> row;
     string line, word;
-    TrajetCompose* t; // on le crée dans le cas où on en aura besoin
-    while (!file.eof()) {
-        row.clear(); //effacer les données qui sont dans row
+    TrajetCompose *t; // on le crée dans le cas où on en aura besoin
+    while (!file.eof())
+    {
+        row.clear(); // effacer les données qui sont dans row
 
-        getline(file, line); //récuperer une ligne de file dans la string line
-        stringstream   s(line); //on va séparer la ligne en plusieurs mots
-        while (getline(s, word, ';')) //permet de mettre un mot de s dans word
+        getline(file, line);          // récuperer une ligne de file dans la string line
+        stringstream s(line);         // on va séparer la ligne en plusieurs mots
+        while (getline(s, word, ';')) // permet de mettre un mot de s dans word
         {
-            row.push_back(word); //va stocker la valeur de word dans le vector de string row
+            row.push_back(word); // va stocker la valeur de word dans le vector de string row
         }
-        if (stoi(row[0]) != 3 || (::strcmp(line.c_str(), "") == 0)) {
+        if (stoi(row[0]) != 3 || (::strcmp(line.c_str(), "") == 0))
+        {
             rownumber++;
         }
-        if (::strcmp(line.c_str(), "") == 0 || (rownumber > max || rownumber < min)) {
-            //afin que la fonction stoi ne déclenche pas d'erreur pour la premièrer ligne
+        if (::strcmp(line.c_str(), "") == 0 || (rownumber > max || rownumber < min))
+        {
+            // afin que la fonction stoi ne déclenche pas d'erreur pour la premièrer ligne
         }
-        else {
+        else
+        {
 
             int n = stoi(row[0]);
-            switch (n) {
-                case 1: {; //la ligne représente un trajet simple
-                    TrajetSimple* aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
-                    trajets.Ajouter(aAjouter);
-                    cout << "Ajouté" << endl;
-                    break;
-                }
-                case 2: {; //la ligne représente un trajet composé
-                    t = new TrajetCompose(); //on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
-                    trajets.Ajouter(t); // on le rajoute à notre Catalogue
-                    break;
-                }
-                case 3: {;//trajet simple qui compose le trajet composé déjà initié
-                    TrajetSimple* aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
-                    t->AjouterTrajet(aAjouter);
-                    cout << "Ajouté dans composé" << endl;
-                    break;
-                }
-                default: {
-                    break;
-                }
+            switch (n)
+            {
+            case 1:
+            {
+                ; // la ligne représente un trajet simple
+                TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
+                trajets.Ajouter(aAjouter);
+                cout << "Ajouté" << endl;
+                break;
+            }
+            case 2:
+            {
+                ;                        // la ligne représente un trajet composé
+                t = new TrajetCompose(); // on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
+                trajets.Ajouter(t);      // on le rajoute à notre Catalogue
+                break;
+            }
+            case 3:
+            {
+                ; // trajet simple qui compose le trajet composé déjà initié
+                TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
+                t->AjouterTrajet(aAjouter);
+                cout << "Ajouté dans composé" << endl;
+                break;
+            }
+            default:
+            {
+                break;
+            }
             }
         }
     }
 
-}//--Fin-Importer_parIntervalle
-
+} //--Fin-Importer_parIntervalle
 
 void Catalogue::Importer_parChoix(std::ifstream &file)
 // Algorithme:
@@ -222,8 +243,7 @@ void Catalogue::Importer_parChoix(std::ifstream &file)
     string villed;
     string villea;
 
-    bool composing = false; //boolean nécessaire pour indiquer si le trajet simple qui compose un trajet composé, mais n'a pas la même ville de départ doit être charger
-
+    bool composing = false; // boolean nécessaire pour indiquer si le trajet simple qui compose un trajet composé, mais n'a pas la même ville de départ doit être charger
 
     printf("\tVeuillez préciser le type d'import que vous voulez\n");
     printf("\t1: Importer par ville de départ \n");
@@ -231,185 +251,220 @@ void Catalogue::Importer_parChoix(std::ifstream &file)
     printf("\t3: Importer par ville de départ et ville d'arrivée\n");
     cin >> typeimport;
 
-    //on va vérifier
-    if (strcmp(typeimport.c_str(), "1") == 0) {
-        cin >> villed; //ville départ
+    // on va vérifier
+    if (strcmp(typeimport.c_str(), "1") == 0)
+    {
+        cin >> villed; // ville départ
     }
-    else if (strcmp(typeimport.c_str(), "2") == 0) {
-        cin >> villea; //ville arrivée
+    else if (strcmp(typeimport.c_str(), "2") == 0)
+    {
+        cin >> villea; // ville arrivée
     }
-    else if (strcmp(typeimport.c_str(), "3") == 0) {
+    else if (strcmp(typeimport.c_str(), "3") == 0)
+    {
         cout << "veuillez rentrer les villesr" << endl;
         cin >> villed;
         cin >> villea;
     }
 
-    vector <string> row;
+    vector<string> row;
     string line, word;
-    TrajetCompose* t; // on le crée dans le cas où on en aura besoin
-    while (!file.eof()) {
-        row.clear(); //effacer les données qui sont dans row
+    TrajetCompose *t; // on le crée dans le cas où on en aura besoin
+    while (!file.eof())
+    {
+        row.clear(); // effacer les données qui sont dans row
 
-        getline(file, line); //récuperer une ligne de file dans la string line
-        stringstream s(line); //on va séparer la ligne en plusieurs mots
-        while (getline(s, word, ';')) //permet de mettre un mot de s dans word
+        getline(file, line);          // récuperer une ligne de file dans la string line
+        stringstream s(line);         // on va séparer la ligne en plusieurs mots
+        while (getline(s, word, ';')) // permet de mettre un mot de s dans word
         {
-            row.push_back(word); //va stocker la valeur de word dans le vector de string row
+            row.push_back(word); // va stocker la valeur de word dans le vector de string row
         }
-        if (::strcmp(line.c_str(), "") == 0) {
-            //afin que la fonction stoi ne déclenche pas d'erreur pour la premièrer ligne
+        if (::strcmp(line.c_str(), "") == 0)
+        {
+            // afin que la fonction stoi ne déclenche pas d'erreur pour la premièrer ligne
         }
-        else {
+        else
+        {
 
             int n = stoi(row[0]);
-            switch (n) {
-                //pour certain
-                case 1: {; //la ligne représente un trajet simple
-                    if (stoi(typeimport) == 1 && row[1] == villed) {
-                        TrajetSimple* aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
-                        trajets.Ajouter(aAjouter);
-                        cout << "Ajouté" << endl;
-                        break;
-                    }
-                    else if (stoi(typeimport) == 2 && row[2] == villea) {
-                        TrajetSimple* aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
-                        trajets.Ajouter(aAjouter);
-                        cout << "Ajouté" << endl;
-                        break;
-                    }
-                    else if (stoi(typeimport) == 2 && row[2] == villea && row[1] == villed) {
-                        TrajetSimple* aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
-                        trajets.Ajouter(aAjouter);
-                        cout << "Ajouté" << endl;
-                        break;
-                    }   
-                    else {
-                        break;
-                    }
+            switch (n)
+            {
+            // pour certain
+            case 1:
+            {
+                ; // la ligne représente un trajet simple
+                if (stoi(typeimport) == 1 && row[1] == villed)
+                {
+                    TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
+                    trajets.Ajouter(aAjouter);
+                    cout << "Ajouté" << endl;
+                    break;
                 }
-
-                case 2: {; //la ligne représente un trajet composé
-                    if (stoi(typeimport) == 1 && row[1] == villed) {
-                        t = new TrajetCompose(); //on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
-                        trajets.Ajouter(t); // on le rajoute à notre Catalogue
-                        composing = true;
-                        break;
-                    }
-                    else if (stoi(typeimport) == 2 && row[2] == villea) {
-                        t = new TrajetCompose(); //on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
-                        trajets.Ajouter(t); // on le rajoute à notre Catalogue
-                        composing = true;
-                        break;
-                    }
-                    else if (stoi(typeimport) == 3 && row[2] == villea && row[1] == villed) {
-                        t = new TrajetCompose(); //on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
-                        trajets.Ajouter(t); // on le rajoute à notre Catalogue
-                        composing = true;
-                        break;
-                    }
-                    else {
-                        composing = false;
-                        break;
-                    }
+                else if (stoi(typeimport) == 2 && row[2] == villea)
+                {
+                    TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
+                    trajets.Ajouter(aAjouter);
+                    cout << "Ajouté" << endl;
+                    break;
                 }
-                case 3: {;//trajet simple qui compose le trajet composé déjà initié
-                    if (composing == true) {
-                        TrajetSimple* aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
-                        t->AjouterTrajet(aAjouter);
-                        cout << "Ajouté dans composé" << endl;
-                    }
+                else if (stoi(typeimport) == 2 && row[2] == villea && row[1] == villed)
+                {
+                    TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
+                    trajets.Ajouter(aAjouter);
+                    cout << "Ajouté" << endl;
+                    break;
+                }
+                else
+                {
                     break;
                 }
             }
+
+            case 2:
+            {
+                ; // la ligne représente un trajet composé
+                if (stoi(typeimport) == 1 && row[1] == villed)
+                {
+                    t = new TrajetCompose(); // on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
+                    trajets.Ajouter(t);      // on le rajoute à notre Catalogue
+                    composing = true;
+                    break;
+                }
+                else if (stoi(typeimport) == 2 && row[2] == villea)
+                {
+                    t = new TrajetCompose(); // on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
+                    trajets.Ajouter(t);      // on le rajoute à notre Catalogue
+                    composing = true;
+                    break;
+                }
+                else if (stoi(typeimport) == 3 && row[2] == villea && row[1] == villed)
+                {
+                    t = new TrajetCompose(); // on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
+                    trajets.Ajouter(t);      // on le rajoute à notre Catalogue
+                    composing = true;
+                    break;
+                }
+                else
+                {
+                    composing = false;
+                    break;
+                }
+            }
+            case 3:
+            {
+                ; // trajet simple qui compose le trajet composé déjà initié
+                if (composing == true)
+                {
+                    TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
+                    t->AjouterTrajet(aAjouter);
+                    cout << "Ajouté dans composé" << endl;
+                }
+                break;
+            }
+            }
         }
     }
-    
 
-}//fin-Import_parChoix()
-
+} // fin-Import_parChoix()
 
 void Catalogue::Importer_parCritere(std::ifstream &file)
 // Algorithme:
 {
     string typeimport;
-    bool simple = false; //bolean pour indiquer si l'utilisatuer voudrait que des trajets simples
-    bool compose = false; //bolean pour indiquer si l'utilisatuer voudrait que des trajets composé
+    bool simple = false;  // bolean pour indiquer si l'utilisatuer voudrait que des trajets simples
+    bool compose = false; // bolean pour indiquer si l'utilisatuer voudrait que des trajets composé
 
-     
     printf("\tVeuillez préciser le type d'import que vous voulez\n");
     printf("\t1: Importer tout Catalogue \n");
     printf("\t2: Importer seulement les trajets simples\n");
     printf("\t3: Importer seulement les trajets composés\n");
     cin >> typeimport;
-    //on va vérifier
-    if (strcmp(typeimport.c_str(), "1") == 0) {
-        //on fait rien les booleans restent false
+    // on va vérifier
+    if (strcmp(typeimport.c_str(), "1") == 0)
+    {
+        // on fait rien les booleans restent false
     }
-    else if (strcmp(typeimport.c_str(), "2") == 0) {
+    else if (strcmp(typeimport.c_str(), "2") == 0)
+    {
         simple = true;
     }
-    else if (strcmp(typeimport.c_str(), "3") == 0) {
+    else if (strcmp(typeimport.c_str(), "3") == 0)
+    {
         compose = true;
-    } 
+    }
 
     vector<string> row;
     string line, word;
-    TrajetCompose* t; // on le crée dans le cas où on en aura besoin
-    while (!file.eof()) {
-        row.clear(); //effacer les données qui sont dans row
+    TrajetCompose *t; // on le crée dans le cas où on en aura besoin
+    while (!file.eof())
+    {
+        row.clear(); // effacer les données qui sont dans row
 
-        getline(file, line); //récuperer une ligne de file dans la string line
-        stringstream  s(line); //on va séparer la ligne en plusieurs mots
-        while (getline(s, word, ';')) //permet de mettre un mot de s dans word
+        getline(file, line);          // récuperer une ligne de file dans la string line
+        stringstream s(line);         // on va séparer la ligne en plusieurs mots
+        while (getline(s, word, ';')) // permet de mettre un mot de s dans word
         {
-            row.push_back(word); //va stocker la valeur de word dans le vector de string row
+            row.push_back(word); // va stocker la valeur de word dans le vector de string row
         }
-        if (::strcmp(line.c_str(), "") == 0) {
-            //afin que la fonction stoi ne déclenche pas d'erreur pour la premièrer ligne
+        if (::strcmp(line.c_str(), "") == 0)
+        {
+            // afin que la fonction stoi ne déclenche pas d'erreur pour la premièrer ligne
         }
-        else {
+        else
+        {
 
             int n = stoi(row[0]);
-            switch (n) {
-                case 1: {; //la ligne représente un trajet simple
-                    if (compose == false) {
-                        TrajetSimple* aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
-                        trajets.Ajouter(aAjouter);
-                        cout << "Ajouté" << endl;
-                    }
-                    break;
+            switch (n)
+            {
+            case 1:
+            {
+                ; // la ligne représente un trajet simple
+                if (compose == false)
+                {
+                    TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
+                    trajets.Ajouter(aAjouter);
+                    cout << "Ajouté" << endl;
                 }
-                case 2: {; //la ligne représente un trajet composé
-                    if (simple == false) {
-                        t = new TrajetCompose(); //on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
-                        trajets.Ajouter(t); // on le rajoute à notre Catalogue
-                    }
-                    break;
+                break;
+            }
+            case 2:
+            {
+                ; // la ligne représente un trajet composé
+                if (simple == false)
+                {
+                    t = new TrajetCompose(); // on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
+                    trajets.Ajouter(t);      // on le rajoute à notre Catalogue
                 }
-                case 3: {;//trajet simple qui compose le trajet composé déjà initié
-                    if (simple == false) {
-                        TrajetSimple* aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
-                        t->AjouterTrajet(aAjouter);
-                        cout << "Ajouté dans composé" << endl;
-                    }
-                    break;
+                break;
+            }
+            case 3:
+            {
+                ; // trajet simple qui compose le trajet composé déjà initié
+                if (simple == false)
+                {
+                    TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
+                    t->AjouterTrajet(aAjouter);
+                    cout << "Ajouté dans composé" << endl;
                 }
-                default: {
-                    break;
-                }
+                break;
+            }
+            default:
+            {
+                break;
+            }
             }
         }
     }
 
-} //fin--Importer_parCritere
-
-
+} // fin--Importer_parCritere
 
 void Catalogue::Afficher()
 // Algorithme :
 {
     trajets.tri();
-    if (trajets.getracine()->getData() != nullptr) {
+    if (trajets.getracine()->getData() != nullptr)
+    {
         trajets.Afficher();
     }
 } //----- Fin de Méthode
@@ -422,7 +477,7 @@ void Catalogue::AjouterSimple()
     char transport[20];
 
     fscanf(stdin, "%99s %99s %99s", depart, arrivee, transport);
-    TrajetSimple* aAjouter = new TrajetSimple(depart, arrivee, transport);
+    TrajetSimple *aAjouter = new TrajetSimple(depart, arrivee, transport);
     trajets.Ajouter(aAjouter);
     cout << "Ajouté" << endl;
 } //----- Fin de Méthode
@@ -431,28 +486,31 @@ void Catalogue::AjouterCompose()
 // Algorithme :
 {
     char lecture[100];
-    TrajetCompose* monTrajet = new TrajetCompose();
+    TrajetCompose *monTrajet = new TrajetCompose();
     trajets.Ajouter(monTrajet);
     printf("menu ajout trajet composé:\n");
     printf("\t1: ajouter un nouveau trajet simple \n");
     printf("\t0: fin ajout trajet composé\n");
 
     fscanf(stdin, "%99s", lecture);
-    while (strcmp(lecture, "0") != 0) {
+    while (strcmp(lecture, "0") != 0)
+    {
 
-        if (strcmp(lecture, "1") == 0) {
+        if (strcmp(lecture, "1") == 0)
+        {
             char depart[20];
             char arrivee[20];
             char transport[20];
 
             fscanf(stdin, "%99s %99s %99s", depart, arrivee, transport);
-            TrajetSimple* aAjouter = new TrajetSimple(depart, arrivee, transport);
-            if (monTrajet->AjouterTrajet(aAjouter) == 0) {
+            TrajetSimple *aAjouter = new TrajetSimple(depart, arrivee, transport);
+            if (monTrajet->AjouterTrajet(aAjouter) == 0)
+            {
                 delete aAjouter;
             }
         }
-        else if (strcmp(lecture, "0") == 0) {
-
+        else if (strcmp(lecture, "0") == 0)
+        {
         }
         printf("menu ajout trajet composé:\n");
         printf("\t1: ajouter un nouveau trajet simple \n");
@@ -462,16 +520,18 @@ void Catalogue::AjouterCompose()
     }
 } //----- Fin de Méthode
 
-
-void Catalogue::Exporter()  {
-    //Saisie du nom du fichier
+void Catalogue::Exporter()
+// Algorithme :
+{
+    // Saisie du nom du fichier
     printf("veuillez rentrer le nom du fichier \n");
     string nomFichier;
     cin >> nomFichier;
     ofstream fout;
-    fout.open(nomFichier, fstream::out); //ouverture du fichier en écriture
+    fout.open(nomFichier, fstream::out); // ouverture du fichier en écriture
 
-    if (!fout.is_open()) { //cas où il y a eu une erreur d'ouverture
+    if (!fout.is_open())
+    { // cas où il y a eu une erreur d'ouverture
         printf("erreur ouverture du fichier\n");
         fout.close();
         return;
@@ -485,66 +545,78 @@ void Catalogue::Exporter()  {
     printf("\t4:Export_parIntervalle (choix d'intervalle)\n");
     cin >> typeExport;
 
-    if (strcmp(typeExport.c_str(), "1") == 0) {
-        fout << trajets.Decrire(); 
+    if (strcmp(typeExport.c_str(), "1") == 0)
+    {
+        fout << trajets.Decrire();
     }
-    else if (strcmp(typeExport.c_str(), "2") == 0) {
+    else if (strcmp(typeExport.c_str(), "2") == 0)
+    {
         Exporter_parChoix(fout);
     }
-    else if (strcmp(typeExport.c_str(), "3") == 0) {
+    else if (strcmp(typeExport.c_str(), "3") == 0)
+    {
         Exporter_parCritere(fout);
     }
-    else if (strcmp(typeExport.c_str(), "4") == 0) {
+    else if (strcmp(typeExport.c_str(), "4") == 0)
+    {
         Exporter_parIntervalle(fout);
     }
 
     fout.close();
-    
 }
 
-void Catalogue::Exporter_parChoix(ofstream& fout)
+void Catalogue::Exporter_parChoix(ofstream &fout)
+// Algorithme :
 {
-    string typeExport, villea, villed ,res;
+    string typeExport, villea, villed, res;
     printf("\tVeuillez préciser le type d'import que vous voulez\n");
     printf("\t1: Importer par ville de départ \n");
     printf("\t2: Importer par ville d'arrivée \n");
     printf("\t3: Importer par ville de départ et ville d'arrivée\n");
     cin >> typeExport;
-    //on va vérifier
-    if (strcmp(typeExport.c_str(), "1") == 0) {
-        cin >> villed; //ville départ
-        Cell* parcours = trajets.getracine();
-        while (parcours != nullptr) {
-            if (strcmp(parcours->getData()->getvilled(), villed.c_str()) == 0) {
-                //parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
-                //la description du trajet en cours de lecture s'il vérifie les conditions
+    // on va vérifier
+    if (strcmp(typeExport.c_str(), "1") == 0)
+    {
+        cin >> villed; // ville départ
+        Cell *parcours = trajets.getracine();
+        while (parcours != nullptr)
+        {
+            if (strcmp(parcours->getData()->getvilled(), villed.c_str()) == 0)
+            {
+                // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
+                // la description du trajet en cours de lecture s'il vérifie les conditions
                 res.append(parcours->getData()->Decrire(false));
             }
             parcours = parcours->getNext();
         }
     }
-    else if (strcmp(typeExport.c_str(), "2") == 0) {
-        cin >> villea; //ville arrivée
-        Cell* parcours = trajets.getracine();
-        while (parcours != nullptr) {
-            if (strcmp(parcours->getData()->getvillea(), villea.c_str()) == 0) {
-                //parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
-                //la description du trajet en cours de lecture s'il vérifie les conditions
+    else if (strcmp(typeExport.c_str(), "2") == 0)
+    {
+        cin >> villea; // ville arrivée
+        Cell *parcours = trajets.getracine();
+        while (parcours != nullptr)
+        {
+            if (strcmp(parcours->getData()->getvillea(), villea.c_str()) == 0)
+            {
+                // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
+                // la description du trajet en cours de lecture s'il vérifie les conditions
                 res.append(parcours->getData()->Decrire(false));
             }
             parcours = parcours->getNext();
         }
     }
-    else if (strcmp(typeExport.c_str(), "3") == 0) {
+    else if (strcmp(typeExport.c_str(), "3") == 0)
+    {
         cout << "veuillez rentrer les villes" << endl;
         cin >> villed;
         cin >> villea;
-        Cell* parcours = trajets.getracine();
-        while (parcours != nullptr) {
-            if (strcmp(parcours->getData()->getvillea(), villea.c_str()) == 0 
-                 && strcmp(parcours->getData()->getvilled(), villed.c_str()) == 0 ) {
-                //parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
-                //la description du trajet en cours de lecture s'il vérifie les conditions
+        Cell *parcours = trajets.getracine();
+        while (parcours != nullptr)
+        {
+            if (strcmp(parcours->getData()->getvillea(), villea.c_str()) == 0 && strcmp(parcours->getData()->getvilled(), villed.c_str()) == 0)
+            {
+                // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
+                // la description du trajet en cours de lecture s'il vérifie les conditions
                 res.append(parcours->getData()->Decrire(false));
             }
             parcours = parcours->getNext();
@@ -554,45 +626,58 @@ void Catalogue::Exporter_parChoix(ofstream& fout)
     fout << res;
 }
 
-void Catalogue::Exporter_parCritere(std::ofstream& fout)
+void Catalogue::Exporter_parCritere(std::ofstream &fout)
+// Algorithme :
 {
-    string typeimport,res;
+    string typeimport, res;
 
     printf("\tVeuillez préciser le type d'import que vous voulez\n");
     printf("\t1: Importer tout Catalogue \n");
     printf("\t2: Importer seulement les trajets simples\n");
     printf("\t3: Importer seulement les trajets composés\n");
     cin >> typeimport;
-    //on va vérifier
-    if (strcmp(typeimport.c_str(), "1") == 0) {
-        Cell* parcours = trajets.getracine();
-        while (parcours != nullptr) {
+    // on va vérifier
+    if (strcmp(typeimport.c_str(), "1") == 0)
+    {
+        Cell *parcours = trajets.getracine();
+        while (parcours != nullptr)
+        {
+            // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
+            // la description du trajet en cours de lecture
             res.append(parcours->getData()->Decrire(false));
             parcours = parcours->getNext();
         }
     }
-    else if (strcmp(typeimport.c_str(), "2") == 0) {
-        Cell* parcours = trajets.getracine();
-        while (parcours != nullptr) {
-            if (dynamic_cast<TrajetSimple*>(parcours->getData()))
+    else if (strcmp(typeimport.c_str(), "2") == 0)
+    {
+        Cell *parcours = trajets.getracine();
+        while (parcours != nullptr)
+        {
+            // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
+            // la description du trajet en cours de lecture s'il est un TrajetSimple
+            if (dynamic_cast<TrajetSimple *>(parcours->getData()))
                 res.append(parcours->getData()->Decrire(false));
             parcours = parcours->getNext();
         }
     }
-    else if (strcmp(typeimport.c_str(), "3") == 0) {
-        Cell* parcours = trajets.getracine();
-        while (parcours != nullptr) {
-            if (dynamic_cast<TrajetCompose*>(parcours->getData()))
+    else if (strcmp(typeimport.c_str(), "3") == 0)
+    {
+        Cell *parcours = trajets.getracine();
+        while (parcours != nullptr)
+        {
+            // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
+            // la description du trajet en cours de lecture s'il est un TrajetCompose
+            if (dynamic_cast<TrajetCompose *>(parcours->getData()))
                 res.append(parcours->getData()->Decrire(false));
             parcours = parcours->getNext();
         }
     }
 
     fout << res;
-
 }
 
-void Catalogue::Exporter_parIntervalle(std::ofstream& fout)
+void Catalogue::Exporter_parIntervalle(std::ofstream &fout)
+// Algorithme :
 {
     int min, max, count = 0;
     string res;
@@ -601,10 +686,11 @@ void Catalogue::Exporter_parIntervalle(std::ofstream& fout)
     cin >> min;
     cin >> max;
 
-    Cell* parcours = trajets.getracine();
-    while (parcours != nullptr) {
+    Cell *parcours = trajets.getracine();
+    while (parcours != nullptr)
+    {
         count++;
-        if(count>=min && count<=max)
+        if (count >= min && count <= max)
             res.append(parcours->getData()->Decrire(false));
         parcours = parcours->getNext();
     }
@@ -628,27 +714,34 @@ void Catalogue::Interface()
     printf("\t0: quitter\n");
 
     fscanf(stdin, "%99s", lecture);
-    while (strcmp(lecture, "0") != 0) {
+    while (strcmp(lecture, "0") != 0)
+    {
 
-
-        if (strcmp(lecture, "1") == 0) {
-            if (trajets.getracine()->getData() == nullptr) {
+        if (strcmp(lecture, "1") == 0)
+        {
+            if (trajets.getracine()->getData() == nullptr)
+            {
                 cout << "Catalogue vide" << endl;
             }
             else
                 Afficher();
         }
-        else if (strcmp(lecture, "2") == 0) {
+        else if (strcmp(lecture, "2") == 0)
+        {
             AjouterSimple();
         }
-        else if (strcmp(lecture, "3") == 0) {
+        else if (strcmp(lecture, "3") == 0)
+        {
             AjouterCompose();
         }
-        else if (strcmp(lecture, "4") == 0) {
-            if (trajets.getracine()->getData() == nullptr) {
+        else if (strcmp(lecture, "4") == 0)
+        {
+            if (trajets.getracine()->getData() == nullptr)
+            {
                 cout << "Catalogue vide" << endl;
             }
-            else {
+            else
+            {
                 printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
                 char depart[20];
                 char arrivee[20];
@@ -656,33 +749,40 @@ void Catalogue::Interface()
                 recherche(depart, arrivee);
             }
         }
-        else if (strcmp(lecture, "5") == 0) {
-            if (trajets.getracine()->getData() == nullptr) {
+        else if (strcmp(lecture, "5") == 0)
+        {
+            if (trajets.getracine()->getData() == nullptr)
+            {
                 cout << "Catalogue vide" << endl;
             }
-            else {
+            else
+            {
                 printf("veuillez rentrer la ville de départ ainsi que la ville d'arrivée\n");
                 char depart[20];
                 char arrivee[20];
                 fscanf(stdin, "%99s %99s", depart, arrivee);
-                if (!rechercheCombi(depart, arrivee, false)) {
+                if (!rechercheCombi(depart, arrivee, false))
+                {
                     cout << "On essaie de trouver une solution\n";
-                    for (int i = 0; i < 10; i++) {
+                    for (int i = 0; i < 10; i++)
+                    {
                         cout << "----------\n";
                     }
                     cout << "Combinaisons de trajets pas disponible dans notre réseaux, cependant vous pouvez\n";
                     cout << "voir les propositions ci-dessus afin de vous rapprocher de votre destination\n ";
                 }
             }
-
         }
-        else if (strcmp(lecture, "6") == 0) {
+        else if (strcmp(lecture, "6") == 0)
+        {
             Importer();
         }
-        else if (strcmp(lecture, "7") == 0) {
+        else if (strcmp(lecture, "7") == 0)
+        {
             Exporter();
         }
-        else if (strcmp(lecture, "0") == 0) {
+        else if (strcmp(lecture, "0") == 0)
+        {
         }
         printf("menu:\n");
         printf("\t1: affichage\n");
@@ -698,11 +798,9 @@ void Catalogue::Interface()
     }
 } //----- Fin de Méthode
 
-
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-
 
 Catalogue::Catalogue()
 // Algorithme :
@@ -713,7 +811,6 @@ Catalogue::Catalogue()
 #endif
 } //----- Fin de Catalogue
 
-
 Catalogue::~Catalogue()
 // Algorithme :
 //
@@ -723,7 +820,6 @@ Catalogue::~Catalogue()
 #endif
     // delete trajets;
 } //----- Fin de ~Catalogue
-
 
 //------------------------------------------------------------------ PRIVE
 

@@ -1,16 +1,16 @@
 /*************************************************************************
                            Linkedlist  -  description
                              -------------------
-    début                : $21-11-2022$
-    copyright            : (C) $2022$ par $Binôme3307$
+    dï¿½but                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binï¿½me3307$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Linkedlist> (fichier Linkedlist.h) ----------------
-#if ! defined ( LINKEDLIST_H )
+#if !defined(LINKEDLIST_H)
 #define LINKEDLIST_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 #include "Cell.h"
 
 //------------------------------------------------------------- Constantes
@@ -19,8 +19,8 @@ const int INIT = 2;
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Linkedlist>
-//Linkedlist est une liste chainee qui pointe vers la première racine
+// Rï¿½le de la classe <Linkedlist>
+// Linkedlist est une liste chainee qui pointe vers la premiï¿½re racine
 // celle-ci peut contenir des trajets
 //
 //------------------------------------------------------------------------
@@ -30,80 +30,77 @@ class Linkedlist
     //----------------------------------------------------------------- PUBLIC
 
 public:
-    //----------------------------------------------------- Méthodes publiques
+    //----------------------------------------------------- Mï¿½thodes publiques
 
-        //GETTERS,SETTERS
-    Cell* getracine()const;
+    // GETTERS,SETTERS
+    Cell *getracine() const;
     // Mode d'emploi :
-    // retourne la première racine de la liste
+    // retourne la premiï¿½re racine de la liste
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
     //
-    const char* getVillea() const;
+    const char *getVillea() const;
     // Mode d'emploi :
-    // retourne la ville d'arrivée du dernier trajet de la liste
-    // on l'utilise dans la recherche combinée dans Catalogue
+    // retourne la ville d'arrivï¿½e du dernier trajet de la liste
+    // on l'utilise dans la recherche combinï¿½e dans Catalogue
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
     //
-    const char* getVilled() const;
+    const char *getVilled() const;
     // Mode d'emploi :
-    // retourne la ville de de départ du premier trajet de la liste
-    // on l'utilise dans la recherche combinée dans Catalogue
+    // retourne la ville de de dï¿½part du premier trajet de la liste
+    // on l'utilise dans la recherche combinï¿½e dans Catalogue
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
     //
-    void setracine(Cell* cell);
+    void setracine(Cell *cell);
     // Mode d'emploi :
-    // change la valeur de la première racine de la liste
+    // change la valeur de la premiï¿½re racine de la liste
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
     //
 
     //----Fin GETERS,SETTERS
 
-    void Ajouter(const Trajet* t);
+    void Ajouter(const Trajet *t);
     // Mode d'emploi :
-    // cette methode va ajouter un trajet à la liste
+    // cette methode va ajouter un trajet ï¿½ la liste
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
     //
 
     void tri();
     // Mode d'emploi :
-    // cette methode va trier les cellules selon un ordre alphabétique croissant
-    // des villes de départ afin de simplifier la lecture de l'affichage
+    // cette methode va trier les cellules selon un ordre alphabï¿½tique croissant
+    // des villes de dï¿½part afin de simplifier la lecture de l'affichage
     // pour l'utilisateur.
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
     //
 
-    void Afficher()const;
+    void Afficher() const;
     // Mode d'emploi :
-    // cette méthode va afficher les différents trajets qui composent la liste
-    // pour chaque racine elle va faire appel à la méthode Afficher liée à chaque type de trajet (simple ou composé).
+    // cette mï¿½thode va afficher les diffï¿½rents trajets qui composent la liste
+    // pour chaque racine elle va faire appel ï¿½ la mï¿½thode Afficher liï¿½e ï¿½ chaque type de trajet (simple ou composï¿½).
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
     //
 
     std::string Decrire() const;
     // Mode d'emploi :
-    // cette méthode va créer un string qui content une description des trajets contenus dans une LinkedList selon 
+    // cette mï¿½thode va crï¿½er un string qui content une description des trajets contenus dans une LinkedList selon
     // la convention qu'on a choisi :
-    // {1,2,3};ville de départ;ville d'arrivée;moyen de transport
+    // {1,2,3};ville de dï¿½part;ville d'arrivï¿½e;moyen de transport
     // 1 si trajetSimple
-    // 2 si trajetComposé
-    // 3 si trajetSimple qui constitue un trajetComposé
+    // 2 si trajetComposï¿½
+    // 3 si trajetSimple qui constitue un trajetComposï¿½
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
     //
 
-//------------------------------------------------- Surcharge d'opérateurs
+    //------------------------------------------------- Surcharge d'opï¿½rateurs
 
-
-
-//-------------------------------------------- Constructeurs - destructeur
-
+    //-------------------------------------------- Constructeurs - destructeur
 
     Linkedlist();
     // Mode d'emploi :
@@ -117,15 +114,15 @@ public:
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
+    //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-    //----------------------------------------------------- Attributs protégés
-    Cell* racine;
+    //----------------------------------------------------- Attributs protï¿½gï¿½s
+    Cell *racine;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//-------------------------------- Autres dï¿½finitions dï¿½pendantes de <Xxx>
 
 #endif // Linkedlist_H

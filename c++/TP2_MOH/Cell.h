@@ -1,16 +1,16 @@
 /*************************************************************************
                            Cell  -  description
                              -------------------
-    début                : $21-11-2022$
-    copyright            : (C) $2022$ par $Binôme3307$
+    dï¿½but                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binï¿½me3307$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Cell> (fichier Cell.h) ----------------
-#if ! defined ( Cell_H )
+#if !defined(Cell_H)
 #define Cell_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 #include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
@@ -18,9 +18,9 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Cell>
-//une Cell est un bloc composé d'un pointeur data qui pointe vers un trjaet
-// et un pointeur cell qui pointe vers la racine suivante (afin de simuler une liste chainée)
+// Rï¿½le de la classe <Cell>
+// une Cell est un bloc composï¿½ d'un pointeur data qui pointe vers un trjaet
+// et un pointeur cell qui pointe vers la racine suivante (afin de simuler une liste chainï¿½e)
 //
 //------------------------------------------------------------------------
 
@@ -29,72 +29,62 @@ class Cell
     //----------------------------------------------------------------- PUBLIC
 
 public:
-    //----------------------------------------------------- Méthodes publiques
-    Trajet* getData() const;
+    //----------------------------------------------------- Mï¿½thodes publiques
+    Trajet *getData() const;
     // Mode d'emploi :
     // retourne un pointeur vers le trajet contenu dans la racine
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
-
-    Cell* getNext() const;
+    Cell *getNext() const;
     // Mode d'emploi :
     // retourne un pointeur vers la racine suivante
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
-
-    void setNext(const Cell* suivant);
+    void setNext(const Cell *suivant);
     // Mode d'emploi :
     // change le next d'une racine
     // Contrat :
     //
-    void setData(const Trajet* set);
+    void setData(const Trajet *set);
     // Mode d'emploi :
     // cahnge la valeur de data
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
+    //------------------------------------------------- Surcharge d'opï¿½rateurs
 
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-
-
-//-------------------------------------------- Constructeurs - destructeur
-
+    //-------------------------------------------- Constructeurs - destructeur
 
     Cell();
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
-
-    Cell(const Trajet* unTrajet);
+    Cell(const Trajet *unTrajet);
     // Mode d'emploi :
     //
     // Contrat :
-    //PAS DE CONTRAT
-
+    // PAS DE CONTRAT
 
     virtual ~Cell();
     // Mode d'emploi :
     //
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
-
-//------------------------------------------------------------------ PRIVE
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
+    //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-    //----------------------------------------------------- Attributs protégés
-    Trajet* data;
-    Cell* next;
+    //----------------------------------------------------- Attributs protï¿½gï¿½s
+    Trajet *data;
+    Cell *next;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Cell>
+//-------------------------------- Autres dï¿½finitions dï¿½pendantes de <Cell>
 
 #endif // Cell_H

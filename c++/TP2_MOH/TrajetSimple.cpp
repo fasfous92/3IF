@@ -1,16 +1,16 @@
 /*************************************************************************
                            TrajetSimple  -  description
                              -------------------
-    début                : $21-11-2022$
-    copyright            : (C) $2022$ par $Binôme3307$
+    dï¿½but                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binï¿½me3307$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
+//---------- Rï¿½alisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 #include <iostream>
 #include <cstring>
@@ -25,43 +25,45 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Mï¿½thodes publiques
 
 void TrajetSimple::Afficher() const
-// Algorithme : Méthode simple
+// Algorithme : Mï¿½thode simple
 //
 {
-    cout << "TS de " << depart << " à " << arrivee << " en " << transport << endl;
+    cout << "TS de " << depart << " ï¿½ " << arrivee << " en " << transport << endl;
 }
 
-const char* TrajetSimple::getvilled() const
-// Algorithme : Méthode simple
+const char *TrajetSimple::getvilled() const
+// Algorithme : Mï¿½thode simple
 //
 {
     return depart;
 }
 
-const char* TrajetSimple::getvillea() const
-// Algorithme : Méthode simple
+const char *TrajetSimple::getvillea() const
+// Algorithme : Mï¿½thode simple
 //
 {
     return arrivee;
 }
 
-const char* TrajetSimple::getTransport() const
-// Algorithme : Méthode simple
+const char *TrajetSimple::getTransport() const
+// Algorithme : Mï¿½thode simple
 //
 {
     return transport;
 }
 
-string  TrajetSimple::Decrire(bool forTC) const 
-// Algorithme : Méthode simple
+string TrajetSimple::Decrire(bool forTC) const
+// Algorithme : Mï¿½thode simple
 //
 {
     string description;
-    if(!forTC) description.append("1;"); // on met 1 si c'est un trajet simple indépendant
-    else description.append("3;"); // on met 3 si c'est un trajet simple qui est une étape d'un trajet composé
+    if (!forTC)
+        description.append("1;"); // on met 1 si c'est un trajet simple indï¿½pendant
+    else
+        description.append("3;"); // on met 3 si c'est un trajet simple qui est une ï¿½tape d'un trajet composï¿½
     description.append(depart);
     description.append(";");
     description.append(arrivee);
@@ -71,15 +73,12 @@ string  TrajetSimple::Decrire(bool forTC) const
     return description;
 }
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-
-
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-TrajetSimple::TrajetSimple(const char* vDepart, const char* vArrivee, const  char* mTransport)
-// Algorithme : Méthode simple
+TrajetSimple::TrajetSimple(const char *vDepart, const char *vArrivee, const char *mTransport)
+// Algorithme : Mï¿½thode simple
 //
 {
 #ifdef MAP
@@ -93,8 +92,8 @@ TrajetSimple::TrajetSimple(const char* vDepart, const char* vArrivee, const  cha
     strcpy(transport, mTransport);
 } //----- Fin de TrajetSimple
 
-TrajetSimple::TrajetSimple(const string* vDepart, const string* vArrivee, const  string* mTransport)
-// Algorithme : Méthode simple
+TrajetSimple::TrajetSimple(const string *vDepart, const string *vArrivee, const string *mTransport)
+// Algorithme : Mï¿½thode simple
 //
 {
 #ifdef MAP
@@ -108,9 +107,8 @@ TrajetSimple::TrajetSimple(const string* vDepart, const string* vArrivee, const 
     strcpy(transport, mTransport->c_str());
 } //----- Fin de TrajetSimple
 
-
 TrajetSimple::~TrajetSimple()
-// Algorithme : Méthode simple
+// Algorithme : Mï¿½thode simple
 //
 {
 #ifdef MAP
@@ -121,7 +119,6 @@ TrajetSimple::~TrajetSimple()
     delete[] transport;
 } //----- Fin de ~TrajetSimple
 
-
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es

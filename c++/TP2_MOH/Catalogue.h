@@ -1,16 +1,16 @@
 /*************************************************************************
                            Catalogue  -  description
                              -------------------
-    début                : $DATE$
+    dï¿½but                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
 //---------- Interface de la classe <Catalogue> (fichier Catalogue.h) ----------------
-#if ! defined ( Catalogue_H )
+#if !defined(Catalogue_H)
 #define Catalogue_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 #include "Linkedlist.h"
 #include "TrajetCompose.h"
 #include "TrajetSimple.h"
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Catalogue>
+// Rï¿½le de la classe <Catalogue>
 //
 //
 //------------------------------------------------------------------------
@@ -29,20 +29,19 @@ class Catalogue
     //----------------------------------------------------------------- PUBLIC
 
 public:
-    //----------------------------------------------------- Méthodes publiques
-    bool rechercheCombi(const char* depart, const char* arrivee, bool display)const;
+    //----------------------------------------------------- Mï¿½thodes publiques
+    bool rechercheCombi(const char *depart, const char *arrivee, bool display) const;
     // Mode d'emploi :
-    // Cette méthode va combiner aux maximun deux trajets afin de subvenir
-    // aux paramètres rentrés notamment, la ville de départ et la ville d'arrivée
+    // Cette mï¿½thode va combiner aux maximun deux trajets afin de subvenir
+    // aux paramï¿½tres rentrï¿½s notamment, la ville de dï¿½part et la ville d'arrivï¿½e
     //
     // Contrat :
     //
 
-
-    bool recherche(const char* depart, const char* arrivee)const;
+    bool recherche(const char *depart, const char *arrivee) const;
     // Mode d'emploi :
-    // Cette méthode va nous permettre de rechercher les différents
-    // trajets dans notre catalogue en prenant comme paramètre la ville de départ et la ville d'arrivée
+    // Cette mï¿½thode va nous permettre de rechercher les diffï¿½rents
+    // trajets dans notre catalogue en prenant comme paramï¿½tre la ville de dï¿½part et la ville d'arrivï¿½e
     //
     // Contrat :
     //
@@ -50,42 +49,42 @@ public:
     void Importer_parIntervalle(std::ifstream &file);
     // Mode d'emploi :
     // Importer tous les trajets existant dans le fichier en prenant en
-    //compte l'intervalle indiqué par l'utilisateur
-    // Contrat: le fichier doit exister dans le répertoire de travail ou le chemin d'accèes bien
-    //structuré
+    // compte l'intervalle indiquï¿½ par l'utilisateur
+    // Contrat: le fichier doit exister dans le rï¿½pertoire de travail ou le chemin d'accï¿½es bien
+    // structurï¿½
     //
 
     void Importer();
     // Mode d'emploi :
-    // cette méthode est juste une interface qui permet à l'utilisateur de choisir le type d'importation
-    // Contrat: le fichier doit exister dans le répertoire de travail ou le chemin d'accèes bien
-    //structuré
+    // cette mï¿½thode est juste une interface qui permet ï¿½ l'utilisateur de choisir le type d'importation
+    // Contrat: le fichier doit exister dans le rï¿½pertoire de travail ou le chemin d'accï¿½es bien
+    // structurï¿½
     //
 
     void Importer_parChoix(std::ifstream &file);
     // Mode d'emploi :
     // Importer tous les trajets existant dans le fihcier en prenant en
-    //compte les choix de l'utilisateur (la ville de départ et/ou arrivée )
-    //de choisir le type de chargement qu'il désire (trjaets composés et/ou simples)
-    // Contrat: le fichier doit exister dans le répertoire de travail ou le chemin d'accèes bien
-    //structuré
+    // compte les choix de l'utilisateur (la ville de dï¿½part et/ou arrivï¿½e )
+    // de choisir le type de chargement qu'il dï¿½sire (trjaets composï¿½s et/ou simples)
+    // Contrat: le fichier doit exister dans le rï¿½pertoire de travail ou le chemin d'accï¿½es bien
+    // structurï¿½
     //
 
     void Importer_parCritere(std::ifstream &file);
     // Mode d'emploi :
-    // Importer tous les trajets existant dans le fihcier CSV
-    //et les placés dans le Catalogue, cette méthode permet à l'utilisateur
-    //de choisir le type de chargement qu'il désire (trjaets composés et/ou simples)
-    // Contrat: le fichier "Catalogue.csv" doit exister dans le répertoire de travail
+    // Importer tous les trajets existant dans le fihcier
+    // et les placï¿½s dans le Catalogue, cette mï¿½thode permet ï¿½ l'utilisateur
+    // de choisir le type de chargement qu'il dï¿½sire (trjaets composï¿½s et/ou simples)
+    // Contrat: le fichier "Catalogue.csv" doit exister dans le rï¿½pertoire de travail
     //
 
     void Afficher();
     // Mode d'emploi :
-    // Affiche tous les trajets trier par ordre alphabétique
-    // des villes de départs dans le catalogue.
-    //L'affichage indique aussi d'il s'agit de trajet composé ou de
-    //trajet simple en utilisant les codess suivant
-    // TC: trajet composé
+    // Affiche tous les trajets trier par ordre alphabï¿½tique
+    // des villes de dï¿½parts dans le catalogue.
+    // L'affichage indique aussi d'il s'agit de trajet composï¿½ ou de
+    // trajet simple en utilisant les codess suivant
+    // TC: trajet composï¿½
     // TS: trajet simple
     // Contrat :
     //
@@ -96,56 +95,69 @@ public:
     // Contrat :
     //
 
-    void  AjouterSimple();
+    void AjouterSimple();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    void  AjouterCompose();
+    void AjouterCompose();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     void Exporter();
+    // Mode d'emploi :
+    // Ouvre le fichier ofstream oÃ¹ on va sauvegarder les trajets
+    // Si aucun problÃ¨me n'est rencontrÃ© le menu qui permet Ã  l'utilisateur de choisir le type de sauvegade est affichÃ©
+    // Contrat :
+    //
 
     void Exporter_parChoix(std::ofstream &fout);
+    // Mode d'emploi :
+    // permet Ã  l'utilistaeur de choisir une sauvgarde par ville de dÃ©part et/ou ville d'arrivÃ©e
+    // Contrat :
+    //
 
-    void Exporter_parCritere(std::ofstream& fout);
+    void Exporter_parCritere(std::ofstream &fout);
+    // Mode d'emploi :
+    //  permet Ã  l'utilistaeur de choisir une sauvgarde par trajet simple et/ou trajet commposÃ©
+    // Contrat :
+    //
 
-    void Exporter_parIntervalle(std::ofstream& fout);
+    void Exporter_parIntervalle(std::ofstream &fout);
+    // Mode d'emploi :
+    //  permet Ã  l'utilistaeur de choisir une sauvgarde Ã  partir d'un certain rang jusqu'Ã  un autre rang
+    // Contrat :
+    //
 
+    //------------------------------------------------- Surcharge d'opï¿½rateurs
 
-//------------------------------------------------- Surcharge d'opérateurs
-
-
-//-------------------------------------------- Constructeurs - destructeur
+    //-------------------------------------------- Constructeurs - destructeur
 
     Catalogue();
     // Mode d'emploi :
-    // Création de la classe Catalogue
+    // Crï¿½ation de la classe Catalogue
     //
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
     virtual ~Catalogue();
     // Mode d'emploi :
     //
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
-
-//------------------------------------------------------------------ PRIVE
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
+    //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
     Linkedlist trajets;
 
-    //----------------------------------------------------- Attributs protégés
-
+    //----------------------------------------------------- Attributs protï¿½gï¿½s
 };
 
-//-------------------------------- Autres définitions dépendantes de <Catalogue>
+//-------------------------------- Autres dï¿½finitions dï¿½pendantes de <Catalogue>
 
 #endif // Catalogue_H

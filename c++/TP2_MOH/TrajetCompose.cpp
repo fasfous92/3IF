@@ -1,21 +1,19 @@
 /*************************************************************************
                            TrajetCompose  -  description
                              -------------------
-    début                : $21-11-2022$
-    copyright            : (C) $2022$ par $Binôme3307$
+    dï¿½but                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binï¿½me3307$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
+//---------- Rï¿½alisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 #include <iostream>
 #include <string>
-
-
 
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
@@ -24,13 +22,13 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Mï¿½thodes publiques
 
 // GETTERS,SETTERS
-const char* TrajetCompose::getvillea() const
-// Algorithme : Méthode simple
+const char *TrajetCompose::getvillea() const
+// Algorithme : Mï¿½thode simple
 {
-    Cell* parcours = compo.getracine();
+    Cell *parcours = compo.getracine();
     while (parcours->getNext() != nullptr)
     {
         parcours = parcours->getNext();
@@ -39,50 +37,50 @@ const char* TrajetCompose::getvillea() const
     return parcours->getData()->getvillea();
 }
 
-const char* TrajetCompose::getvilled() const
-// Algorithme : Méthode simple
+const char *TrajetCompose::getvilled() const
+// Algorithme : Mï¿½thode simple
 {
-    Cell* parcours = compo.getracine();
+    Cell *parcours = compo.getracine();
     return parcours->getData()->getvilled();
 }
 
 //--Fin GETTERS,SETTERS
 
-int TrajetCompose::AjouterTrajet(const Trajet* t)
-// Algorithme : Méthode simple
+int TrajetCompose::AjouterTrajet(const Trajet *t)
+// Algorithme : Mï¿½thode simple
 {
 
     if (compo.getracine()->getData() == nullptr || strcmp(getvillea(), t->getvilled()) == 0)
     {
         if (compo.getracine()->getData() == nullptr)
-            depart = (char*)t->getvilled();
-        compo.Ajouter(t); // on utilise la méthode d'ajout de la Linkedlist
-        arrivee = (char*)t->getvillea();
+            depart = (char *)t->getvilled();
+        compo.Ajouter(t); // on utilise la mï¿½thode d'ajout de la Linkedlist
+        arrivee = (char *)t->getvillea();
         return 1;
     }
     else
     {
         cout << "Erreur: impossible de rajouter";
         t->Afficher();
-        cout << "la ville d'arrivée ne correspond pas à la ville de depart\n";
+        cout << "la ville d'arrivï¿½e ne correspond pas ï¿½ la ville de depart\n";
         return 0;
     }
 
 } //----- Fin de AjouterTrajet
 
 void TrajetCompose::Afficher() const
-// Algorithme : Méthode simple
+// Algorithme : Mï¿½thode simple
 //
 {
-    cout << "TC de " << depart << " à " << arrivee << ":" << endl;
+    cout << "TC de " << depart << " ï¿½ " << arrivee << ":" << endl;
     cout << "[\n";
     compo.Afficher();
     cout << "]\n";
 
 } //----- Fin Afficher
 
-string TrajetCompose::Decrire(bool forTC) const 
-// Algorithme : Méthode simple
+string TrajetCompose::Decrire(bool forTC) const
+// Algorithme : Mï¿½thode simple
 //
 {
     string description;
@@ -92,7 +90,7 @@ string TrajetCompose::Decrire(bool forTC) const
     description.append(arrivee);
     description.append(";#\n");
 
-    Cell* parcours = compo.getracine();
+    Cell *parcours = compo.getracine();
     while (parcours->getNext() != nullptr)
     {
         description.append(parcours->getData()->Decrire(true));
@@ -100,9 +98,9 @@ string TrajetCompose::Decrire(bool forTC) const
     }
     description.append(parcours->getData()->Decrire(true));
     return description;
-}//----- Fin Decrire
+} //----- Fin Decrire
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -128,4 +126,4 @@ TrajetCompose::~TrajetCompose()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es

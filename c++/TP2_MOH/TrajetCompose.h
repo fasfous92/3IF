@@ -1,16 +1,16 @@
 /*************************************************************************
                            TrajetCompose  -  description
                              -------------------
-    début                : $21-11-2022$
-    copyright            : (C) $2022$ par $Binôme3307$
+    dï¿½but                : $21-11-2022$
+    copyright            : (C) $2022$ par $Binï¿½me3307$
     e-mail               : youssef.sidhom@insa-lyon.fr/mohamed.fayala@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
-#if ! defined ( TrajetCompose_H )
+#if !defined(TrajetCompose_H)
 #define TrajetCompose_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 #include <string>
 #include <cstring>
 #include "Linkedlist.h"
@@ -19,8 +19,8 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <TrajetCompose>
-//cette Classe va créer/gérer/repertorier les trajets composés
+// Rï¿½le de la classe <TrajetCompose>
+// cette Classe va crï¿½er/gï¿½rer/repertorier les trajets composï¿½s
 //
 //------------------------------------------------------------------------
 
@@ -29,88 +29,77 @@ class TrajetCompose : public Trajet
     //----------------------------------------------------------------- PUBLIC
 
 public:
-    //----------------------------------------------------- Méthodes publiques
-          //GETTERS,SETTERS
-    virtual const char* getvillea()const;
+    //----------------------------------------------------- Mï¿½thodes publiques
+    // GETTERS,SETTERS
+    virtual const char *getvillea() const;
     // Mode d'emploi:
-    // Retourne le ville d'arrivée du trajet composé
+    // Retourne le ville d'arrivï¿½e du trajet composï¿½
     //
-    //Contrat:
-    //PAS DE CONTRAT
+    // Contrat:
+    // PAS DE CONTRAT
 
-    virtual const char* getvilled()const;
+    virtual const char *getvilled() const;
     // Mode d'emploi:
-    // Retourne le ville de départ du trajet composé
+    // Retourne le ville de dï¿½part du trajet composï¿½
     //
-    //Contrat:
-    //PAS DE CONTRAT
+    // Contrat:
+    // PAS DE CONTRAT
 
     //--Fin GETTERS,SETTERS
 
-
-    int AjouterTrajet(const Trajet* t);
+    int AjouterTrajet(const Trajet *t);
     // Mode d'emploi:
-    // Ajouter un trajet à notre trajet composé tout en vérifiant de la faisabilité de cet ajout:
-    // on vérifie s'il s'agit du premier trajet à rajouter, si c'est le cas on peut ajouter
-    // sinon on doit vérifier la correspondence des villes.
-    // cette méthode retourne 1 si l'ajout a été réaliser sinon 0
+    // Ajouter un trajet ï¿½ notre trajet composï¿½ tout en vï¿½rifiant de la faisabilitï¿½ de cet ajout:
+    // on vï¿½rifie s'il s'agit du premier trajet ï¿½ rajouter, si c'est le cas on peut ajouter
+    // sinon on doit vï¿½rifier la correspondence des villes.
+    // cette mï¿½thode retourne 1 si l'ajout a ï¿½tï¿½ rï¿½aliser sinon 0
     //
-    //Contrat:
-    //PAS DE CONTRAT
+    // Contrat:
+    // PAS DE CONTRAT
 
-
-
-
-    virtual void Afficher()const;
+    virtual void Afficher() const;
     // Mode d'emploi :
-    // Cette méthode va afficher la ville de départ de notre première étape ainsi
-    // que la ville d'arrivée de la dernière étape. Etant donné que le trajet composé
-    // peut avoir plusieurs moyens de transport on a décider de ne pas afficher les modes de
+    // Cette mï¿½thode va afficher la ville de dï¿½part de notre premiï¿½re ï¿½tape ainsi
+    // que la ville d'arrivï¿½e de la derniï¿½re ï¿½tape. Etant donnï¿½ que le trajet composï¿½
+    // peut avoir plusieurs moyens de transport on a dï¿½cider de ne pas afficher les modes de
     // transport.
-    // Contrat :
-    //PAS DE CONTRAT
-
-    virtual std::string Decrire(bool forTC=true) const;
-    // Mode d'emploi :
-    // 1ere ligne décrit le trajet composé en général : ville de départ et ville d'arrivée (pas de moyen de transport
-    //  parcourt la liste des trajets qui composent le trajet composé et rajoute au string la description de chaque trajet
     // Contrat :
     // PAS DE CONTRAT
 
+    virtual std::string Decrire(bool forTC = true) const;
+    // Mode d'emploi :
+    // 1ere ligne dï¿½crit le trajet composï¿½ en gï¿½nï¿½ral : ville de dï¿½part et ville d'arrivï¿½e (pas de moyen de transport
+    //  parcourt la liste des trajets qui composent le trajet composï¿½ et rajoute au string la description de chaque trajet
+    // Contrat :
+    // PAS DE CONTRAT
 
-//------------------------------------------------- Surcharge d'opérateurs
+    //------------------------------------------------- Surcharge d'opï¿½rateurs
 
-
-
-//-------------------------------------------- Constructeurs - destructeur
-
+    //-------------------------------------------- Constructeurs - destructeur
 
     TrajetCompose();
-    // Mode d'emploi : cette methode va demander à l'utilisateur:
-    // cette méthode va créer un Trajet composé vide et après
-    // on demandera à l'utilisateur de rajouter les étapes qui composent
+    // Mode d'emploi : cette methode va demander ï¿½ l'utilisateur:
+    // cette mï¿½thode va crï¿½er un Trajet composï¿½ vide et aprï¿½s
+    // on demandera ï¿½ l'utilisateur de rajouter les ï¿½tapes qui composent
     // ce trajet (avec la methode AjouterTrajet).
     // Contrat :
-    //PAS DE CONTRAT
-
+    // PAS DE CONTRAT
 
     virtual ~TrajetCompose();
     // Mode d'emploi :
     //
     // Contrat :
-    //PAS DE CONTRAT
+    // PAS DE CONTRAT
 
-
-//------------------------------------------------------------------ PRIVE
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
+    //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-    //----------------------------------------------------- Attributs protégés
-    Linkedlist compo; // cette Linkedlist va indiquer les différents trajets qui compose notre trajet initial.
-
+    //----------------------------------------------------- Attributs protï¿½gï¿½s
+    Linkedlist compo; // cette Linkedlist va indiquer les diffï¿½rents trajets qui compose notre trajet initial.
 };
 
-//-------------------------------- Autres définitions dépendantes de <TrajetCompose>
+//-------------------------------- Autres dï¿½finitions dï¿½pendantes de <TrajetCompose>
 
 #endif // TrajetCompose_H
