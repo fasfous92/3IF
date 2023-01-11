@@ -13,7 +13,7 @@
 //--------------------------------------------------- Interfaces utilis�es
 #include <string>
 #include <cstring>
-#include "Linkedlist.h"
+#include "LinkedList.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types

@@ -3,4 +3,4 @@ project(TP2_MOH)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(TP2_MOH main.cpp TrajetSimple.cpp TrajetCompose.cpp Cell.cpp Linkedlist.cpp Catalogue.cpp Trajet.cpp)
+add_executable(TP2_MOH main.cpp TrajetSimple.cpp TrajetCompose.cpp Cell.cpp LinkedList.cpp Catalogue.cpp Trajet.cpp)

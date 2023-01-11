@@ -11,7 +11,7 @@
 #define Catalogue_H
 
 //--------------------------------------------------- Interfaces utilis�es
-#include "Linkedlist.h"
+#include "LinkedList.h"
 #include "TrajetCompose.h"
 #include "TrajetSimple.h"
 //------------------------------------------------------------- Constantes
