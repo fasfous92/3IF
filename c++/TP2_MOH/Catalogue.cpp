@@ -165,18 +165,25 @@ void Catalogue::Importer()
             //if (typeimport.c_str(), "1") == 0)
         {
             Importer_parChoix(file);
+            break;
         }
         case 2:
             //else if (strcmp(typeimport.c_str(), "2") == 0)
         {
             Importer_parCritere(file);
+            break;
         }
         case 3:
             //else if (strcmp(typeimport.c_str(), "3") == 0)
         {
             Importer_parIntervalle(file);
+            break;
         }
     }
+    cout<<"Catalogue impporter!!"<<endl;
+    file.close();
+
+
 } //--Fin- Importer
 
 void Catalogue::Importer_parIntervalle(ifstream &file)
@@ -285,24 +292,27 @@ void Catalogue::Importer_parChoix(std::ifstream &file)
         printf("\t3: Importer par ville de départ et ville d'arrivée\n");
 
     }
+
     switch(typeimport){
         // on va vérifier
             case 1:
         //if (strcmp(typeimport.c_str(), "1") == 0)
         {
+            printf("\tveuillez rentrer la ville de départ \n");
             cin >> villed; // ville départ
             break;
         }
             case 2:
         //else if (strcmp(typeimport.c_str(), "2") == 0)
         {
+            printf("\tveuillez rentrer la ville d'arrivée' \n");
             cin >> villea; // ville arrivée
             break;
         }
             case 3:
         //else if (strcmp(typeimport.c_str(), "3") == 0)
         {
-            cout << "veuillez rentrer les villesr" << endl;
+            printf("\tveuillez rentrer la  ville de départ et la vil0le d'arrivée\n");
             cin >> villed;
             cin >> villea;
             break;
@@ -639,8 +649,8 @@ void Catalogue::Exporter()
             break;
         }
     }
-
     fout.close();
+    cout<<"Catalogue exporter!!"<<endl;
 }
 
 void Catalogue::Exporter_parChoix(ofstream &fout)
@@ -892,13 +902,11 @@ void Catalogue::Interface()
         else if (strcmp(lecture, "6") == 0)
         {
             Importer();
-            cout<<"Catalogue impporter!!"<<endl;
 
         }
         else if (strcmp(lecture, "7") == 0)
         {
             Exporter();
-            cout<<"Catalogue exporter!!"<<endl;
         }
         else if (strcmp(lecture, "0") == 0)
         {
