@@ -18,9 +18,9 @@ using namespace std;
 #include <fstream>
 #include <vector>
 #include <sstream>
-#include <typeinfo>
-#include<ios> //used to get stream size
-#include<limits> //used to get numeric limits
+#include <algorithm>
+#include <ios>    //used to get stream size
+#include <limits> //used to get numeric limits
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
@@ -150,39 +150,40 @@ void Catalogue::Importer()
     printf("\t2:Import_parCritere (type de trajet)\n");
     printf("\t3:Import_parIntervalle (choix d'intervalle)\n");
 
-    while(!(cin>>typeimport)| typeimport>3 |typeimport<1){
-        cerr<<"Veuillez rentrer une numéro entier de 1 à 3"<<endl;
+    while (!(cin >> typeimport) | typeimport > 3 | typeimport < 1)
+    {
+        cerr << "Veuillez rentrer une numéro entier de 1 à 3" << endl;
         cin.clear();
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         printf("\tVeuillez choisir le type d'importation\n");
         printf("\t1:Import_parChoix (nom des villes)\n");
         printf("\t2:Import_parCritere (type de trajet)\n");
         printf("\t3:Import_parIntervalle (choix d'intervalle)\n");
+    }
+    switch (typeimport)
+    {
 
-    }    switch (typeimport) {
-
-        case 1:
-            //if (typeimport.c_str(), "1") == 0)
+    case 1:
+        // if (typeimport.c_str(), "1") == 0)
         {
             Importer_parChoix(file);
             break;
         }
-        case 2:
-            //else if (strcmp(typeimport.c_str(), "2") == 0)
+    case 2:
+        // else if (strcmp(typeimport.c_str(), "2") == 0)
         {
             Importer_parCritere(file);
             break;
         }
-        case 3:
-            //else if (strcmp(typeimport.c_str(), "3") == 0)
+    case 3:
+        // else if (strcmp(typeimport.c_str(), "3") == 0)
         {
             Importer_parIntervalle(file);
             break;
         }
     }
-    cout<<"Catalogue impporter!!"<<endl;
+    cout << "Catalogue impporter!!" << endl;
     file.close();
-
 
 } //--Fin- Importer
 
@@ -195,19 +196,22 @@ void Catalogue::Importer_parIntervalle(ifstream &file)
 
     printf("\tVeuillez préciser l'intervalle à choisir\n");
     printf("\tpour un intervalle [a,b] rentrer→ a b\n");
-    while(max<=min) {
-        while (!(cin >> min)) {
+    while (max <= min)
+    {
+        while (!(cin >> min))
+        {
             cerr << "Veuillez rentrer une numéro entier pour la valeur minimale" << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         }
-        while (!(cin >> max)) {
+        while (!(cin >> max))
+        {
             cerr << "Veuillez rentrer une numéro entier pour la valeur maximale" << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         };
-        if(min>=max)
-            cerr<<"veuillez entrer encore une fois vos valeurs tel que a>b"<<endl;
+        if (min >= max)
+            cerr << "veuillez entrer encore une fois vos valeurs tel que a>b" << endl;
     }
     vector<string> row;
     string line, word;
@@ -282,43 +286,45 @@ void Catalogue::Importer_parChoix(std::ifstream &file)
     printf("\t1: Importer par ville de départ \n");
     printf("\t2: Importer par ville d'arrivée \n");
     printf("\t3: Importer par ville de départ et ville d'arrivée\n");
-    while(!(cin>>typeimport)| typeimport>3 |typeimport<1){
-        cerr<<"Veuillez rentrer une numéro entier de 1 à 3"<<endl;
+    while (!(cin >> typeimport) | typeimport > 3 | typeimport < 1)
+    {
+        cerr << "Veuillez rentrer une numéro entier de 1 à 3" << endl;
         cin.clear();
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         printf("\tVeuillez préciser le type d'import que vous voulez\n");
         printf("\t1: Importer par ville de départ \n");
         printf("\t2: Importer par ville d'arrivée \n");
         printf("\t3: Importer par ville de départ et ville d'arrivée\n");
-
     }
 
-    switch(typeimport){
+    switch (typeimport)
+    {
         // on va vérifier
-            case 1:
-        //if (strcmp(typeimport.c_str(), "1") == 0)
+    case 1:
+        // if (strcmp(typeimport.c_str(), "1") == 0)
         {
             printf("\tveuillez rentrer la ville de départ \n");
             cin >> villed; // ville départ
             break;
         }
-            case 2:
-        //else if (strcmp(typeimport.c_str(), "2") == 0)
+    case 2:
+        // else if (strcmp(typeimport.c_str(), "2") == 0)
         {
             printf("\tveuillez rentrer la ville d'arrivée' \n");
             cin >> villea; // ville arrivée
             break;
         }
-            case 3:
-        //else if (strcmp(typeimport.c_str(), "3") == 0)
+    case 3:
+        // else if (strcmp(typeimport.c_str(), "3") == 0)
         {
             printf("\tveuillez rentrer la  ville de départ et la vil0le d'arrivée\n");
             cin >> villed;
             cin >> villea;
             break;
-            }
+        }
     }
-
+    transform(villed.begin(), villed.end(), villed.begin(), ::tolower);
+    transform(villed.begin(), villed.end(), villed.begin(), ::tolower);
     vector<string> row;
     string line, word;
     TrajetCompose *t; // on le crée dans le cas où on en aura besoin
@@ -332,10 +338,16 @@ void Catalogue::Importer_parChoix(std::ifstream &file)
         {
             row.push_back(word); // va stocker la valeur de word dans le vector de string row
         }
+
+        string villedImport = row[1], villeaImport = row[2];
+        transform(villeaImport.begin(), villeaImport.end(), villeaImport.begin(), ::tolower);
+        transform(villedImport.begin(), villedImport.end(), villedImport.begin(), ::tolower);
+
         if (::strcmp(line.c_str(), "") == 0)
         {
             // afin que la fonction stoi ne déclenche pas d'erreur pour la premièrer ligne
         }
+
         else
         {
 
@@ -346,21 +358,22 @@ void Catalogue::Importer_parChoix(std::ifstream &file)
             case 1:
             {
                 ; // la ligne représente un trajet simple
-                if ((typeimport) == 1 && row[1] == villed)
+
+                if ((typeimport) == 1 && villedImport == villed)
                 {
                     TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
                     trajets.Ajouter(aAjouter);
                     cout << "Ajouté" << endl;
                     break;
                 }
-                else if ((typeimport) == 2 && row[2] == villea)
+                else if ((typeimport) == 2 && villeaImport == villea)
                 {
                     TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
                     trajets.Ajouter(aAjouter);
                     cout << "Ajouté" << endl;
                     break;
                 }
-                else if ((typeimport) == 2 && row[2] == villea && row[1] == villed)
+                else if ((typeimport) == 3 && villeaImport == villea && villedImport == villed)
                 {
                     TrajetSimple *aAjouter = new TrajetSimple(&row[1], &row[2], &row[3]);
                     trajets.Ajouter(aAjouter);
@@ -376,21 +389,21 @@ void Catalogue::Importer_parChoix(std::ifstream &file)
             case 2:
             {
                 ; // la ligne représente un trajet composé
-                if ((typeimport) == 1 && row[1] == villed)
+                if ((typeimport) == 1 && villedImport == villed)
                 {
                     t = new TrajetCompose(); // on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
                     trajets.Ajouter(t);      // on le rajoute à notre Catalogue
                     composing = true;
                     break;
                 }
-                else if ((typeimport) == 2 && row[2] == villea)
+                else if ((typeimport) == 2 && villeaImport == villea)
                 {
                     t = new TrajetCompose(); // on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
                     trajets.Ajouter(t);      // on le rajoute à notre Catalogue
                     composing = true;
                     break;
                 }
-                else if ((typeimport) == 3 && row[2] == villea && row[1] == villed)
+                else if ((typeimport) == 3 && villeaImport == villea && villedImport == villed)
                 {
                     t = new TrajetCompose(); // on crée un trajet composé et on attend qu'il soit charger par les instructions suivantes
                     trajets.Ajouter(t);      // on le rajoute à notre Catalogue
@@ -431,8 +444,9 @@ void Catalogue::Importer_parCritere(std::ifstream &file)
     printf("\t1: Importer tout Catalogue \n");
     printf("\t2: Importer seulement les trajets simples\n");
     printf("\t3: Importer seulement les trajets composés\n");
-    while(!(cin>>typeimport)| typeimport>3 |typeimport<1){
-        cerr<<"Veuillez rentrer une numéro entier de 1 à 3"<<endl;
+    while (!(cin >> typeimport) | typeimport > 3 | typeimport < 1)
+    {
+        cerr << "Veuillez rentrer une numéro entier de 1 à 3" << endl;
         cin.clear();
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         printf("\tVeuillez préciser le type d'import que vous voulez\n");
@@ -441,21 +455,22 @@ void Catalogue::Importer_parCritere(std::ifstream &file)
         printf("\t3: Importer seulement les trajets composés\n");
     }
     // on va vérifier
-    switch (typeimport) {
+    switch (typeimport)
+    {
 
-        case 1:
-            //if (strcmp(typeimport.c_str(), "1") == 0)
+    case 1:
+        // if (strcmp(typeimport.c_str(), "1") == 0)
         {
-           break; // on fait rien les booleans restent false
+            break; // on fait rien les booleans restent false
         }
-        case 2:
-            //else if (strcmp(typeimport.c_str(), "2") == 0)
+    case 2:
+        // else if (strcmp(typeimport.c_str(), "2") == 0)
         {
             simple = true;
             break;
         }
-        case 3:
-            //else if (strcmp(typeimport.c_str(), "3") == 0)
+    case 3:
+        // else if (strcmp(typeimport.c_str(), "3") == 0)
         {
             compose = true;
             break;
@@ -611,8 +626,9 @@ void Catalogue::Exporter()
     printf("\t3:Export_parCritere (type de trajet)\n");
     printf("\t4:Export_parIntervalle (choix d'intervalle)\n");
 
-    while(!(cin>>typeimport)| typeimport>3 |typeimport<1){
-        cerr<<"Veuillez rentrer une numéro entier de 1 à 3"<<endl;
+    while (!(cin >> typeimport) | typeimport > 4 | typeimport < 1)
+    {
+        cerr << "Veuillez rentrer une numéro entier de 1 à 4" << endl;
         cin.clear();
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         printf("\tVeuillez choisir le type d'importation\n");
@@ -620,37 +636,37 @@ void Catalogue::Exporter()
         printf("\t2:Export_parChoix (nom des villes)\n");
         printf("\t3:Export_parCritere (type de trajet)\n");
         printf("\t4:Export_parIntervalle (choix d'intervalle)\n");
-
     }
-    switch (typeimport) {
+    switch (typeimport)
+    {
 
-        case 1:
-            //if (strcmp(typeExport.c_str(), "1") == 0)
+    case 1:
+        // if (strcmp(typeExport.c_str(), "1") == 0)
         {
             fout << trajets.Decrire();
             break;
         }
-        case 2:
-            //else if (strcmp(typeExport.c_str(), "2") == 0)
+    case 2:
+        // else if (strcmp(typeExport.c_str(), "2") == 0)
         {
             Exporter_parChoix(fout);
             break;
         }
-        case 3:
-            //else if (strcmp(typeExport.c_str(), "3") == 0)
+    case 3:
+        // else if (strcmp(typeExport.c_str(), "3") == 0)
         {
             Exporter_parCritere(fout);
             break;
         }
-        case 4:
-            //else if (strcmp(typeExport.c_str(), "4") == 0)
+    case 4:
+        // else if (strcmp(typeExport.c_str(), "4") == 0)
         {
             Exporter_parIntervalle(fout);
             break;
         }
     }
     fout.close();
-    cout<<"Catalogue exporter!!"<<endl;
+    cout << "Catalogue exporter!!" << endl;
 }
 
 void Catalogue::Exporter_parChoix(ofstream &fout)
@@ -662,9 +678,10 @@ void Catalogue::Exporter_parChoix(ofstream &fout)
     printf("\t1: Exporter par ville de départ \n");
     printf("\t2: Exporter par ville d'arrivée \n");
     printf("\t3: EXporter par ville de départ et ville d'arrivée\n");
-    cin >> typeimport;
-    while(!(cin>>typeimport)| typeimport>3 |typeimport<1){
-        cerr<<"Veuillez rentrer une numéro entier de 1 à 3"<<endl;
+    // cin >> typeimport;
+    while (!(cin >> typeimport) | typeimport > 3 | typeimport < 1)
+    {
+        cerr << "Veuillez rentrer une numéro entier de 1 à 3" << endl;
         cin.clear();
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         printf("\tVeuillez préciser le type d'import que vous voulez\n");
@@ -673,15 +690,18 @@ void Catalogue::Exporter_parChoix(ofstream &fout)
         printf("\t3: EXporter par ville de départ et ville d'arrivée\n");
     }
     // on va vérifier
-    switch (typeimport) {
+    switch (typeimport)
+    {
 
-        case 1:
-            //if (strcmp(typeExport.c_str(), "1") == 0)
+    case 1:
+        // if (strcmp(typeExport.c_str(), "1") == 0)
         {
             cin >> villed; // ville départ
             Cell *parcours = trajets.getracine();
-            while (parcours != nullptr) {
-                if (strcmp(parcours->getData()->getvilled(), villed.c_str()) == 0) {
+            while (parcours != nullptr)
+            {
+                if (strcmp(parcours->getData()->getvilled(), villed.c_str()) == 0)
+                {
                     // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
                     // la description du trajet en cours de lecture s'il vérifie les conditions
                     res.append(parcours->getData()->Decrire(false));
@@ -690,13 +710,15 @@ void Catalogue::Exporter_parChoix(ofstream &fout)
             }
             break;
         }
-        case 2:
-            //else if (strcmp(typeExport.c_str(), "2") == 0)
+    case 2:
+        // else if (strcmp(typeExport.c_str(), "2") == 0)
         {
             cin >> villea; // ville arrivée
             Cell *parcours = trajets.getracine();
-            while (parcours != nullptr) {
-                if (strcmp(parcours->getData()->getvillea(), villea.c_str()) == 0) {
+            while (parcours != nullptr)
+            {
+                if (strcmp(parcours->getData()->getvillea(), villea.c_str()) == 0)
+                {
                     // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
                     // la description du trajet en cours de lecture s'il vérifie les conditions
                     res.append(parcours->getData()->Decrire(false));
@@ -705,16 +727,18 @@ void Catalogue::Exporter_parChoix(ofstream &fout)
             }
             break;
         }
-        case 3:
-            //else if (strcmp(typeExport.c_str(), "3") == 0)
+    case 3:
+        // else if (strcmp(typeExport.c_str(), "3") == 0)
         {
             cout << "veuillez rentrer les villes" << endl;
             cin >> villed;
             cin >> villea;
             Cell *parcours = trajets.getracine();
-            while (parcours != nullptr) {
+            while (parcours != nullptr)
+            {
                 if (strcmp(parcours->getData()->getvillea(), villea.c_str()) == 0 &&
-                    strcmp(parcours->getData()->getvilled(), villed.c_str()) == 0) {
+                    strcmp(parcours->getData()->getvilled(), villed.c_str()) == 0)
+                {
                     // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
                     // la description du trajet en cours de lecture s'il vérifie les conditions
                     res.append(parcours->getData()->Decrire(false));
@@ -738,21 +762,23 @@ void Catalogue::Exporter_parCritere(std::ofstream &fout)
     printf("\t1: Exporter tout Catalogue \n");
     printf("\t2: Exporter seulement les trajets simples\n");
     printf("\t3: Exporter seulement les trajets composés\n");
-   // cin >> typeimport;
+    // cin >> typeimport;
     // on va vérifier
-    while(!(cin>>typeimport)| typeimport>3 |typeimport<1){
-        cerr<<"Veuillez rentrer une numéro entier de 1 à 3"<<endl;
+    while (!(cin >> typeimport) | typeimport > 3 | typeimport < 1)
+    {
+        cerr << "Veuillez rentrer une numéro entier de 1 à 3" << endl;
         cin.clear();
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
-
     }
-    switch (typeimport) {
+    switch (typeimport)
+    {
 
-        case 1:
-            //if (strcmp(typeimport.c_str(), "1") == 0)
+    case 1:
+        // if (strcmp(typeimport.c_str(), "1") == 0)
         {
             Cell *parcours = trajets.getracine();
-            while (parcours != nullptr) {
+            while (parcours != nullptr)
+            {
                 // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
                 // la description du trajet en cours de lecture
                 res.append(parcours->getData()->Decrire(false));
@@ -760,11 +786,12 @@ void Catalogue::Exporter_parCritere(std::ofstream &fout)
             }
             break;
         }
-        case 2 :
-            //else if (strcmp(typeimport.c_str(), "2") == 0)
+    case 2:
+        // else if (strcmp(typeimport.c_str(), "2") == 0)
         {
             Cell *parcours = trajets.getracine();
-            while (parcours != nullptr) {
+            while (parcours != nullptr)
+            {
                 // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
                 // la description du trajet en cours de lecture s'il est un TrajetSimple
                 if (dynamic_cast<TrajetSimple *>(parcours->getData()))
@@ -773,11 +800,12 @@ void Catalogue::Exporter_parCritere(std::ofstream &fout)
             }
             break;
         }
-        case 3:
-            //else if (strcmp(typeimport.c_str(), "3") == 0)
+    case 3:
+        // else if (strcmp(typeimport.c_str(), "3") == 0)
         {
             Cell *parcours = trajets.getracine();
-            while (parcours != nullptr) {
+            while (parcours != nullptr)
+            {
                 // parcourir le catalogue et rajouter à la description des trajets qu'on va exporter
                 // la description du trajet en cours de lecture s'il est un TrajetCompose
                 if (dynamic_cast<TrajetCompose *>(parcours->getData()))
@@ -794,23 +822,26 @@ void Catalogue::Exporter_parCritere(std::ofstream &fout)
 void Catalogue::Exporter_parIntervalle(std::ofstream &fout)
 // Algorithme :
 {
-    int min=0, max=0, count = 0;
+    int min = 0, max = 0, count = 0;
     string res;
     printf("\tVeuillez préciser l'intervalle à choisir\n");
     printf("\tpour un intervalle [a,b] rentrer→ a b\n");
-    while(max<=min) {
-        while (!(cin >> min)) {
+    while (max <= min)
+    {
+        while (!(cin >> min))
+        {
             cerr << "Veuillez rentrer une numéro entier pour la valeur minimale" << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         }
-        while (!(cin >> max)) {
+        while (!(cin >> max))
+        {
             cerr << "Veuillez rentrer une numéro entier pour la valeur maximale" << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         };
-        if(min>=max)
-            cerr<<"veuillez entrer encore une fois vos valeurs tel que a>b"<<endl;
+        if (min >= max)
+            cerr << "veuillez entrer encore une fois vos valeurs tel que a>b" << endl;
     }
     Cell *parcours = trajets.getracine();
     while (parcours != nullptr)
@@ -902,7 +933,6 @@ void Catalogue::Interface()
         else if (strcmp(lecture, "6") == 0)
         {
             Importer();
-
         }
         else if (strcmp(lecture, "7") == 0)
         {
