@@ -37,6 +37,14 @@ public:
     //
     // Contrat :
     //
+    int Trouveheure()const;
+    //----------------------------------------------------- Méthodes publiques
+    // type Méthode ( liste des paramètres );
+    // Mode d'emploi :
+    //cette méthode va renvoyer l'heure de l'éxecution de la requête qui
+    // fait appel à la méthode
+    // Contrat :
+    //
 
     void Decomposition(const string & line);
     //----------------------------------------------------- Méthodes publiques

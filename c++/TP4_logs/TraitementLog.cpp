@@ -19,7 +19,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "TraitementLog.h"
-
+#include "Traitement.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
@@ -47,19 +47,21 @@ void TraitementLog::lire(string filename)
 {
     ifstream file;
     file.open(fileName);
-    string line;
-    /*while (!file.eof())
+    string line, offset;
+    cout<<"veuillez rentrer le offset que vous voulez enlever à l'adresse de la source"<<endl;
+    cin>>offset
+    while (!file.eof())
     {
         getline(file, line);
-        // je dois la passer à travers Traitement
-        // Traitement traitementLigne (line);
-        if(traitementLigne.section[13]=="200")
+        Traitement traitementLigne=Traitement(line);
+        if(traitementLigne.section[8]=="200")
         {
-            string referer=traitementLigne.section[15];
-            addGraphe(traitementLigne.section[15], traitementLigne.section[11]);
-            addHits(traitementLigne.section[11]);
+            //on mettra dans referer l'adresse de la source en enlevant l'offset porposé par l'utilisateur
+            string referer=traitementLigne.section[10].substr(offset.size(),traitementLigne.section[10].size());
+            addGraphe(referer, traitementLigne.section[6]);
+            addHits(traitementLigne.section[6]);
         }
-    }*/
+    }
 }//Fin lire
 
 //------------------------------------------------- Surcharge d'opérateurs
