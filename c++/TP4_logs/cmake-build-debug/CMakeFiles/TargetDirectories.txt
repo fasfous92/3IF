@@ -1,3 +1,3 @@
-C:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/cmake-build-debug/CMakeFiles/TP4_logs.dir
-C:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ysidhom/Documents/3IF/c++/TP4_logs/cmake-build-debug/CMakeFiles/TP4_logs.dir
+/home/ysidhom/Documents/3IF/c++/TP4_logs/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ysidhom/Documents/3IF/c++/TP4_logs/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/cmake-build-debug/
+cmake_ninja_workdir = /home/ysidhom/Documents/3IF/c++/TP4_logs/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target TP4_logs
 
@@ -49,17 +49,23 @@ cmake_ninja_workdir = C$:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/cmake-bu
 
 build cmake_object_order_depends_target_TP4_logs: phony || CMakeFiles/TP4_logs.dir
 
-build CMakeFiles/TP4_logs.dir/main.cpp.obj: CXX_COMPILER__TP4_logs_Debug C$:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/main.cpp || cmake_object_order_depends_target_TP4_logs
-  DEP_FILE = CMakeFiles\TP4_logs.dir\main.cpp.obj.d
+build CMakeFiles/TP4_logs.dir/main.cpp.o: CXX_COMPILER__TP4_logs_Debug /home/ysidhom/Documents/3IF/c++/TP4_logs/main.cpp || cmake_object_order_depends_target_TP4_logs
+  DEP_FILE = CMakeFiles/TP4_logs.dir/main.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\TP4_logs.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP4_logs.dir
+  OBJECT_DIR = CMakeFiles/TP4_logs.dir
+  OBJECT_FILE_DIR = CMakeFiles/TP4_logs.dir
 
-build CMakeFiles/TP4_logs.dir/TraitementLog.cpp.obj: CXX_COMPILER__TP4_logs_Debug C$:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/TraitementLog.cpp || cmake_object_order_depends_target_TP4_logs
-  DEP_FILE = CMakeFiles\TP4_logs.dir\TraitementLog.cpp.obj.d
+build CMakeFiles/TP4_logs.dir/TraitementLog.cpp.o: CXX_COMPILER__TP4_logs_Debug /home/ysidhom/Documents/3IF/c++/TP4_logs/TraitementLog.cpp || cmake_object_order_depends_target_TP4_logs
+  DEP_FILE = CMakeFiles/TP4_logs.dir/TraitementLog.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\TP4_logs.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP4_logs.dir
+  OBJECT_DIR = CMakeFiles/TP4_logs.dir
+  OBJECT_FILE_DIR = CMakeFiles/TP4_logs.dir
+
+build CMakeFiles/TP4_logs.dir/Traitement.cpp.o: CXX_COMPILER__TP4_logs_Debug /home/ysidhom/Documents/3IF/c++/TP4_logs/Traitement.cpp || cmake_object_order_depends_target_TP4_logs
+  DEP_FILE = CMakeFiles/TP4_logs.dir/Traitement.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/TP4_logs.dir
+  OBJECT_FILE_DIR = CMakeFiles/TP4_logs.dir
 
 
 # =============================================================================
@@ -67,24 +73,22 @@ build CMakeFiles/TP4_logs.dir/TraitementLog.cpp.obj: CXX_COMPILER__TP4_logs_Debu
 
 
 #############################################
-# Link the executable TP4_logs.exe
+# Link the executable TP4_logs
 
-build TP4_logs.exe: CXX_EXECUTABLE_LINKER__TP4_logs_Debug CMakeFiles/TP4_logs.dir/main.cpp.obj CMakeFiles/TP4_logs.dir/TraitementLog.cpp.obj
+build TP4_logs: CXX_EXECUTABLE_LINKER__TP4_logs_Debug CMakeFiles/TP4_logs.dir/main.cpp.o CMakeFiles/TP4_logs.dir/TraitementLog.cpp.o CMakeFiles/TP4_logs.dir/Traitement.cpp.o
   FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\TP4_logs.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = TP4_logs.exe
-  TARGET_IMPLIB = libTP4_logs.dll.a
-  TARGET_PDB = TP4_logs.exe.dbg
+  OBJECT_DIR = CMakeFiles/TP4_logs.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = TP4_logs
+  TARGET_PDB = TP4_logs.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\LENOVO\Desktop\3IF\C++\3IF\c++\TP4_logs\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cd /home/ysidhom/Documents/3IF/c++/TP4_logs/cmake-build-debug && /snap/clion/219/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -95,7 +99,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\LENOVO\Desktop\3IF\C++\3IF\c++\TP4_logs\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\LENOVO\Desktop\3IF\C++\3IF\c++\TP4_logs -BC:\Users\LENOVO\Desktop\3IF\C++\3IF\c++\TP4_logs\cmake-build-debug"
+  COMMAND = cd /home/ysidhom/Documents/3IF/c++/TP4_logs/cmake-build-debug && /snap/clion/219/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/ysidhom/Documents/3IF/c++/TP4_logs -B/home/ysidhom/Documents/3IF/c++/TP4_logs/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -105,17 +109,15 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build TP4_logs: phony TP4_logs.exe
-
 # =============================================================================
 # Folder targets.
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/cmake-build-debug
+# Folder: /home/ysidhom/Documents/3IF/c++/TP4_logs/cmake-build-debug
 
-build all: phony TP4_logs.exe
+build all: phony TP4_logs
 
 # =============================================================================
 # Built-in targets
@@ -124,14 +126,14 @@ build all: phony TP4_logs.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake C$:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeRCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/ysidhom/Documents/3IF/c++/TP4_logs/CMakeLists.txt /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCInformation.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU-C.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3/bin/cmake/win/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake C$:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeRCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+build /home/ysidhom/Documents/3IF/c++/TP4_logs/CMakeLists.txt /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCInformation.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Compiler/GNU.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU-C.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux-GNU.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Platform/Linux.cmake /snap/clion/219/bin/cmake/linux/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
 
 
 #############################################

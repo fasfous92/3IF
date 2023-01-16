@@ -48,7 +48,7 @@ void TraitementLog::lire(string filename)
     ifstream file;
     file.open(fileName);
     string line;
-    while (!file.eof())
+    /*while (!file.eof())
     {
         getline(file, line);
         // je dois la passer à travers Traitement
@@ -59,7 +59,7 @@ void TraitementLog::lire(string filename)
             addGraphe(traitementLigne.section[15], traitementLigne.section[11]);
             addHits(traitementLigne.section[11]);
         }
-    }
+    }*/
 }//Fin lire
 
 //------------------------------------------------- Surcharge d'opérateurs
