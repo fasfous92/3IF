@@ -41,18 +41,65 @@ void TraitementLog::addHits( string cible)
     else hits[cible]++;
 } //Fin addGraphe
 
-void TraitementLog::lire(string filename)
+void TraitementLog::afficherGraphe()
+// Algorithme :
+//
+{
+    map<pair<string,string>,int>::iterator it;
+    for(it=graphe.begin();it!=graphe.end();it++){
+        cout<<it->first.first<<" "<<it->first.second<<" "<<it->second<<endl ;
+    }
+}// End afficherGraphe
+
+void TraitementLog::afficherHits()
+// Algorithme :
+//
+{
+    map<string,int>::iterator it;
+    for(it=hits.begin();it!=hits.end();it++){
+        cout<<it->first<<" "<<it->second<<endl ;
+    }
+}// End afficherHits
+
+void TraitementLog::makeHitsInverse()
+// Algorithme :
+//
+{
+    map<string,int>::iterator it;
+    for(it=hits.begin();it!=hits.end();it++){
+        hitsInverse.insert(make_pair(it->second,it->first));
+    }
+}// End afficherHits
+
+void TraitementLog::afficherHitsInverse()
+// Algorithme :
+//
+{
+    multimap<int,string>::iterator it;
+    for(it=hitsInverse.begin();it!=hitsInverse.end();it++){
+        cout<<it->first<<" "<<it->second<<endl ;
+    }
+}// End afficherHits
+
+void TraitementLog::lire()
 // Algorithme :
 //
 {
     ifstream file;
     file.open(fileName);
+    if(!file) {
+        cout << "erreur ouverture du fichier";
+        file.close();
+        return;
+    }
     string line, offset;
-    cout<<"veuillez rentrer le offset que vous voulez enlever à l'adresse de la source"<<endl;
-    cin>>offset
+    /*cout<<"veuillez rentrer le offset que vous voulez enlever à l'adresse de la source"<<endl;
+    cin>>offset;*/
+    offset="http://intranet-if.insa-lyon.fr";
     while (!file.eof())
     {
         getline(file, line);
+        if(line=="") break;
         Traitement traitementLigne=Traitement(line);
         if(traitementLigne.section[8]=="200")
         {
@@ -62,6 +109,8 @@ void TraitementLog::lire(string filename)
             addHits(traitementLigne.section[6]);
         }
     }
+    file.close();
+    makeHitsInverse();
 }//Fin lire
 
 //------------------------------------------------- Surcharge d'opérateurs

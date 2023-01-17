@@ -32,6 +32,18 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+void Traitement::afficherVecteur()
+// Algorithme :
+{
+    vector<string>::iterator it;
+    int i=0;
+    for(it=section.begin();it!=section.end();it++){
+        cout<<"section ["<<i<<"] = "<<*it<<endl;
+        i++;
+    }
+}
+
+
 int Traitement::Trouveheure()const
 // Algorithme :
 {
@@ -124,8 +136,6 @@ Traitement::Traitement(const string & line)
     cout << "Appel au constructeur de <Traitement>" << endl;
 #endif
     Decomposition(line);
-
-
 } //----- Fin de Traitement
 
 

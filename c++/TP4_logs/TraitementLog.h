@@ -45,7 +45,31 @@ public:
     // Contrat :
     //
 
-    void lire(string filename);
+    void lire();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    void afficherGraphe();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    void afficherHits();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    void makeHitsInverse();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    void afficherHitsInverse();
     // Mode d'emploi :
     //
     // Contrat :
@@ -73,8 +97,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-map<pair<string,string>,int> graphe;
-map<string,int> hits;
+map<pair<string,string>,int> graphe; //key=(referer,cible) , val = nb de fois on a accédé à la cible à partir de ce referer
+map<string,int> hits; //key=noeud val=nb de hits
 multimap<int,string> hitsInverse;
 bool doGraphe,doExclure,doHeure;
 string fileName;

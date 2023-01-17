@@ -32,11 +32,12 @@ public:
     vector <string> section;
 
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+    void afficherVecteur();
     // Mode d'emploi :
     //
     // Contrat :
     //
+
     int Trouveheure()const;
     //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
