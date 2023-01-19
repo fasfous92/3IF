@@ -45,13 +45,19 @@ public:
     // Contrat :
     //
 
+    void addNodes(string cible,int& ordre);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     void lire();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    void afficherGraphe();
+    void makeDot(string fileName);
     // Mode d'emploi :
     //
     // Contrat :
@@ -100,6 +106,7 @@ protected:
 map<pair<string,string>,int> graphe; //key=(referer,cible) , val = nb de fois on a accédé à la cible à partir de ce referer
 map<string,int> hits; //key=noeud val=nb de hits
 multimap<int,string> hitsInverse;
+map<string,int> nodes ; // contient les nodes comme clés et les valeurs sont l'ordre d'ajout (commence de 0)
 bool doGraphe,doExclure,doHeure;
 string fileName;
 

@@ -21,11 +21,7 @@ int main() {
     cin>>filename;
     TraitementLog t (filename);
     t.lire();
-    cout<<endl;
-    t.afficherGraphe();
-    cout<<endl;
-    t.afficherHits();
-    cout<<endl;
+    t.makeDot("court.dot");
     t.afficherHitsInverse();
     cout<<endl;
      return 0;

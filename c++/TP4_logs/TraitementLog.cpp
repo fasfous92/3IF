@@ -41,14 +41,37 @@ void TraitementLog::addHits( string cible)
     else hits[cible]++;
 } //Fin addGraphe
 
-void TraitementLog::afficherGraphe()
+void TraitementLog::addNodes(string cible,int& ordre)
 // Algorithme :
 //
 {
+    if(!nodes.count(cible)) {
+        nodes[cible] = ordre;
+        ordre++;
+    }
+
+}//Fin addNodes
+
+void TraitementLog::makeDot(string fileName)
+// Algorithme :
+//
+{
+    ofstream file(fileName);
+    if(!file){
+        cout<<"Erreur ouverture de <"<<fileName<<">"<<endl;
+        return;
+    }
+    file<<"digraph{"<<endl;
+    map<string,int>::iterator it1;
+    for(it1=nodes.begin();it1!=nodes.end();it1++){
+        file<<"node"<<it1->second<<" [label=\""<<it1->first<<"\"];"<<endl;
+    }
     map<pair<string,string>,int>::iterator it;
     for(it=graphe.begin();it!=graphe.end();it++){
-        cout<<it->first.first<<" "<<it->first.second<<" "<<it->second<<endl ;
+        file<<"node"<<nodes[it->first.first]<<" -> node"<< nodes[it->first.second]<<" [label=\""<<it->second<<"\"];"<<endl;
     }
+    file<<"}"<<endl;
+    cout<<"Dot-file "<<fileName<<" generated"<<endl;
 }// End afficherGraphe
 
 void TraitementLog::afficherHits()
@@ -76,8 +99,11 @@ void TraitementLog::afficherHitsInverse()
 //
 {
     multimap<int,string>::iterator it;
+    int nb=0;
     for(it=hitsInverse.begin();it!=hitsInverse.end();it++){
-        cout<<it->first<<" "<<it->second<<endl ;
+        cout<<it->second<<" ("<<it->first<<" hits)"<<endl ;
+        nb++;
+        if(nb==10) break;
     }
 }// End afficherHits
 
@@ -96,6 +122,7 @@ void TraitementLog::lire()
     /*cout<<"veuillez rentrer le offset que vous voulez enlever à l'adresse de la source"<<endl;
     cin>>offset;*/
     offset="http://intranet-if.insa-lyon.fr";
+    int ordre=0;
     while (!file.eof())
     {
         getline(file, line);
@@ -105,8 +132,11 @@ void TraitementLog::lire()
         {
             //on mettra dans referer l'adresse de la source en enlevant l'offset porposé par l'utilisateur
             string referer=traitementLigne.section[10].substr(offset.size(),traitementLigne.section[10].size());
-            addGraphe(referer, traitementLigne.section[6]);
-            addHits(traitementLigne.section[6]);
+            string cible=traitementLigne.section[6];
+            addGraphe(referer, cible); //ajouter dans le graphe
+            addHits(cible); //ajouter dans hits
+            addNodes(cible,ordre);
+            addNodes(referer,ordre);
         }
     }
     file.close();
