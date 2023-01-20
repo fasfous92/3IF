@@ -20,14 +20,6 @@
 
 //------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------------
-// Rôle de la classe <TraitementLog>
-//
-//
-//------------------------------------------------------------------------
-
-
-
 class TraitementLog  {
 //----------------------------------------------------------------- PUBLIC
 
@@ -63,12 +55,6 @@ public:
     // Contrat :
     //
 
-    void afficherHits();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     void makeHitsInverse();
     // Mode d'emploi :
     //
@@ -81,11 +67,16 @@ public:
     // Contrat :
     //
 
+    void execute();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
 
     //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
-    TraitementLog(string name,bool g=false,bool e=false,bool h=false):fileName(name),doGraphe(g),doExclure(e),doHeure(h){};
+    TraitementLog(string name,bool g=false,bool e=false,int h=-1):fileName(name),doGraphe(g),doExclure(e),heure(h){};
     // Mode d'emploi :
     //
     // Contrat :
@@ -107,7 +98,8 @@ map<pair<string,string>,int> graphe; //key=(referer,cible) , val = nb de fois on
 map<string,int> hits; //key=noeud val=nb de hits
 multimap<int,string> hitsInverse;
 map<string,int> nodes ; // contient les nodes comme clés et les valeurs sont l'ordre d'ajout (commence de 0)
-bool doGraphe,doExclure,doHeure;
+bool doGraphe,doExclure;
+int heure;
 string fileName;
 
 };

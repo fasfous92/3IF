@@ -52,6 +52,16 @@ void TraitementLog::addNodes(string cible,int& ordre)
 
 }//Fin addNodes
 
+void TraitementLog::makeHitsInverse()
+// Algorithme :
+//
+{
+    map<string,int>::iterator it;
+    for(it=hits.begin();it!=hits.end();it++){
+        hitsInverse.insert(make_pair(it->second,it->first));
+    }
+}// End afficherHits
+
 void TraitementLog::makeDot(string fileName)
 // Algorithme :
 //
@@ -72,27 +82,9 @@ void TraitementLog::makeDot(string fileName)
     }
     file<<"}"<<endl;
     cout<<"Dot-file "<<fileName<<" generated"<<endl;
+    file.close();
 }// End afficherGraphe
 
-void TraitementLog::afficherHits()
-// Algorithme :
-//
-{
-    map<string,int>::iterator it;
-    for(it=hits.begin();it!=hits.end();it++){
-        cout<<it->first<<" "<<it->second<<endl ;
-    }
-}// End afficherHits
-
-void TraitementLog::makeHitsInverse()
-// Algorithme :
-//
-{
-    map<string,int>::iterator it;
-    for(it=hits.begin();it!=hits.end();it++){
-        hitsInverse.insert(make_pair(it->second,it->first));
-    }
-}// End afficherHits
 
 void TraitementLog::afficherHitsInverse()
 // Algorithme :
@@ -122,7 +114,8 @@ void TraitementLog::lire()
     /*cout<<"veuillez rentrer le offset que vous voulez enlever à l'adresse de la source"<<endl;
     cin>>offset;*/
     offset="http://intranet-if.insa-lyon.fr";
-    int ordre=0;
+    int ordre=0 ,heureLog;
+    string extension  =".html";
     while (!file.eof())
     {
         getline(file, line);
@@ -133,15 +126,28 @@ void TraitementLog::lire()
             //on mettra dans referer l'adresse de la source en enlevant l'offset porposé par l'utilisateur
             string referer=traitementLigne.section[10].substr(offset.size(),traitementLigne.section[10].size());
             string cible=traitementLigne.section[6];
-            addGraphe(referer, cible); //ajouter dans le graphe
-            addHits(cible); //ajouter dans hits
-            addNodes(cible,ordre);
-            addNodes(referer,ordre);
+            heureLog = traitementLigne.trouveHeure();
+
+            if(doExclure && cible.find(extension)==std::string::npos) continue;
+            if(heure==-1 || heureLog==heure) {
+                addGraphe(referer, cible); //ajouter dans le graphe
+                addHits(cible); //ajouter dans hits
+                addNodes(cible, ordre);
+                addNodes(referer, ordre);
+            }
         }
     }
     file.close();
     makeHitsInverse();
 }//Fin lire
+
+
+void TraitementLog::execute(){
+    lire();
+    if(doGraphe) makeDot("court.dot");
+    afficherHitsInverse();
+    cout<<endl;
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

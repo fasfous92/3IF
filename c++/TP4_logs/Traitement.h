@@ -38,7 +38,7 @@ public:
     // Contrat :
     //
 
-    int Trouveheure()const;
+    int trouveHeure()const;
     //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :

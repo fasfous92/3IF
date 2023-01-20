@@ -44,7 +44,7 @@ void Traitement::afficherVecteur()
 }
 
 
-int Traitement::Trouveheure()const
+int Traitement::trouveHeure()const
 // Algorithme :
 {
     std::string word;
@@ -67,8 +67,6 @@ int Traitement::Trouveheure()const
         if (prev < section[3].length())
             word.append(section[3].substr(prev, std::string::npos));
     }
-
-
 }//----- Fin de Trouveheure
 
 void Traitement::Decomposition(const string & line)

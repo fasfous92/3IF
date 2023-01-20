@@ -20,9 +20,7 @@ int main() {
     cout<<"veuillez rentrer nom du fichier"<<endl;
     cin>>filename;
     TraitementLog t (filename);
-    t.lire();
-    t.makeDot("court.dot");
-    t.afficherHitsInverse();
-    cout<<endl;
-     return 0;
+    t.execute();
+
+    return 0;
 }
