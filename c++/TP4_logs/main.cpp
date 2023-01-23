@@ -85,6 +85,6 @@ int main(int argc,char* argv[]) {
                 exclusions= true;
             }
     }
-    TraitementLog()
+
     return 0;
 }
