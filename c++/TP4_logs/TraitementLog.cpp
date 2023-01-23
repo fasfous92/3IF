@@ -133,7 +133,7 @@ void TraitementLog::lire()
 //
 {
     string  offset="http://intranet-if.insa-lyon.fr";
-    cout<<"Saisissez une url de base dans la première ligne d'un fichier config.txt"<<endl;
+    //cout<<"Saisissez une url de base dans la première ligne d'un fichier config.txt"<<endl;
     ifstream file, configFile;
     file.open(fileName);
     configFile.open("config.txt");
