@@ -1,0 +1,5 @@
+2;Lyon;Bordeaux;#
+3;Lyon;Paris;Train
+3;Paris;Bordeaux;Auto
+1;Lyon;Paris;Auto
+1;Lyon;Paris;Auto
