@@ -3,7 +3,7 @@
 #include "TraitementLog.h"
 #include <fstream>
 
-int main() {
+int main(int args,char** argc) {
     /*string lineTest="192.168.0.0 - - [08/Sep/2012:11:16:02 +0200] \"GET /temps/4IF16.html HTTP/1.1\" 200 12106 \"http://intranet-if.insa-lyon.fr/temps/4IF15.html\" \"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:14.0) Gecko/20100101 Firefox/14.0.1";
     Traitement te(lineTest);
     te.afficherVecteur();
@@ -15,11 +15,10 @@ int main() {
     std::cout<<res<<endl;
 
     Traitement test=Traitement(lineTest);*/
-
     string filename;
     cout<<"veuillez rentrer nom du fichier"<<endl;
     cin>>filename;
-    TraitementLog t (filename);
+    TraitementLog t (filename,false,true,12);
     t.execute();
 
     return 0;

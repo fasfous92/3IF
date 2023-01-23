@@ -76,7 +76,7 @@ public:
 
     //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
-    TraitementLog(string name,bool g=false,bool e=false,int h=-1):fileName(name),doGraphe(g),doExclure(e),heure(h){};
+    TraitementLog(string name,bool graphe=false,bool exclure=false,int h=-1):fileName(name),doGraphe(graphe),doExclure(exclure),heure(h){};
     // Mode d'emploi :
     //
     // Contrat :
@@ -96,7 +96,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
 map<pair<string,string>,int> graphe; //key=(referer,cible) , val = nb de fois on a accédé à la cible à partir de ce referer
 map<string,int> hits; //key=noeud val=nb de hits
-multimap<int,string> hitsInverse;
+multimap<int,string,greater<int>> hitsInverse;
 map<string,int> nodes ; // contient les nodes comme clés et les valeurs sont l'ordre d'ajout (commence de 0)
 bool doGraphe,doExclure;
 int heure;

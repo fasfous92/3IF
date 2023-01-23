@@ -121,14 +121,21 @@ void TraitementLog::lire()
         getline(file, line);
         if(line=="") break;
         Traitement traitementLigne=Traitement(line);
+        if(traitementLigne.section.size()<=11) continue;
         if(traitementLigne.section[8]=="200")
         {
             //on mettra dans referer l'adresse de la source en enlevant l'offset porposé par l'utilisateur
-            string referer=traitementLigne.section[10].substr(offset.size(),traitementLigne.section[10].size());
+            string referer;
+            if(traitementLigne.section[10].find(offset)!= std::string::npos)
+                referer=traitementLigne.section[10].substr(offset.size(),traitementLigne.section[10].size());
+            else
+                referer=traitementLigne.section[10];
+
             string cible=traitementLigne.section[6];
             heureLog = traitementLigne.trouveHeure();
 
             if(doExclure && cible.find(extension)==std::string::npos) continue;
+            
             if(heure==-1 || heureLog==heure) {
                 addGraphe(referer, cible); //ajouter dans le graphe
                 addHits(cible); //ajouter dans hits
