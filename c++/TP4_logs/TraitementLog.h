@@ -60,13 +60,14 @@ public:
     //
     // Contrat :
     //
-    bool filetype(const string & cible)const;
+
+    void afficherHitsInverse();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    void afficherHitsInverse();
+    bool filetype(const string & cible) const;
     // Mode d'emploi :
     //
     // Contrat :
@@ -81,7 +82,7 @@ public:
 
     //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
-    TraitementLog(string name,bool graphe=false,bool exclure=false,int h=-1):fileName(name),doGraphe(graphe),doExclure(exclure),heure(h){};
+    TraitementLog(string name,bool graphe=false,string dot="",bool exclure=false,int h=-1):fileName(name),doGraphe(graphe),dotName(dot),doExclure(exclure),heure(h){};
     // Mode d'emploi :
     //
     // Contrat :
@@ -105,7 +106,7 @@ multimap<int,string,greater<int>> hitsInverse;
 map<string,int> nodes ; // contient les nodes comme clés et les valeurs sont l'ordre d'ajout (commence de 0)
 bool doGraphe,doExclure;
 int heure;
-string fileName;
+string fileName,dotName;
 
 };
 
