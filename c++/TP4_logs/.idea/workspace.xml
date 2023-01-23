@@ -20,7 +20,38 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f430681b-4787-49e3-8517-f60f018f3da4" name="Changes" comment="commit janv23 17H20" />
+    <list default="true" id="58060191-03e2-4f2e-80d1-5cfa07f4c016" name="Changes" comment="test 1 et 2">
+      <change afterPath="$PROJECT_DIR$/Tests/Test3/config.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Test4/config.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Test5/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_23_14_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_23_14_33__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_01_23_14_27__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_01_23_14_27__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Test3/description" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Test3/description" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Test4/description" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Test4/description" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Test5/description" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Test5/description" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Test5/run" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Test5/run" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Test5/std.out" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Test5/std.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Test8/description" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Test8/description" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traitement.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Traitement.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traitement.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TraitementLog.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TraitementLog.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TraitementLog.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/analog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TP4_logs.dir/TraitementLog.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TP4_logs.dir/TraitementLog.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TP4_logs.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TP4_logs.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TP4_logs.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TP4_logs.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/test.log" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,6 +86,7 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/LENOVO/Desktop/3IF/C++/3IF/c++/TP4_logs/Tests/Test3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,13 +95,20 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LENOVO\Desktop\3IF\C++\3IF\c++\TP4_logs\Tests\Test3" />
+      <recent name="C:\Users\LENOVO\Desktop\3IF\C++\3IF\c++\TP4_logs\Tests\Test4" />
+      <recent name="C:\Users\LENOVO\Desktop\3IF\C++\3IF\c++\TP4_logs\Tests\Test5" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="TP4_logs" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TP4_logs" TARGET_NAME="TP4_logs" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TP4_logs" RUN_TARGET_NAME="TP4_logs">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TP4_logs" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TP4_logs" TARGET_NAME="TP4_logs" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TP4_logs" RUN_TARGET_NAME="TP4_logs">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -78,7 +117,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f430681b-4787-49e3-8517-f60f018f3da4" name="Changes" comment="" />
+      <changelist id="58060191-03e2-4f2e-80d1-5cfa07f4c016" name="Changes" comment="test 1 et 2" />
       <created>1673875352228</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -86,6 +125,7 @@
       <workItem from="1673875353515" duration="8392000" />
       <workItem from="1673897946996" duration="76000" />
       <workItem from="1674480407913" duration="10453000" />
+      <workItem from="1674497925128" duration="1807000" />
     </task>
     <task id="LOCAL-00001" summary="commit janv16 20H30">
       <created>1673897971705</created>
@@ -107,21 +147,21 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit janv16 20H30" />
     <MESSAGE value="commit janv23 17H20" />
     <option name="LAST_COMMIT_MESSAGE" value="commit janv23 17H20" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/TraitementLog.cpp</url>
-          <line>106</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

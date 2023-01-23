@@ -129,7 +129,7 @@ Traitement::Traitement(const string & line)
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Traitement>" << endl;
+    //cout << "Appel au constructeur de <Traitement>" << endl;
 #endif
     Decomposition(line);
 } //----- Fin de Traitement
@@ -140,7 +140,7 @@ Traitement::~Traitement()
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Traitement>" << endl;
+    //cout << "Appel au destructeur de <Traitement>" << endl;
 #endif
 } //----- Fin de ~Traitement
 

@@ -179,7 +179,7 @@ void TraitementLog::lire()
             heureLog = traitementLigne.trouveHeure(); // on récupère l'heure
 
             // si on va exclure les fichiers image, css et javascript et que la cible a une telle extension on passe à la ligne suivante
-            if(doExclure && cible.find(extension)==std::string::npos) continue;
+            if(doExclure && filetype(cible)) continue;
 
             // si on va pas faire une sélection par heure
             // ou si on va faire une sélection par heure et que l'heure de la ligne de log est la même qu'on veut choisir
@@ -211,7 +211,7 @@ TraitementLog::~TraitementLog()
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <TraitementLog>" << endl;
+    //cout << "Appel au destructeur de <TraitementLog>" << endl;
 #endif
 }//----- Fin de ~TraitementLog
 

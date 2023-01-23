@@ -18,7 +18,7 @@ int main(int argc,char* argv[]) {
     string nomGraphe;
 
     bool selectionpar_heure = false;
-    int heure;
+    int heure=-1;
 
     bool exclusions=false;
     //tout d'abords on commence par vérifier si le fichier log (source) est présent et de format log
@@ -76,15 +76,18 @@ int main(int argc,char* argv[]) {
                     cerr << "Paramètre non valide pour l'option -t " << endl;
                     return 1;
                 }else {
-                        selectionpar_heure=true;
-                        i++;
-                    }
+                    selectionpar_heure=true;
+                    i++;
                 }
             }
-            else if( argCourant == "-e" ){
-                exclusions= true;
-            }
+        }
+        else if( argCourant == "-e" ){
+            exclusions= true;
+        }
     }
+
+    TraitementLog t(nomLog,faireGraphe,nomGraphe,exclusions,heure);
+    t.execute();
 
     return 0;
 }
