@@ -47,6 +47,7 @@ public:
     // Contrat :
     //
 
+
     void Decomposition(const string & line);
     //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );

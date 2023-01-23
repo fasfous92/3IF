@@ -60,6 +60,11 @@ public:
     //
     // Contrat :
     //
+    bool filetype(const string & cible)const;
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
     void afficherHitsInverse();
     // Mode d'emploi :

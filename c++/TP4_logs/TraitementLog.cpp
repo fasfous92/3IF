@@ -16,7 +16,8 @@ using namespace std;
 #include <iostream>
 #include <stdbool.h>
 #include <fstream>
-
+#include <algorithm>
+#include <regex>
 //------------------------------------------------------ Include personnel
 #include "TraitementLog.h"
 #include "Traitement.h"
@@ -85,6 +86,32 @@ void TraitementLog::makeDot(string fileName)
     file.close();
 }// End afficherGraphe
 
+bool TraitementLog::filetype(const string & cible) const {
+        string except = "css,jpeg,jpg,png,gif,js";
+        vector<string> exceptions;
+        std::size_t prev = 0, pos;
+        while ((pos = except.find_first_of(",", prev)) != std::string::npos) //string::npos is the end of the line
+        {
+            if (pos > prev)
+                exceptions.push_back(except.substr(prev, pos - prev));
+            prev = pos + 1;
+
+        }
+        if (prev < except.length())
+            exceptions.push_back(except.substr(prev, std::string::npos));
+        // Maintenant notre vector exceptions a tous les exceptions à verifier sur la cible (en paramètre)
+        // nous allons réaliser une for loop qui va voir si l'une des exception existe dans la ligne ou pas
+
+        vector <string>::iterator parcours=exceptions.begin();
+        int posi;
+        while(parcours!=exceptions.end()){
+            if(cible.find(*parcours)!=std::string::npos)
+                return true;
+            parcours++;
+        }
+        return false;
+
+}//---Fin--filetype
 
 void TraitementLog::afficherHitsInverse()
 // Algorithme :
@@ -134,8 +161,8 @@ void TraitementLog::lire()
             string cible=traitementLigne.section[6];
             heureLog = traitementLigne.trouveHeure();
 
-            if(doExclure && cible.find(extension)==std::string::npos) continue;
-            
+            if(doExclure && filetype(cible)) continue;
+
             if(heure==-1 || heureLog==heure) {
                 addGraphe(referer, cible); //ajouter dans le graphe
                 addHits(cible); //ajouter dans hits

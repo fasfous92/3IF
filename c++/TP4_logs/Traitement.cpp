@@ -77,8 +77,6 @@ void Traitement::Decomposition(const string & line)
     std::string word;
     int i=0;
     string regroup;
-    while(std::getline(stringStream, word))
-    {
         std::size_t prev = 0, pos;
         /*Nous avons décidé de séparer selon les séparateurs présents si dessus
          * qui nous permettent d'avoir des données correctement renseigner
@@ -101,7 +99,7 @@ void Traitement::Decomposition(const string & line)
         }
         if (prev < line.length())
             section.push_back(line.substr(prev, std::string::npos));
-    }
+
             section.push_back(regroup);
 
 } //----- Fin de Decomposition
