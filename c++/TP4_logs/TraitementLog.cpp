@@ -132,21 +132,20 @@ void TraitementLog::lire()
 // Algorithme :
 //
 {
-    string  offset="http://intranet-if.insa-lyon.fr";
-    //cout<<"Saisissez une url de base dans la première ligne d'un fichier config.txt"<<endl;
+    string  offset;
     ifstream file, configFile;
     file.open(fileName);
     configFile.open("config.txt");
     if(!file) {
         //si erreur d'ouverture de file
-        cout << "erreur ouverture du fichier "<<fileName<<endl;
+        cerr<< "erreur ouverture du fichier "<<fileName<<endl;
         file.close();
         configFile.close();
         return;
     }
     if(!configFile){
         // si erreur d'ouverture du fichier config.txt on prend un url de base standard t on ferme le ifstream configFile
-        cout << "erreur ouverture du fichier config.txt"<<endl;
+        cerr<< "erreur ouverture du fichier config.txt"<<endl;
         cout<<"Url de base pris par défaut : "<<endl;
         cout<<"http://intranet-if.insa-lyon.fr"<<endl;
         configFile.close();

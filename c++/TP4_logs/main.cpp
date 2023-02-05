@@ -5,12 +5,29 @@
 #include <regex>
 
 int main(int argc,char* argv[]) {
+    string aide=argv[1];
+    if(aide== "--help") { //on vérifie si l'utilisaeur veut juste avoir accès aux aides liées aux options
+        fstream help;
+        help.open("help.txt", ios::in);
+        if (!help){
+            cerr << "erreur d'ouverture du fichier help";
+            return 1;
+        }else
+        {
+            while(!help.eof()) {
+                string line;
+                getline(help, line);
+                cout << line<<endl;
+            }
+        }
+        return 0;
+    }
 
 
     bool nomLogPresent = false;
     string nomLog=argv[argc-1];  //on vérifie si le fichier source existe par la suite
     if(nomLog.find(".log")==std::string::npos){ //if he doesn't find a .log extension there's an error
-        cerr<<"Paramètre non valide pour le nom du fichier src ";
+        cerr<<"Paramètre non valide pour le nom du fichier src "<<endl;
         return 1;
     }
 
@@ -35,13 +52,6 @@ int main(int argc,char* argv[]) {
         }
         if( argCourant == "-g" )
         {
-            if( i == argc -1 )
-            {
-                cerr << "Paramètre non valide pour l'option -g : aucun paramètre" << endl;
-                return 1;
-            }
-            else
-            {
                 if(i+1 == argc-1) {
                     cerr<<"Paramètre non valide pour l'option -g :aucun paramètre ou confondu avec le fichier.log source"<<endl;
                     return 1;
@@ -50,11 +60,11 @@ int main(int argc,char* argv[]) {
                 nomGraphe = argv [ i+1 ];
                 faireGraphe = true;
                 i++;
-            }
+
         }
         else if( argCourant == "-t" )
         {
-            if( i == argc -1 )
+            if( i == argc -2 )
             {
                 cerr << "Paramètre non valide pour l'option -t : aucun paramètre" << endl;
                 return 1 ;
@@ -71,7 +81,7 @@ int main(int argc,char* argv[]) {
                     cerr<<"Paramètre non valide pour l'option -t "<<endl;
                     return 1;
                 }
-                if( heure < 0)
+                if( heure < 0 || heure>23)
                 {
                     cerr << "Paramètre non valide pour l'option -t " << endl;
                     return 1;
@@ -83,6 +93,11 @@ int main(int argc,char* argv[]) {
         }
         else if( argCourant == "-e" ){
             exclusions= true;
+        }
+        else{
+            cerr<<"option non reconnue veuillez rentrer ./analog --help pour plus d'information sur les";
+            cerr<<"options disponible dans notre programme"<<endl;
+            return 1;
         }
     }
 

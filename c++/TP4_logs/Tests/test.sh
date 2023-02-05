@@ -5,7 +5,7 @@ execDir=`pwd`
 if [ "$1" = "" ]
 then
   echo "No directory given, default to current"
-  Directory="."
+  Directory="/"
 else  
   echo "| Test id : $1"
   if [ -d "$1" ]
@@ -123,6 +123,7 @@ then
   for i in *.outfile
   do
     fileName=`basename $i .outfile`
+    echo "$filename"
     if [ -r $fileName ]
     then
       diff -wB $i $fileName

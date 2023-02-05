@@ -1,0 +1,2 @@
+Test permet de vérifier les erreurs affichées pour une problème dans l'option -t:
+l'heure en paramètre n'est pas valide (valeur supérieur à 23).

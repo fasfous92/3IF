@@ -1,1 +1,3 @@
-ouverture d'un fichier qui n'existe pas
+erreur d'ouverture d'un fichier.log:
+- paramètre non rentré
+-fichier inexistant

@@ -1,1 +1,1 @@
-Ce test permet de vérifier la production de deux fichiers en sortie du programme testé
+Ce test permet de vérifier si l'option -e (afficher des logs except ceux avec l'extension image,css,javascript) est valide dans notre programme
