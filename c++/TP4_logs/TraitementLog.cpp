@@ -138,10 +138,10 @@ void TraitementLog::lire()
     configFile.open("config.txt");
     if(!file) {
         //si erreur d'ouverture de file
-        cerr<< "erreur ouverture du fichier "<<fileName<<endl;
+        cerr<< "Erreur ouverture du fichier "<<fileName<<endl;
         file.close();
         configFile.close();
-        return;
+        return ;
     }
     if(!configFile){
         // si erreur d'ouverture du fichier config.txt on prend un url de base standard t on ferme le ifstream configFile

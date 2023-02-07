@@ -5,6 +5,11 @@
 #include <regex>
 
 int main(int argc,char* argv[]) {
+    if( argc<=1){
+        cerr<<"Erreur absence de pramètres"<<endl;
+        return 1;
+    }
+
     string aide=argv[1];
     if(aide== "--help") { //on vérifie si l'utilisaeur veut juste avoir accès aux aides liées aux options
         fstream help;
@@ -27,7 +32,7 @@ int main(int argc,char* argv[]) {
     bool nomLogPresent = false;
     string nomLog=argv[argc-1];  //on vérifie si le fichier source existe par la suite
     if(nomLog.find(".log")==std::string::npos){ //if he doesn't find a .log extension there's an error
-        cerr<<"Paramètre non valide pour le nom du fichier src "<<endl;
+        cerr<<"Type de fichier en paramètre erroné, veuillez rentrer un fichier.log en paramètre"<<endl;
         return 1;
     }
 

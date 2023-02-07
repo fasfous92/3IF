@@ -1,3 +1,2 @@
-erreur d'ouverture d'un fichier.log:
-- paramètre non rentré
--fichier inexistant
+erreur le fichier en paramètre n'est pas un fichier.log:
+- Type du fichier inadéquat 
